@@ -1,7 +1,7 @@
+#include "GameStateManager.hpp"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_mixer.h>
-
 int main(int argc, char** arg) {
 
 	SDL_Init(SDL_INIT_EVERYTHING);
@@ -16,6 +16,10 @@ int main(int argc, char** arg) {
 		printf("Could not create window: \n%s\n", SDL_GetError());
 		return 1;
 	}
+
+	GameStateManager game(window);
+
+	game.run();
 
 	SDL_DestroyWindow(window);
 	Mix_Quit();

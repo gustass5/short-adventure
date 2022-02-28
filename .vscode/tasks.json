@@ -7,6 +7,9 @@
             "args": [
                 "-g",
                 "${workspaceFolder}/src/main.cpp",
+                "${workspaceFolder}/src/GameStateManager.cpp",
+                "${workspaceFolder}/src/GameManager.cpp",
+                "${workspaceFolder}/src/Scene.cpp",
                 "-o",
                 "${workspaceFolder}/src/main",
                 "`",
