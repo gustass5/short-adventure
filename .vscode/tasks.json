@@ -11,7 +11,7 @@
                 "${workspaceFolder}/src/GameManager.cpp",
                 "${workspaceFolder}/src/Scene.cpp",
                 "-o",
-                "${workspaceFolder}/src/main",
+                "${workspaceFolder}/build/main",
                 "`",
                 "sdl2-config",
                 "--cflags",
