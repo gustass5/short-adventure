@@ -10,6 +10,7 @@
                 "${workspaceFolder}/src/GameStateManager.cpp",
                 "${workspaceFolder}/src/GameManager.cpp",
                 "${workspaceFolder}/src/Scene.cpp",
+                "${workspaceFolder}/src/InputManager.cpp",
                 "-o",
                 "${workspaceFolder}/build/main",
                 "`",

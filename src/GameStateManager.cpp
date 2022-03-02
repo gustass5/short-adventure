@@ -13,6 +13,12 @@ void GameStateManager::run() {
 
 	while (this->isGameRunning) {
 
+		InputManager::ListenEvents();
+
+		if (InputManager::ShouldCloseGame()) {
+			this->isGameRunning = false;
+		}
+
 		this->gameManager->update();
 
 		SDL_RenderClear(this->screen);
