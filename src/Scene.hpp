@@ -2,6 +2,8 @@
 
 #include "SDL2/SDL.h"
 #include <SDL2/SDL_image.h>
+#include <fstream>
+#include <string>
 
 class Scene {
   private:
@@ -11,6 +13,6 @@ class Scene {
   public:
 	Scene(SDL_Renderer* screen);
 	~Scene();
-	void load();
+	void load(std::string path);
 	void render();
 };
