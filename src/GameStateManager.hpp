@@ -4,6 +4,8 @@
 #include "InputManager.hpp"
 #include <SDL2/SDL.h>
 
+extern double GLOBAL_DELTA_TIME;
+
 class GameStateManager {
   private:
 	SDL_Window* window;

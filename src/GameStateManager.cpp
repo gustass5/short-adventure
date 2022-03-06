@@ -11,7 +11,15 @@ GameStateManager::~GameStateManager() {
 
 void GameStateManager::run() {
 
+	Uint64 currentTick = SDL_GetPerformanceCounter();
+	Uint64 lastTick = 0;
+
 	while (this->isGameRunning) {
+
+		lastTick = currentTick;
+		currentTick = SDL_GetPerformanceCounter();
+
+		GLOBAL_DELTA_TIME = (double)(currentTick - lastTick) / (double)SDL_GetPerformanceFrequency();
 
 		InputManager::ListenEvents();
 

@@ -22,7 +22,7 @@ void Player::update() {
 	double normalized = sqrt(movementX * movementX + movementY * movementY);
 
 	if (normalized > 0) {
-		this->move(movementX * this->speed / normalized, movementY * this->speed / normalized);
+		this->move(movementX * this->speed / normalized * GLOBAL_DELTA_TIME, movementY * this->speed / normalized * GLOBAL_DELTA_TIME);
 	}
 };
 
