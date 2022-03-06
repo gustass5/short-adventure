@@ -1,5 +1,6 @@
 #pragma once
 #include "GameObject.hpp"
+#include "InputManager.hpp"
 #include <SDL2/SDL_image.h>
 #include <string>
 

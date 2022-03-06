@@ -1,3 +1,4 @@
+#pragma once
 #include <SDL2/SDL.h>
 
 class InputManager {
@@ -6,6 +7,11 @@ class InputManager {
 	bool closeGame = false;
 	void listenEvents();
 	bool shouldCloseGame();
+	bool isUpKeyPressed = false;
+	bool isDownKeyPressed = false;
+	bool isLeftKeyPressed = false;
+	bool isRightKeyPressed = false;
+	void handleKeyPress(SDL_KeyboardEvent* event, bool isPressedDown);
 
   public:
 	InputManager(const InputManager&) = delete;
@@ -13,4 +19,8 @@ class InputManager {
 	static InputManager& getInstance();
 	static void ListenEvents();
 	static bool ShouldCloseGame();
+	static bool IsUpKeyPressed();
+	static bool IsDownKeyPressed();
+	static bool IsLeftKeyPressed();
+	static bool IsRightKeyPressed();
 };
