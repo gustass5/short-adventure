@@ -54,5 +54,5 @@ void Scene::load(std::string path) {
 }
 
 void Scene::render() {
-	SDL_RenderCopy(this->screen, backgroundImage, NULL, NULL);
+	SDL_RenderCopy(this->screen, this->backgroundImage, NULL, NULL);
 }
