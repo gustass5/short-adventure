@@ -6,7 +6,6 @@ class InputManager {
 	InputManager(){};
 	bool closeGame = false;
 	void listenEvents();
-	bool shouldCloseGame();
 	bool isUpKeyPressed = false;
 	bool isDownKeyPressed = false;
 	bool isLeftKeyPressed = false;

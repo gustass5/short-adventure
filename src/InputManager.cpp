@@ -49,12 +49,8 @@ void InputManager::ListenEvents() {
 	getInstance().listenEvents();
 };
 
-bool InputManager::shouldCloseGame() {
-	return this->closeGame;
-}
-
 bool InputManager::ShouldCloseGame() {
-	return getInstance().shouldCloseGame();
+	return getInstance().closeGame;
 }
 
 bool InputManager::IsUpKeyPressed() {
