@@ -13,6 +13,7 @@
                 "${workspaceFolder}/src/InputManager.cpp",
                 "${workspaceFolder}/src/GameObject.cpp",
                 "${workspaceFolder}/src/Player.cpp",
+                "${workspaceFolder}/src/Enemy.cpp",
                 "-o",
                 "${workspaceFolder}/build/main",
                 "`",
