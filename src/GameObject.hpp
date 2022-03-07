@@ -1,3 +1,4 @@
+#pragma once
 #include <SDL2/SDL.h>
 
 // INFO: For a class to be considered abstract it must have at least one pure virtual function,
