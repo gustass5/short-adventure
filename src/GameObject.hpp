@@ -17,4 +17,5 @@ class GameObject {
 	virtual ~GameObject() = 0;
 	void move(double x, double y);
 	const SDL_Rect* getTransform() const;
+	static double getDistance(const SDL_Rect* const transform1, const SDL_Rect* const transform2);
 };

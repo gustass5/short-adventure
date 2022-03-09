@@ -23,3 +23,14 @@ void GameObject::move(double x, double y) {
 const SDL_Rect* GameObject::getTransform() const {
 	return &(this->transform);
 };
+
+double GameObject::getDistance(const SDL_Rect* const transform1, const SDL_Rect* const transform2) {
+
+	double centerX1 = transform1->x + transform1->w / 2;
+	double centerY1 = transform1->y + transform1->y / 2;
+
+	double centerX2 = transform2->x + transform2->w / 2;
+	double centerY2 = transform2->y + transform2->y / 2;
+
+	return std::sqrt(std::pow(centerX1 - centerX2, 2) + std::pow(centerY1 - centerY2, 2));
+}
