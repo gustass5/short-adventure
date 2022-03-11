@@ -21,7 +21,12 @@ void Enemy::render() {
 
 int Enemy::getSenseRadius() {
 	return this->senseRadius;
-};
+}
+
 int Enemy::getAttackRadius() {
 	return this->attackRadius;
-};
+}
+
+int Enemy::getMovementSpeed() {
+	return this->movementSpeed;
+}

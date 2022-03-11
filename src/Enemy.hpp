@@ -20,4 +20,5 @@ class Enemy : public GameObject {
 	virtual void render();
 	int getSenseRadius();
 	int getAttackRadius();
+	int getMovementSpeed();
 };

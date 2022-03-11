@@ -7,7 +7,12 @@ class Player;
 class EnemyAttackState;
 class EnemyIdleState;
 
+extern double GLOBAL_DELTA_TIME;
+
 class EnemyFollowState : public EnemyState {
+  private:
+	void follow(Enemy* enemy, Player* player);
+
   public:
 	EnemyFollowState();
 	~EnemyFollowState();
