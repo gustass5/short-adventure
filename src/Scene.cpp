@@ -1,10 +1,16 @@
 #include "Scene.hpp"
 
 Scene::Scene(SDL_Renderer* screen) : screen(screen){};
-Scene::~Scene(){};
+
+Scene::~Scene() {
+	// INFO: Manually freeing memory of textures is required
+	for (SDL_Texture* sprite : this->enemySprites) {
+		SDL_DestroyTexture(sprite);
+	}
+}
 
 // INFO: path = "assets/levels/level_#"
-void Scene::load(std::string path) {
+void Scene::load(std::string path, Player* player) {
 	// INFO:
 	// Load level file, folder name is `level_` + levelNumber
 	// Each level folder contains its information, backgroundImage file and mandatory config.txt file
@@ -29,7 +35,7 @@ void Scene::load(std::string path) {
 		return;
 	}
 
-	int borderPointCount, interactiblesCount, enemiesCount;
+	int borderPointCount, interactiblesCount, enemyTypesCount, enemiesCount;
 
 	if (!(level >> borderPointCount) || borderPointCount > 20) {
 		printf("[ERROR]: BorderPointCount is invalid");
@@ -46,6 +52,32 @@ void Scene::load(std::string path) {
 		return;
 	}
 
+	level >> enemyTypesCount;
+
+	for (int i = 0; i < enemyTypesCount; i++) {
+		std::string enemyType;
+		level >> enemyType;
+
+		SDL_Surface* temporarySurface = IMG_Load(("../assets/enemies/" + enemyType + "/" + enemyType + "_Idle_0.png").c_str());
+		if (temporarySurface != NULL) {
+			if (this->screen == NULL) {
+				printf("[ERROR]: Renderer is null when setting enemy sprite");
+			} else {
+				this->enemySprites.push_back(SDL_CreateTextureFromSurface(this->screen, temporarySurface));
+				SDL_FreeSurface(temporarySurface);
+			}
+		} else {
+			printf("[ERROR]: Temporary surface is null when setting enemy sprite");
+		}
+	}
+
+	for (int i = 0; i < enemiesCount; i++) {
+		int type, x, y, w, h;
+		level >> type >> x >> y >> w >> h;
+
+		this->enemies.push_back(std::make_unique<Enemy>(Enemy(this->screen, player, this->enemySprites[type], x, y, w, h)));
+	}
+
 	level.close();
 
 	SDL_Surface* temporarySurface = IMG_Load((path + backgroundImage).c_str());
@@ -53,6 +85,16 @@ void Scene::load(std::string path) {
 	SDL_FreeSurface(temporarySurface);
 }
 
+void Scene::update() {
+	for (int i = 0; i < this->enemies.size(); i++) {
+		this->enemies[i]->update();
+	}
+}
+
 void Scene::render() {
 	SDL_RenderCopy(this->screen, this->backgroundImage, NULL, NULL);
+
+	for (int i = 0; i < this->enemies.size(); i++) {
+		this->enemies[i]->render();
+	}
 }

@@ -10,7 +10,7 @@ Player::Player(SDL_Renderer* renderer, std::string spritePath, int x, int y, int
 			SDL_FreeSurface(temporarySurface);
 		}
 	} else {
-		printf("[ERROR]: Temprary surface is null when setting player sprite");
+		printf("[ERROR]: Temporary surface is null when setting player sprite");
 	}
 };
 
