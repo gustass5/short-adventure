@@ -22,5 +22,6 @@ class Scene {
 	void load(std::string path, Player* player);
 	void update();
 	void render();
+	// [INFO]: Unique pointers cannot be copied and they free their memory themselves
 	std::vector<std::unique_ptr<Enemy>> enemies;
 };

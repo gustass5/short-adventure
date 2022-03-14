@@ -1,6 +1,7 @@
 #include "InputManager.hpp"
 
 InputManager& InputManager::getInstance() {
+	// [INFO]: This way for the first time instance will be created and reused for every subsequent call
 	static InputManager instance;
 	return instance;
 }

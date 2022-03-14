@@ -13,7 +13,9 @@ class InputManager {
 	void handleKeyPress(SDL_KeyboardEvent* event, bool isPressedDown);
 
   public:
+	// [INFO]: Prohibit copying
 	InputManager(const InputManager&) = delete;
+	// [INFO]: Prohibit assignment
 	void operator=(const InputManager&) = delete;
 	static InputManager& getInstance();
 	static void ListenEvents();

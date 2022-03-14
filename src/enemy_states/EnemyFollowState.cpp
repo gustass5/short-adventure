@@ -8,7 +8,7 @@ EnemyFollowState::EnemyFollowState(){};
 EnemyFollowState::~EnemyFollowState(){};
 
 EnemyState* EnemyFollowState::update(Enemy* enemy, Player* player) {
-	double distance = GameObject::getDistance(enemy->getTransform(), player->getTransform());
+	double distance = GameObject::GetDistance(enemy->getTransform(), player->getTransform());
 
 	if (distance <= enemy->getAttackRadius()) {
 		return new EnemyAttackState();
@@ -23,7 +23,7 @@ EnemyState* EnemyFollowState::update(Enemy* enemy, Player* player) {
 	return nullptr;
 }
 
-// TODO: Render Running animation
+// [TODO]: Render Running animation
 void EnemyFollowState::render() {
 }
 

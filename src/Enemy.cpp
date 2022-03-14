@@ -10,7 +10,7 @@ Enemy::~Enemy() {}
 
 void Enemy::update() {
 	EnemyState* state = this->state->update(this, this->player);
-	// INFO: Switch between states, must delete previous one from the heap
+	// [INFO]: Switch between states, must delete previous one from the heap
 	if (state != nullptr) {
 		delete this->state;
 		this->state = state;
@@ -18,7 +18,7 @@ void Enemy::update() {
 }
 
 void Enemy::render() {
-	// TODO: Rendering should be in state
+	// [TODO]: Rendering should be in state
 	SDL_RenderCopy(this->renderer, this->sprite, NULL, this->getTransform());
 	// this->state->render();
 }

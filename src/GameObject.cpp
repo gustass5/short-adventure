@@ -32,7 +32,7 @@ GameObject::Center GameObject::getCenter() {
 	return center;
 };
 
-double GameObject::getDistance(const SDL_Rect* const transform1, const SDL_Rect* const transform2) {
+double GameObject::GetDistance(const SDL_Rect* const transform1, const SDL_Rect* const transform2) {
 
 	double centerX1 = transform1->x + transform1->w / 2;
 	double centerY1 = transform1->y + transform1->y / 2;
@@ -43,6 +43,6 @@ double GameObject::getDistance(const SDL_Rect* const transform1, const SDL_Rect*
 	return std::sqrt(std::pow(centerX1 - centerX2, 2) + std::pow(centerY1 - centerY2, 2));
 }
 
-double GameObject::getDistance(GameObject::Center center1, GameObject::Center center2) {
+double GameObject::GetDistance(GameObject::Center center1, GameObject::Center center2) {
 	return std::sqrt(std::pow(center1.x - center2.x, 2) + std::pow(center1.y - center2.y, 2));
 };

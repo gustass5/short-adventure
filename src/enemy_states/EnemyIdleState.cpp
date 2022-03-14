@@ -7,7 +7,7 @@ EnemyIdleState::EnemyIdleState(){};
 EnemyIdleState::~EnemyIdleState(){};
 
 EnemyState* EnemyIdleState::update(Enemy* enemy, Player* player) {
-	double distance = GameObject::getDistance(enemy->getTransform(), player->getTransform());
+	double distance = GameObject::GetDistance(enemy->getTransform(), player->getTransform());
 
 	if (distance < enemy->getSenseRadius()) {
 		return new EnemyFollowState();
@@ -16,5 +16,5 @@ EnemyState* EnemyIdleState::update(Enemy* enemy, Player* player) {
 	return nullptr;
 }
 
-// TODO: Render Idle animation
+// [TODO]: Render Idle animation
 void EnemyIdleState::render(){};

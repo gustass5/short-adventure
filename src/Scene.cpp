@@ -3,15 +3,15 @@
 Scene::Scene(SDL_Renderer* screen) : screen(screen){};
 
 Scene::~Scene() {
-	// INFO: Manually freeing memory of textures is required
+	// [INFO]: Manually freeing memory of textures is required
 	for (SDL_Texture* sprite : this->enemySprites) {
 		SDL_DestroyTexture(sprite);
 	}
 }
 
-// INFO: path = "assets/levels/level_#"
+// [SUMMARY]: path = "assets/levels/level_#"
 void Scene::load(std::string path, Player* player) {
-	// INFO:
+	// [SUMMARY]:
 	// Load level file, folder name is `level_` + levelNumber
 	// Each level folder contains its information, backgroundImage file and mandatory config.txt file
 	// Config structure:
