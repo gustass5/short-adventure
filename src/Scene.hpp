@@ -3,6 +3,7 @@
 #include "Enemy.hpp"
 #include "Player.hpp"
 #include "SDL2/SDL.h"
+#include "TextureManager.hpp"
 #include <SDL2/SDL_image.h>
 #include <fstream>
 #include <memory>

@@ -58,17 +58,9 @@ void Scene::load(std::string path, Player* player) {
 		std::string enemyType;
 		level >> enemyType;
 
-		SDL_Surface* temporarySurface = IMG_Load(("../assets/enemies/" + enemyType + "/" + enemyType + "_Idle_0.png").c_str());
-		if (temporarySurface != NULL) {
-			if (this->screen == NULL) {
-				printf("[ERROR]: Renderer is null when setting enemy sprite");
-			} else {
-				this->enemySprites.push_back(SDL_CreateTextureFromSurface(this->screen, temporarySurface));
-				SDL_FreeSurface(temporarySurface);
-			}
-		} else {
-			printf("[ERROR]: Temporary surface is null when setting enemy sprite");
-		}
+		SDL_Texture* enemySprite = TextureManager::LoadTexture(this->screen, ("../assets/enemies/" + enemyType + "/" + enemyType + "_Idle_0.png").c_str());
+
+		this->enemySprites.push_back(enemySprite);
 	}
 
 	for (int i = 0; i < enemiesCount; i++) {
@@ -80,9 +72,7 @@ void Scene::load(std::string path, Player* player) {
 
 	level.close();
 
-	SDL_Surface* temporarySurface = IMG_Load((path + backgroundImage).c_str());
-	this->backgroundImage = SDL_CreateTextureFromSurface(this->screen, temporarySurface);
-	SDL_FreeSurface(temporarySurface);
+	this->backgroundImage = TextureManager::LoadTexture(this->screen, (path + backgroundImage).c_str());
 }
 
 void Scene::update() {

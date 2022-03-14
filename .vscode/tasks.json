@@ -11,6 +11,7 @@
                 "${workspaceFolder}/src/GameManager.cpp",
                 "${workspaceFolder}/src/Scene.cpp",
                 "${workspaceFolder}/src/InputManager.cpp",
+                "${workspaceFolder}/src/TextureManager.cpp",
                 "${workspaceFolder}/src/GameObject.cpp",
                 "${workspaceFolder}/src/Player.cpp",
                 "${workspaceFolder}/src/Enemy.cpp",

@@ -1,17 +1,7 @@
 #include "Player.hpp"
 
 Player::Player(SDL_Renderer* renderer, std::string spritePath, int x, int y, int w, int h) : renderer(renderer), GameObject(x, y, w, h) {
-	SDL_Surface* temporarySurface = IMG_Load(spritePath.c_str());
-	if (temporarySurface != NULL) {
-		if (this->renderer == NULL) {
-			printf("[ERROR]: Renderer is null when setting player sprite");
-		} else {
-			this->sprite = SDL_CreateTextureFromSurface(this->renderer, temporarySurface);
-			SDL_FreeSurface(temporarySurface);
-		}
-	} else {
-		printf("[ERROR]: Temporary surface is null when setting player sprite");
-	}
+	this->sprite = TextureManager::LoadTexture(this->renderer, spritePath.c_str());
 };
 
 Player::~Player(){};
