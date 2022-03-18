@@ -7,6 +7,10 @@ Scene::~Scene() {
 	for (SDL_Texture* sprite : this->enemySprites) {
 		SDL_DestroyTexture(sprite);
 	}
+
+	for (SDL_Texture* sprite : this->interactableSprites) {
+		SDL_DestroyTexture(sprite);
+	}
 }
 
 // [SUMMARY]: path = "assets/levels/level_#"
@@ -15,9 +19,9 @@ void Scene::load(std::string path, Player* player) {
 	// Load level file, folder name is `level_` + levelNumber
 	// Each level folder contains its information, backgroundImage file and mandatory config.txt file
 	// Config structure:
-	// backgroundImage:string(Image must be a png and have .png extension!) n_of_border_points:int n_of_interactibles:int n_of_enemies:int
+	// backgroundImage:string(Image must be a png and have .png extension!) n_of_border_points:int n_of_interactables:int n_of_enemies:int
 	// List border_points
-	// List interactibles
+	// List interactables
 	// List enemies
 
 	std::ifstream level(path + "config.txt");
@@ -35,21 +39,39 @@ void Scene::load(std::string path, Player* player) {
 		return;
 	}
 
-	int borderPointCount, interactiblesCount, enemyTypesCount, enemiesCount;
+	int borderPointCount, interactableTypesCount, interactablesCount, enemyTypesCount, enemiesCount;
 
 	if (!(level >> borderPointCount) || borderPointCount > 20) {
 		printf("[ERROR]: BorderPointCount is invalid");
 		return;
 	}
 
-	if (!(level >> interactiblesCount) || interactiblesCount > 20) {
-		printf("[ERROR]: InteractiblesCount is invalid");
+	if (!(level >> interactablesCount) || interactablesCount > 20) {
+		printf("[ERROR]: InteractablesCount is invalid");
 		return;
 	}
 
 	if (!(level >> enemiesCount) || enemiesCount > 20) {
 		printf("[ERROR]: EnemiesCount is invalid");
 		return;
+	}
+
+	level >> interactableTypesCount;
+
+	for (int i = 0; i < interactableTypesCount; i++) {
+		std::string interactableType;
+		level >> interactableType;
+
+		SDL_Texture* interactableSprite = TextureManager::LoadTexture(this->screen, ("../assets/interactables/" + interactableType + "/" + interactableType + "_anim_0.png").c_str());
+
+		this->interactableSprites.push_back(interactableSprite);
+	}
+
+	for (int i = 0; i < interactablesCount; i++) {
+		int type, x, y, w, h;
+		level >> type >> x >> y >> w >> h;
+
+		this->interactables.push_back(std::make_unique<Interactable>(Interactable(this->screen, this->interactableSprites[type], x, y, w, h)));
 	}
 
 	level >> enemyTypesCount;
@@ -79,6 +101,9 @@ void Scene::update() {
 	for (int i = 0; i < this->enemies.size(); i++) {
 		this->enemies[i]->update();
 	}
+	for (int i = 0; i < this->interactables.size(); i++) {
+		this->interactables[i]->update();
+	}
 }
 
 void Scene::render() {
@@ -86,5 +111,9 @@ void Scene::render() {
 
 	for (int i = 0; i < this->enemies.size(); i++) {
 		this->enemies[i]->render();
+	}
+
+	for (int i = 0; i < this->interactables.size(); i++) {
+		this->interactables[i]->render();
 	}
 }
