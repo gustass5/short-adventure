@@ -5,6 +5,7 @@
 #include "Player.hpp"
 #include "SDL2/SDL.h"
 #include "TextureManager.hpp"
+#include "interactables/ChestInteractable.hpp"
 #include "interactables/CoinInteractable.hpp"
 #include <SDL2/SDL_image.h>
 #include <fstream>

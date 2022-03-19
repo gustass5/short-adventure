@@ -122,7 +122,7 @@ void Scene::render() {
 
 std::unique_ptr<Interactable> Scene::createInteractable(std::string type, Player* player, int x, int y, int w, int h) {
 	if (type == "Chest") {
-		return std::make_unique<Interactable>(Interactable(this->screen, this->interactableSprites[type], x, y, w, h));
+		return std::make_unique<ChestInteractable>(ChestInteractable(this->screen, this->interactableSprites[type], player, x, y, w, h));
 	}
 
 	if (type == "Coin") {
