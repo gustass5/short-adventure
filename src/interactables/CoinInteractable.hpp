@@ -13,4 +13,5 @@ class CoinInteractable : public Interactable {
 	CoinInteractable(SDL_Renderer* renderer, SDL_Texture* sprite, Player* player, int x, int y, int w, int h);
 	~CoinInteractable();
 	void update() override;
+	void render() override;
 };

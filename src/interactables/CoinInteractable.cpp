@@ -5,5 +5,13 @@ CoinInteractable::CoinInteractable(SDL_Renderer* renderer, SDL_Texture* sprite, 
 CoinInteractable::~CoinInteractable() {}
 
 void CoinInteractable::update() {
-	this->pickable.update(this, this->player);
+	if (!this->pickable.getIsPickedUp()) {
+		this->pickable.update(this, this->player);
+	}
+}
+
+void CoinInteractable::render() {
+	if (!this->pickable.getIsPickedUp()) {
+		SDL_RenderCopy(this->renderer, this->sprite, NULL, this->getTransform());
+	}
 }
