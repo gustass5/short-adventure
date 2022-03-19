@@ -10,7 +10,9 @@ class InputManager {
 	bool isDownKeyPressed = false;
 	bool isLeftKeyPressed = false;
 	bool isRightKeyPressed = false;
+	bool isLeftClickPressed = false;
 	void handleKeyPress(SDL_KeyboardEvent* event, bool isPressedDown);
+	void handleMousePress(SDL_MouseButtonEvent* event, bool isPressedDown);
 
   public:
 	// [INFO]: Prohibit copying
@@ -24,4 +26,5 @@ class InputManager {
 	static bool IsDownKeyPressed();
 	static bool IsLeftKeyPressed();
 	static bool IsRightKeyPressed();
+	static bool IsLeftClickPressed();
 };

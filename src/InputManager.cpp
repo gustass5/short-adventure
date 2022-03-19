@@ -20,7 +20,19 @@ void InputManager::listenEvents() {
 		case SDL_KEYUP:
 			this->handleKeyPress(&event.key, false);
 			break;
+		case SDL_MOUSEBUTTONDOWN:
+			this->handleMousePress(&event.button, true);
+			break;
+		case SDL_MOUSEBUTTONUP:
+			this->handleMousePress(&event.button, false);
+			break;
 		}
+	};
+}
+
+void InputManager::handleMousePress(SDL_MouseButtonEvent* event, bool isPressedDown) {
+	if (event->button == SDL_BUTTON_LEFT) {
+		this->isLeftClickPressed = isPressedDown;
 	}
 };
 
@@ -57,12 +69,19 @@ bool InputManager::ShouldCloseGame() {
 bool InputManager::IsUpKeyPressed() {
 	return getInstance().isUpKeyPressed;
 };
+
 bool InputManager::IsDownKeyPressed() {
 	return getInstance().isDownKeyPressed;
 };
+
 bool InputManager::IsLeftKeyPressed() {
 	return getInstance().isLeftKeyPressed;
 };
+
 bool InputManager::IsRightKeyPressed() {
 	return getInstance().isRightKeyPressed;
+};
+
+bool InputManager::IsLeftClickPressed() {
+	return getInstance().isLeftClickPressed;
 };
