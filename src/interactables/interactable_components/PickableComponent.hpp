@@ -8,10 +8,11 @@ class Interactable;
 
 class PickableComponent {
   private:
-	int pickupRange = 100;
+	bool isPickedUp = false;
 
   public:
 	PickableComponent();
 	~PickableComponent();
 	void update(Interactable* interactable, Player* player);
+	bool getIsPickedUp();
 };
