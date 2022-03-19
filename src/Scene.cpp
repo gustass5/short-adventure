@@ -8,8 +8,8 @@ Scene::~Scene() {
 		SDL_DestroyTexture(sprite);
 	}
 
-	for (SDL_Texture* sprite : this->interactableSprites) {
-		SDL_DestroyTexture(sprite);
+	for (auto sprite : this->interactableSprites) {
+		SDL_DestroyTexture(sprite.second);
 	}
 }
 
@@ -64,14 +64,15 @@ void Scene::load(std::string path, Player* player) {
 
 		SDL_Texture* interactableSprite = TextureManager::LoadTexture(this->screen, ("../assets/interactables/" + interactableType + "/" + interactableType + "_anim_0.png").c_str());
 
-		this->interactableSprites.push_back(interactableSprite);
+		this->interactableSprites.insert({interactableType, interactableSprite});
 	}
 
 	for (int i = 0; i < interactablesCount; i++) {
-		int type, x, y, w, h;
+		std::string type;
+		int x, y, w, h;
 		level >> type >> x >> y >> w >> h;
 
-		this->interactables.push_back(std::make_unique<Interactable>(Interactable(this->screen, this->interactableSprites[type], x, y, w, h)));
+		this->interactables.push_back(createInteractable(type, player, x, y, w, h));
 	}
 
 	level >> enemyTypesCount;
@@ -101,6 +102,7 @@ void Scene::update() {
 	for (int i = 0; i < this->enemies.size(); i++) {
 		this->enemies[i]->update();
 	}
+
 	for (int i = 0; i < this->interactables.size(); i++) {
 		this->interactables[i]->update();
 	}
@@ -117,3 +119,14 @@ void Scene::render() {
 		this->interactables[i]->render();
 	}
 }
+
+std::unique_ptr<Interactable> Scene::createInteractable(std::string type, Player* player, int x, int y, int w, int h) {
+	if (type == "Chest") {
+		return std::make_unique<Interactable>(Interactable(this->screen, this->interactableSprites[type], x, y, w, h));
+	}
+
+	if (type == "Coin") {
+		return std::make_unique<CoinInteractable>(CoinInteractable(this->screen, this->interactableSprites[type], player, x, y, w, h));
+	}
+	return nullptr;
+};

@@ -5,8 +5,10 @@
 #include "Player.hpp"
 #include "SDL2/SDL.h"
 #include "TextureManager.hpp"
+#include "interactables/CoinInteractable.hpp"
 #include <SDL2/SDL_image.h>
 #include <fstream>
+#include <map>
 #include <memory>
 #include <string>
 #include <vector>
@@ -16,7 +18,8 @@ class Scene {
 	SDL_Renderer* screen;
 	SDL_Texture* backgroundImage;
 	std::vector<SDL_Texture*> enemySprites;
-	std::vector<SDL_Texture*> interactableSprites;
+	std::map<std::string, SDL_Texture*> interactableSprites;
+	std::unique_ptr<Interactable> createInteractable(std::string type, Player* player, int x, int y, int w, int h);
 
   public:
 	Scene(SDL_Renderer* screen);
