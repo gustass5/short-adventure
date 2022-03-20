@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Interactable.hpp"
+#include "Interactable.hpp"
 #include "./interactable_components/PickableComponent.hpp"
 
 class HealthInteractable : public Interactable {

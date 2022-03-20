@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../Interactable.hpp"
 #include "./interactable_components/PickableComponent.hpp"
+#include "Interactable.hpp"
 
 class WeaponInteractable : public Interactable {
   private:

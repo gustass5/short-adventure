@@ -1,12 +1,12 @@
 #pragma once
 
+#include "../interactables/ChestInteractable.hpp"
+#include "../interactables/CoinInteractable.hpp"
+#include "../interactables/Interactable.hpp"
+#include "../utils/TextureManager.hpp"
 #include "Enemy.hpp"
-#include "Interactable.hpp"
 #include "Player.hpp"
 #include "SDL2/SDL.h"
-#include "TextureManager.hpp"
-#include "interactables/ChestInteractable.hpp"
-#include "interactables/CoinInteractable.hpp"
 #include <SDL2/SDL_image.h>
 #include <fstream>
 #include <map>

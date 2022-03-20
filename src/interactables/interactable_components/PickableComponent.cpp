@@ -1,7 +1,7 @@
 #include "PickableComponent.hpp"
 
-#include "../../Interactable.hpp"
-#include "../../Player.hpp"
+#include "../Interactable.hpp"
+#include "../../game/Player.hpp"
 
 PickableComponent::PickableComponent() {}
 

@@ -1,6 +1,6 @@
 #include "InteractableComponent.hpp"
-#include "../../Interactable.hpp"
-#include "../../Player.hpp"
+#include "../../game/Player.hpp"
+#include "../Interactable.hpp"
 
 InteractableComponent::InteractableComponent(){};
 

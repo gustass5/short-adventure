@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../Interactable.hpp"
 #include "./interactable_components/InteractableComponent.hpp"
 #include "./interactable_components/SpawnComponent.hpp"
+#include "Interactable.hpp"
 
 class Player;
 

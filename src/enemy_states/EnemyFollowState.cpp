@@ -1,6 +1,6 @@
 #include "EnemyFollowState.hpp"
-#include "../Enemy.hpp"
-#include "../Player.hpp"
+#include "../game/Enemy.hpp"
+#include "../game/Player.hpp"
 #include "EnemyAttackState.hpp"
 #include "EnemyIdleState.hpp"
 

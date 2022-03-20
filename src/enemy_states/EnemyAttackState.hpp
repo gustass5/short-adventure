@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../EnemyState.hpp"
+#include "EnemyState.hpp"
 
 class Enemy;
 class Player;

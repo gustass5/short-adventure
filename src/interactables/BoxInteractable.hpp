@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../Interactable.hpp"
 #include "./interactable_components/DestroyableComponent.hpp"
 #include "./interactable_components/SpawnComponent.hpp"
+#include "Interactable.hpp"
 
 class BoxInteractable : public Interactable {
   private:

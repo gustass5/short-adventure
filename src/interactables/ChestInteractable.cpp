@@ -1,5 +1,5 @@
 #include "ChestInteractable.hpp"
-#include "../Player.hpp"
+#include "../game/Player.hpp"
 
 ChestInteractable::ChestInteractable(SDL_Renderer* renderer, SDL_Texture* sprite, Player* player, int x, int y, int w, int h) : player(player), Interactable(renderer, sprite, x, y, w, h) {}
 

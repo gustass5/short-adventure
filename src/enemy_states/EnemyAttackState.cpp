@@ -1,6 +1,6 @@
 #include "EnemyAttackState.hpp"
-#include "../Enemy.hpp"
-#include "../Player.hpp"
+#include "../game/Enemy.hpp"
+#include "../game/Player.hpp"
 #include "EnemyFollowState.hpp"
 
 EnemyAttackState::EnemyAttackState() {}

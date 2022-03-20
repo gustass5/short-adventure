@@ -1,6 +1,6 @@
 #include "EnemyState.hpp"
-#include "Enemy.hpp"
-#include "Player.hpp"
+#include "../game/Enemy.hpp"
+#include "../game/Player.hpp"
 
 EnemyState::EnemyState() {}
 EnemyState::~EnemyState() {}

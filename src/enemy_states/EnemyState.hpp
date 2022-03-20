@@ -1,6 +1,6 @@
 #pragma once
 
-#include "GameObject.hpp"
+#include "../game/GameObject.hpp"
 
 class Enemy;
 class Player;

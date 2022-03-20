@@ -1,6 +1,6 @@
 #include "Enemy.hpp"
-#include "./enemy_states/EnemyIdleState.hpp"
-#include "EnemyState.hpp"
+#include "../enemy_states/EnemyIdleState.hpp"
+#include "../enemy_states/EnemyState.hpp"
 #include "Player.hpp"
 
 Enemy::Enemy(SDL_Renderer* renderer, Player* player, SDL_Texture* sprite, int x, int y, int w, int h) : renderer(renderer), player(player), state(new EnemyIdleState()), GameObject(x, y, w, h) {

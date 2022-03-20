@@ -1,7 +1,7 @@
 #pragma once
+#include "../core/InputManager.hpp"
+#include "../utils/TextureManager.hpp"
 #include "GameObject.hpp"
-#include "InputManager.hpp"
-#include "TextureManager.hpp"
 #include <SDL2/SDL_image.h>
 #include <string>
 

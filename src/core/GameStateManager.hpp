@@ -1,6 +1,6 @@
 #pragma once
 
-#include "GameManager.hpp"
+#include "../game/GameManager.hpp"
 #include "InputManager.hpp"
 #include <SDL2/SDL.h>
 

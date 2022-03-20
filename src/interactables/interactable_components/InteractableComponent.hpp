@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../../GameObject.hpp"
-#include "../../InputManager.hpp"
+#include "../../core/InputManager.hpp"
+#include "../../game/GameObject.hpp"
 
 class Player;
 class Interactable;
