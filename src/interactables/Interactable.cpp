@@ -10,5 +10,4 @@ void Interactable::update() {
 }
 
 void Interactable::render() {
-	SDL_RenderCopy(this->renderer, this->sprite, NULL, this->getTransform());
 }

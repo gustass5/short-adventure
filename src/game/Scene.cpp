@@ -128,5 +128,6 @@ std::unique_ptr<Interactable> Scene::createInteractable(std::string type, Player
 	if (type == "Coin") {
 		return std::make_unique<CoinInteractable>(CoinInteractable(this->screen, this->interactableSprites[type], player, x, y, w, h));
 	}
-	return nullptr;
+
+	return std::make_unique<Interactable>(Interactable(this->screen, nullptr, 0, 0, 0, 0));
 };
