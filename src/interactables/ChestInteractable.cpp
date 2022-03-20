@@ -9,3 +9,7 @@ void ChestInteractable::update() {
 	this->interactable.update(this, this->player);
 	// [TODO]: Display UI elements when player is in range or interacts with it
 }
+
+void ChestInteractable::render() {
+	SDL_RenderCopy(this->renderer, this->sprite, NULL, this->getTransform());
+}

@@ -16,4 +16,5 @@ class ChestInteractable : public Interactable {
 	ChestInteractable(SDL_Renderer* renderer, SDL_Texture* sprite, Player* player, int x, int y, int w, int h);
 	~ChestInteractable();
 	void update() override;
+	void render() override;
 };
