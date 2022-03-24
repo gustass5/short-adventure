@@ -11,6 +11,8 @@ Scene::~Scene() {
 	for (auto sprite : this->interactableSprites) {
 		SDL_DestroyTexture(sprite.second);
 	}
+
+	SDL_DestroyTexture(this->backgroundImage);
 }
 
 // [SUMMARY]: path = "assets/levels/level_#"
