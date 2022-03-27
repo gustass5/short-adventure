@@ -30,6 +30,7 @@
                 "${workspaceFolder}/src/interactables/HealthInteractable.cpp",
                 "${workspaceFolder}/src/interactables/PotionInteractable.cpp",
                 "${workspaceFolder}/src/interactables/WeaponInteractable.cpp",
+                "${workspaceFolder}/src/game/Animation.cpp",
                 "-o",
                 "${workspaceFolder}/build/main",
                 "`",
