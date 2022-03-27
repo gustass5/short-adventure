@@ -13,8 +13,8 @@ Animation::~Animation() {
 	}
 }
 
-void Animation::render(const SDL_Rect* transform) {
-	SDL_RenderCopy(this->renderer, this->frames[this->currentFrame], NULL, transform);
+void Animation::render(const SDL_Rect* transform, SDL_RendererFlip flip) {
+	SDL_RenderCopyEx(this->renderer, this->frames[this->currentFrame], NULL, transform, 0, NULL, flip);
 
 	handleNextFrame();
 }

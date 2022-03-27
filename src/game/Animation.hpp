@@ -17,5 +17,5 @@ class Animation {
   public:
 	Animation(SDL_Renderer* renderer, std::string path, int frameCount, int animationFramesPerSecond);
 	~Animation();
-	void render(const SDL_Rect* transform);
+	void render(const SDL_Rect* transform, SDL_RendererFlip flip);
 };
