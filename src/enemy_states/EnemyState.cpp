@@ -7,4 +7,4 @@ EnemyState::~EnemyState() {}
 
 EnemyState* EnemyState::update(Enemy* enemy, Player* player) {}
 
-void EnemyState::render() {}
+void EnemyState::render(Enemy* enemy) {}

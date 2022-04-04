@@ -16,5 +16,6 @@ EnemyState* EnemyIdleState::update(Enemy* enemy, Player* player) {
 	return nullptr;
 }
 
-// [TODO]: Render Idle animation
-void EnemyIdleState::render(){};
+void EnemyIdleState::render(Enemy* enemy) {
+	enemy->idleAnimation.render(enemy->getTransform(), enemy->lastFlipState);
+};

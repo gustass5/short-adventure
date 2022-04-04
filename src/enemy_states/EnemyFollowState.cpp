@@ -23,8 +23,8 @@ EnemyState* EnemyFollowState::update(Enemy* enemy, Player* player) {
 	return nullptr;
 }
 
-// [TODO]: Render Running animation
-void EnemyFollowState::render() {
+void EnemyFollowState::render(Enemy* enemy) {
+	enemy->runAnimation.render(enemy->getTransform(), enemy->lastFlipState);
 }
 
 void EnemyFollowState::follow(Enemy* enemy, Player* player) {
@@ -35,6 +35,10 @@ void EnemyFollowState::follow(Enemy* enemy, Player* player) {
 	int movementY = enemyCenter.y < playerCenter.y ? 1 : -1;
 
 	double normalized = sqrt(movementX * movementX + movementY * movementY);
+
+	if (movementX != 0) {
+		enemy->lastFlipState = movementX == -1 ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE;
+	}
 
 	if (normalized > 0) {
 		enemy->move(movementX * enemy->getMovementSpeed() / normalized * GLOBAL_DELTA_TIME, movementY * enemy->getMovementSpeed() / normalized * GLOBAL_DELTA_TIME);

@@ -17,5 +17,6 @@ EnemyState* EnemyAttackState::update(Enemy* enemy, Player* player) {
 }
 
 // [TODO]: Render Attack animation
-void EnemyAttackState::render() {
+void EnemyAttackState::render(Enemy* enemy) {
+	enemy->idleAnimation.render(enemy->getTransform(), enemy->lastFlipState);
 }

@@ -17,5 +17,5 @@ class EnemyFollowState : public EnemyState {
 	EnemyFollowState();
 	~EnemyFollowState();
 	EnemyState* update(Enemy* enemy, Player* player) override;
-	void render() override;
+	void render(Enemy* enemy) override;
 };

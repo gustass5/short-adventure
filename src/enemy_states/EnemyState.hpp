@@ -12,5 +12,5 @@ class EnemyState {
   public:
 	virtual ~EnemyState();
 	virtual EnemyState* update(Enemy* enemy, Player* player);
-	virtual void render();
+	virtual void render(Enemy* enemy);
 };

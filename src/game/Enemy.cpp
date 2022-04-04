@@ -3,8 +3,17 @@
 #include "../enemy_states/EnemyState.hpp"
 #include "Player.hpp"
 
-Enemy::Enemy(SDL_Renderer* renderer, Player* player, SDL_Texture* sprite, int x, int y, int w, int h) : renderer(renderer), player(player), state(new EnemyIdleState()), GameObject(x, y, w, h) {
-	this->sprite = sprite;
+Enemy::Enemy(
+	SDL_Renderer* renderer,
+	Player* player,
+	std::vector<SDL_Texture*>& idleFrames,
+	std::vector<SDL_Texture*>& runFrames,
+	int x, int y, int w, int h) : renderer(renderer),
+								  player(player),
+								  idleAnimation(renderer, idleFrames, 10),
+								  runAnimation(renderer, runFrames, 10),
+								  state(new EnemyIdleState()),
+								  GameObject(x, y, w, h) {
 }
 Enemy::~Enemy() {}
 
@@ -18,9 +27,7 @@ void Enemy::update() {
 }
 
 void Enemy::render() {
-	// [TODO]: Rendering should be in state
-	SDL_RenderCopy(this->renderer, this->sprite, NULL, this->getTransform());
-	// this->state->render();
+	this->state->render(this);
 }
 
 int Enemy::getSenseRadius() {

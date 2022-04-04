@@ -11,5 +11,5 @@ class EnemyAttackState : public EnemyState {
 	EnemyAttackState();
 	~EnemyAttackState();
 	EnemyState* update(Enemy* enemy, Player* player) override;
-	void render() override;
+	void render(Enemy* enemy) override;
 };
