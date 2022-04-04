@@ -5,10 +5,10 @@ Scene::Scene(SDL_Renderer* screen) : screen(screen){};
 Scene::~Scene() {
 	// [INFO]: Manually freeing memory of textures is required
 	for (auto sprite : this->interactableSprites) {
-		SDL_DestroyTexture(sprite.second);
+		TextureManager::UnloadTexture(sprite.second);
 	}
 
-	SDL_DestroyTexture(this->backgroundImage);
+	TextureManager::UnloadTexture(this->backgroundImage);
 }
 
 // [SUMMARY]: path = "assets/levels/level_#"

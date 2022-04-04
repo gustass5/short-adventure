@@ -8,4 +8,5 @@ class TextureManager {
 
   public:
 	static SDL_Texture* LoadTexture(SDL_Renderer* renderer, const char* fileName);
+	static void UnloadTexture(SDL_Texture* texture);
 };

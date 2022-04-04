@@ -22,7 +22,7 @@ Animation::~Animation() {
 	// [WARNING]: Only destroy if animation is standalone
 	if (this->isStandalone) {
 		for (SDL_Texture* frame : this->frames) {
-			SDL_DestroyTexture(frame);
+			TextureManager::UnloadTexture(frame);
 		}
 	}
 }
