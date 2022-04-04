@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Animation.hpp";
+#include "Animation.hpp"
 #include "GameObject.hpp"
 
 class EnemyState;

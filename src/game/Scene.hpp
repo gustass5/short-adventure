@@ -18,7 +18,10 @@ class Scene {
   private:
 	SDL_Renderer* screen;
 	SDL_Texture* backgroundImage;
-	std::vector<SDL_Texture*> enemySprites;
+	// [NOTE]: I decided to load all the frames in the scene so enemies could reuse the textures.
+	// [SUMMARY]: Each map contains vectors with frames for specific action. Key is the enemy identifier.
+	std::map<std::string, std::vector<SDL_Texture*>> enemyIdleFrames;
+	std::map<std::string, std::vector<SDL_Texture*>> enemyRunFrames;
 	std::map<std::string, SDL_Texture*> interactableSprites;
 	std::unique_ptr<Interactable> createInteractable(std::string type, Player* player, int x, int y, int w, int h);
 

@@ -4,10 +4,6 @@ Scene::Scene(SDL_Renderer* screen) : screen(screen){};
 
 Scene::~Scene() {
 	// [INFO]: Manually freeing memory of textures is required
-	for (SDL_Texture* sprite : this->enemySprites) {
-		SDL_DestroyTexture(sprite);
-	}
-
 	for (auto sprite : this->interactableSprites) {
 		SDL_DestroyTexture(sprite.second);
 	}
@@ -80,19 +76,21 @@ void Scene::load(std::string path, Player* player) {
 	level >> enemyTypesCount;
 
 	for (int i = 0; i < enemyTypesCount; i++) {
-		std::string enemyType;
-		level >> enemyType;
+		std::string enemyType, idleSpriteName, runSpriteName;
+		level >> enemyType >> idleSpriteName >> runSpriteName;
 
-		SDL_Texture* enemySprite = TextureManager::LoadTexture(this->screen, ("../assets/enemies/" + enemyType + "/" + enemyType + "_Idle_0.png").c_str());
+		std::string path = "../assets/enemies/" + enemyType + "/";
 
-		this->enemySprites.push_back(enemySprite);
+		this->enemyIdleFrames.insert({enemyType, Animation::GetAnimationFrames(this->screen, path + idleSpriteName, 4)});
+		this->enemyRunFrames.insert({enemyType, Animation::GetAnimationFrames(this->screen, path + runSpriteName, 4)});
 	}
 
 	for (int i = 0; i < enemiesCount; i++) {
-		int type, x, y, w, h;
+		std::string type;
+		int x, y, w, h;
 		level >> type >> x >> y >> w >> h;
 
-		this->enemies.push_back(std::make_unique<Enemy>(Enemy(this->screen, player, this->enemySprites[type], x, y, w, h)));
+		this->enemies.push_back(std::make_unique<Enemy>(Enemy(this->screen, player, this->enemyIdleFrames[type], this->enemyRunFrames[type], x, y, w, h)));
 	}
 
 	level.close();
