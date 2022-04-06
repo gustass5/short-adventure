@@ -1,0 +1,11 @@
+level2.png 2 3 0
+
+2
+Chest
+Coin
+
+Chest 500 250 32 32
+Coin 600 350 16 16
+Coin 700 350 16 16
+
+0
