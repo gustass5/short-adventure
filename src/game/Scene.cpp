@@ -6,10 +6,6 @@ Scene::~Scene() {
 	// [INFO]: Manually freeing memory of textures is required
 	unload();
 }
-	}
-
-	TextureManager::UnloadTexture(this->backgroundImage);
-}
 
 // [SUMMARY]: path = "assets/levels/level_#"
 void Scene::load(std::string path, Player* player) {
