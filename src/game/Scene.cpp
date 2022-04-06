@@ -4,8 +4,8 @@ Scene::Scene(SDL_Renderer* screen) : screen(screen){};
 
 Scene::~Scene() {
 	// [INFO]: Manually freeing memory of textures is required
-	for (auto sprite : this->interactableSprites) {
-		TextureManager::UnloadTexture(sprite.second);
+	unload();
+}
 	}
 
 	TextureManager::UnloadTexture(this->backgroundImage);
@@ -100,6 +100,36 @@ void Scene::load(std::string path, Player* player) {
 	level.close();
 
 	this->backgroundImage = TextureManager::LoadTexture(this->screen, (path + backgroundImage).c_str());
+}
+
+void Scene::unload() {
+	// [SUMMARY]: Clears all textures and elements of the scene
+
+	// [INFO]: Enemies and Interactables are unique_pointers so they should free their memeory automatically
+	this->enemies.clear();
+	this->interactables.clear();
+
+	for (auto frames : this->enemyIdleFrames) {
+		for (auto frame : frames.second) {
+			TextureManager::UnloadTexture(frame);
+		}
+	}
+	this->enemyIdleFrames.clear();
+
+	for (auto frames : this->enemyRunFrames) {
+		for (auto frame : frames.second) {
+			TextureManager::UnloadTexture(frame);
+		}
+	}
+
+	this->enemyRunFrames.clear();
+
+	for (auto sprite : this->interactableSprites) {
+		TextureManager::UnloadTexture(sprite.second);
+	}
+	this->interactableSprites.clear();
+
+	TextureManager::UnloadTexture(this->backgroundImage);
 }
 
 void Scene::update() {

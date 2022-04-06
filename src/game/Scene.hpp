@@ -30,6 +30,7 @@ class Scene {
 	Scene(SDL_Renderer* screen);
 	~Scene();
 	void load(std::string path, Player* player);
+	void unload();
 	void update();
 	void render();
 	// [INFO]: Unique pointers cannot be copied and they free their memory themselves
