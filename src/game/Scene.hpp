@@ -3,6 +3,7 @@
 #include "../interactables/ChestInteractable.hpp"
 #include "../interactables/CoinInteractable.hpp"
 #include "../interactables/Interactable.hpp"
+#include "../interactables/SignInteractable.hpp"
 #include "../utils/TextureManager.hpp"
 #include "Enemy.hpp"
 #include "Player.hpp"
@@ -23,7 +24,7 @@ class Scene {
 	std::map<std::string, std::vector<SDL_Texture*>> enemyIdleFrames;
 	std::map<std::string, std::vector<SDL_Texture*>> enemyRunFrames;
 	std::map<std::string, SDL_Texture*> interactableSprites;
-	std::unique_ptr<Interactable> createInteractable(std::string type, Player* player, int x, int y, int w, int h);
+	std::unique_ptr<Interactable> createInteractable(std::string type, std::string levelName, Player* player, int x, int y, int w, int h);
 
   public:
 	Scene(SDL_Renderer* screen);

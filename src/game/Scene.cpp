@@ -66,11 +66,15 @@ void Scene::load(std::string path, Player* player) {
 	}
 
 	for (int i = 0; i < interactablesCount; i++) {
-		std::string type;
+		std::string type, levelName;
 		int x, y, w, h;
 		level >> type >> x >> y >> w >> h;
 
-		this->interactables.push_back(createInteractable(type, player, x, y, w, h));
+		if (type == "Sign") {
+			level >> levelName;
+		}
+
+		this->interactables.push_back(createInteractable(type, levelName, player, x, y, w, h));
 	}
 
 	level >> enemyTypesCount;
@@ -120,13 +124,17 @@ void Scene::render() {
 	}
 }
 
-std::unique_ptr<Interactable> Scene::createInteractable(std::string type, Player* player, int x, int y, int w, int h) {
+std::unique_ptr<Interactable> Scene::createInteractable(std::string type, std::string levelName, Player* player, int x, int y, int w, int h) {
 	if (type == "Chest") {
 		return std::make_unique<ChestInteractable>(ChestInteractable(this->screen, this->interactableSprites[type], player, x, y, w, h));
 	}
 
 	if (type == "Coin") {
 		return std::make_unique<CoinInteractable>(CoinInteractable(this->screen, this->interactableSprites[type], player, x, y, w, h));
+	}
+
+	if (type == "Sign") {
+		return std::make_unique<SignInteractable>(SignInteractable(this->screen, levelName, this->interactableSprites[type], player, x, y, w, h));
 	}
 
 	return std::make_unique<Interactable>(Interactable(this->screen, nullptr, 0, 0, 0, 0));
