@@ -21,6 +21,7 @@ class GameObject {
 	// [INFO]: Pure virtual destructor still needs implementation
 	virtual ~GameObject() = 0;
 	void move(double x, double y);
+	void setTransform(int x, int y, int w, int h);
 	const SDL_Rect* getTransform() const;
 	Center getCenter();
 	static double GetDistance(const SDL_Rect* const transform1, const SDL_Rect* const transform2);
