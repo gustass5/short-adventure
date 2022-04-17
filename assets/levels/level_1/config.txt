@@ -8,7 +8,7 @@ Sign
 Chest 500 250 32 32
 Coin 600 350 16 16
 Coin 700 350 16 16
-Sign 0 320 32 32 level_2
+Sign 0 320 32 32 level_2 1050 320
 
 3
 Golem Golem_Idle_ Golem_Walk_
