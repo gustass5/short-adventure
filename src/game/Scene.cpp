@@ -1,14 +1,21 @@
 #include "Scene.hpp"
 
-Scene::Scene(SDL_Renderer* screen) : screen(screen){};
+Scene::Scene(){};
 
 Scene::~Scene() {
 	// [INFO]: Manually freeing memory of textures is required
 	unload();
 }
 
+void Scene::setRenderer(SDL_Renderer* screen) {
+	this->screen = screen;
+}
+void Scene::setPlayer(Player* player) {
+	this->player = player;
+};
+
 // [SUMMARY]: path = "assets/levels/level_#"
-void Scene::load(std::string path, Player* player) {
+void Scene::load(std::string path) {
 	// [SUMMARY]:
 	// Load level file, folder name is `level_` + levelNumber
 	// Each level folder contains its information, backgroundImage file and mandatory config.txt file
@@ -70,7 +77,7 @@ void Scene::load(std::string path, Player* player) {
 			level >> levelName;
 		}
 
-		this->interactables.push_back(createInteractable(type, levelName, player, x, y, w, h));
+		this->interactables.push_back(createInteractable(type, levelName, this->player, x, y, w, h));
 	}
 
 	level >> enemyTypesCount;
@@ -90,7 +97,7 @@ void Scene::load(std::string path, Player* player) {
 		int x, y, w, h;
 		level >> type >> x >> y >> w >> h;
 
-		this->enemies.push_back(std::make_unique<Enemy>(Enemy(this->screen, player, this->enemyIdleFrames[type], this->enemyRunFrames[type], x, y, w, h)));
+		this->enemies.push_back(std::make_unique<Enemy>(Enemy(this->screen, this->player, this->enemyIdleFrames[type], this->enemyRunFrames[type], x, y, w, h)));
 	}
 
 	level.close();

@@ -25,11 +25,14 @@ class Scene {
 	std::map<std::string, std::vector<SDL_Texture*>> enemyRunFrames;
 	std::map<std::string, SDL_Texture*> interactableSprites;
 	std::unique_ptr<Interactable> createInteractable(std::string type, std::string levelName, Player* player, int x, int y, int w, int h);
+	Player* player;
 
   public:
-	Scene(SDL_Renderer* screen);
+	Scene();
 	~Scene();
-	void load(std::string path, Player* player);
+	void setRenderer(SDL_Renderer* screen);
+	void setPlayer(Player* player);
+	void load(std::string path);
 	void unload();
 	void update();
 	void render();
