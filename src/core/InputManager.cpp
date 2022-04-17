@@ -8,7 +8,7 @@ InputManager& InputManager::getInstance() {
 
 void InputManager::listenEvents() {
 	SDL_Event event;
-
+	this->isLeftClickDown = false;
 	while (SDL_PollEvent(&event)) {
 		switch (event.type) {
 		case SDL_QUIT:
@@ -32,6 +32,9 @@ void InputManager::listenEvents() {
 
 void InputManager::handleMousePress(SDL_MouseButtonEvent* event, bool isPressedDown) {
 	if (event->button == SDL_BUTTON_LEFT) {
+		if (this->isLeftClickPressed && !isPressedDown) {
+			this->isLeftClickDown = true;
+		}
 		this->isLeftClickPressed = isPressedDown;
 	}
 };
@@ -84,4 +87,8 @@ bool InputManager::IsRightKeyPressed() {
 
 bool InputManager::IsLeftClickPressed() {
 	return getInstance().isLeftClickPressed;
+};
+
+bool InputManager::IsLeftClickDown() {
+	return getInstance().isLeftClickDown;
 };

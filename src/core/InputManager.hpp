@@ -10,7 +10,9 @@ class InputManager {
 	bool isDownKeyPressed = false;
 	bool isLeftKeyPressed = false;
 	bool isRightKeyPressed = false;
+	// [SUMMARY]: Pressed means it is being hold, down means it is pressed for this single frame
 	bool isLeftClickPressed = false;
+	bool isLeftClickDown = false;
 	void handleKeyPress(SDL_KeyboardEvent* event, bool isPressedDown);
 	void handleMousePress(SDL_MouseButtonEvent* event, bool isPressedDown);
 
@@ -27,4 +29,5 @@ class InputManager {
 	static bool IsLeftKeyPressed();
 	static bool IsRightKeyPressed();
 	static bool IsLeftClickPressed();
+	static bool IsLeftClickDown();
 };
