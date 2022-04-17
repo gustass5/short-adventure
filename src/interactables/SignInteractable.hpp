@@ -5,6 +5,7 @@
 #include <string>
 
 class Player;
+class GameManager;
 
 class SignInteractable : public Interactable {
   private:

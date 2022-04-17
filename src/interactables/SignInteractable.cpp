@@ -1,4 +1,5 @@
 #include "SignInteractable.hpp"
+#include "../game/GameManager.hpp"
 #include "../game/Player.hpp"
 
 SignInteractable::SignInteractable(SDL_Renderer* renderer,
@@ -13,7 +14,7 @@ SignInteractable::~SignInteractable() {}
 void SignInteractable::update() {
 	this->interactable.update(this, this->player);
 	if (this->interactable.getIsInteracted()) {
-		// [TODO]: Load new scene, make sure it only happens once
+		GameManager::LoadLevel("../assets/levels/" + this->levelName + "/");
 	}
 }
 
