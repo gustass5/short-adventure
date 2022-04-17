@@ -1,4 +1,4 @@
-village.png 2 4 6
+village.png 2 4 2
 
 3
 Chest
@@ -8,7 +8,7 @@ Sign
 Chest 500 250 32 32
 Coin 600 350 16 16
 Coin 700 350 16 16
-Sign 50 350 32 32 level_2
+Sign 0 320 32 32 level_2
 
 3
 Golem Golem_Idle_ Golem_Walk_
@@ -18,8 +18,3 @@ Troll Troll_Idle_ Troll_Run_
 Golem 144 700 60 42
 Golem 244 700 60 42
 
-Ogre 144 400 60 42
-Ogre 44 300 60 42
-
-Troll 344 200 60 42
-Troll 600 100 60 42
