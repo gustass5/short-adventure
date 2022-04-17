@@ -9,7 +9,7 @@ InteractableComponent::~InteractableComponent(){};
 void InteractableComponent::update(Interactable* interactable, Player* player) {
 	if (GameObject::GetDistance(interactable->getCenter(), player->getCenter()) <= interactable->getTransform()->w / 2 + player->getTransform()->h / 2) {
 		this->isInRange = true;
-		if (InputManager::IsLeftClickPressed()) {
+		if (InputManager::IsLeftClickDown()) {
 			this->isInteracted = true;
 		}
 	} else {
