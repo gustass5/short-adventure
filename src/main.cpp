@@ -2,6 +2,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_mixer.h>
+#include <SDL2/SDL_ttf.h>
 
 double GLOBAL_DELTA_TIME = 0;
 
@@ -9,8 +10,14 @@ int main(int argc, char** arg) {
 
 	SDL_Init(SDL_INIT_EVERYTHING);
 	IMG_Init(IMG_INIT_PNG);
+	TTF_Init();
 	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024) == -1) {
 		printf("[ERROR]: Mix_OpenAudio: %s\n", Mix_GetError());
+		exit(2);
+	}
+
+	if (TTF_Init() == -1) {
+		printf("[ERROR]: TTF_Init: %s\n", TTF_GetError());
 		exit(2);
 	}
 
@@ -27,6 +34,7 @@ int main(int argc, char** arg) {
 	SDL_DestroyWindow(window);
 	Mix_Quit();
 	Mix_CloseAudio();
+	TTF_Quit();
 	SDL_Quit();
 	IMG_Quit();
 
