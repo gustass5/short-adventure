@@ -14,5 +14,6 @@ class UIManager {
   public:
 	UIManager(SDL_Renderer* renderer);
 	~UIManager();
+	// [SUMMARY]: For multiline text, separate text with `,` and also end the string with `,` as well
 	static void RenderField(SDL_Renderer* renderer, SDL_Color color, std::string text, int x, int y, int w, int h);
 };

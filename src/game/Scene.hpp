@@ -24,7 +24,7 @@ class Scene {
 	std::map<std::string, std::vector<SDL_Texture*>> enemyIdleFrames;
 	std::map<std::string, std::vector<SDL_Texture*>> enemyRunFrames;
 	std::map<std::string, SDL_Texture*> interactableSprites;
-	std::unique_ptr<Interactable> createInteractable(std::string type, std::string levelName, Player* player, int x, int y, int w, int h, int px, int py);
+	std::unique_ptr<Interactable> createInteractable(std::string type, std::string levelName, std::string signText, Player* player, int x, int y, int w, int h, int px, int py);
 	Player* player;
 
   public:
