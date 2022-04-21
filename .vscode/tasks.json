@@ -32,6 +32,7 @@
                 "${workspaceFolder}/src/interactables/WeaponInteractable.cpp",
                 "${workspaceFolder}/src/interactables/SignInteractable.cpp",
                 "${workspaceFolder}/src/game/Animation.cpp",
+                "${workspaceFolder}/src/ui/UIManager.cpp",
                 "-o",
                 "${workspaceFolder}/build/main",
                 "`",
