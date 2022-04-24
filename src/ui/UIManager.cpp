@@ -17,6 +17,8 @@ void UIManager::RenderField(SDL_Renderer* renderer, SDL_Color color, std::string
 
 	int lastWordStartIndex = 0;
 
+	std::replace(text.begin(), text.end(), '_', ' ');
+
 	for (int i = 0; i < text.length(); i++) {
 		if (text[i] == '|') {
 			textLines.push_back(text.substr(lastWordStartIndex, i - lastWordStartIndex));
