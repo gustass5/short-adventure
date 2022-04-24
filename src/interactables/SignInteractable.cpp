@@ -30,7 +30,7 @@ void SignInteractable::update() {
 void SignInteractable::render() {
 	SDL_RenderCopy(this->renderer, this->sprite, NULL, this->getTransform());
 	if (this->interactable.getIsInRange()) {
-		SDL_Color color = {244, 235, 217};
+		SDL_Color color = {40, 40, 40};
 		UIManager::RenderField(this->renderer, color, this->text, this->getTransform()->x, this->getTransform()->y - 50, 100, 50);
 	}
 }
