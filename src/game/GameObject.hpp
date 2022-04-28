@@ -26,4 +26,6 @@ class GameObject {
 	Center getCenter();
 	static double GetDistance(const SDL_Rect* const transform1, const SDL_Rect* const transform2);
 	static double GetDistance(Center center1, Center center2);
+	// [SUMMARY]: Returns true if two square shaped transforms are intersecting
+	static bool IsColliding(const SDL_Rect* const transform1, const SDL_Rect* const transform2);
 };

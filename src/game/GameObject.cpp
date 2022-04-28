@@ -49,3 +49,10 @@ double GameObject::GetDistance(const SDL_Rect* const transform1, const SDL_Rect*
 double GameObject::GetDistance(GameObject::Center center1, GameObject::Center center2) {
 	return std::sqrt(std::pow(center1.x - center2.x, 2) + std::pow(center1.y - center2.y, 2));
 };
+
+bool GameObject::IsColliding(const SDL_Rect* const transform1, const SDL_Rect* const transform2) {
+	return transform1->x + transform1->w >= transform2->x && // [SUMMARY]: Is transform1 right edge over transform2 left edge
+		   transform1->x <= transform2->x + transform2->w && // [SUMMARY]: Is transform1 left edge over transform2 right edge
+		   transform1->y + transform1->h >= transform2->y && // [SUMMARY]: Is transform1 top edge over transform2 bottom edge
+		   transform1->y <= transform2->y + transform2->h;	 // [SUMMARY]: Is transform1 bottom edge over transform2 top edge
+}
