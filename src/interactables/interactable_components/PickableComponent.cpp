@@ -1,14 +1,14 @@
 #include "PickableComponent.hpp"
 
-#include "../Interactable.hpp"
 #include "../../game/Player.hpp"
+#include "../Interactable.hpp"
 
 PickableComponent::PickableComponent() {}
 
 PickableComponent::~PickableComponent() {}
 
 void PickableComponent::update(Interactable* interactable, Player* player) {
-	if (GameObject::GetDistance(interactable->getCenter(), player->getCenter()) <= interactable->getTransform()->w / 2 + player->getTransform()->h / 2) {
+	if (GameObject::IsColliding(interactable->getTransform(), player->getTransform())) {
 		this->isPickedUp = true;
 	}
 }
