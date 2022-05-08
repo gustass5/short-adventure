@@ -34,6 +34,11 @@ void Animation::render(const SDL_Rect* transform, SDL_RendererFlip flip) {
 }
 
 void Animation::handleNextFrame() {
+	if (!this->loop && this->isAnimationFinished()) {
+		this->currentFrame = 0;
+		return;
+	}
+
 	Uint32 currentTick = SDL_GetTicks();
 	if (currentTick - this->lastTick > 1000 / this->animationFramesPerSecond) {
 		this->currentFrame = (this->currentFrame + 1) % this->frames.size();
@@ -52,3 +57,22 @@ std::vector<SDL_Texture*> Animation::GetAnimationFrames(SDL_Renderer* renderer, 
 
 	return frames;
 }
+
+void Animation::setLoop(bool loop) {
+	this->loop = loop;
+};
+
+bool Animation::isAnimationFinished() {
+	if (this->animationEnded) {
+		return true;
+	}
+
+	this->animationEnded = this->currentFrame == this->frames.size() - 1;
+
+	return this->animationEnded;
+};
+
+void Animation::startAnimation() {
+	this->currentFrame = 0;
+	this->animationEnded = false;
+};

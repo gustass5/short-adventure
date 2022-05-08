@@ -15,6 +15,8 @@ class Animation {
 	void handleNextFrame();
 	// [SUMMARY]: Tells if animation owns its own frames. If it does, then it can free them after animation is destroyed.
 	bool isStandalone;
+	bool animationEnded = false;
+	bool loop = true;
 
   public:
 	Animation(SDL_Renderer* renderer, std::string path, int frameCount, int animationFramesPerSecond);
@@ -23,4 +25,7 @@ class Animation {
 	void render(const SDL_Rect* transform, SDL_RendererFlip flip);
 	// [INFO]: The correct way to copy vector is by returning it by value and not by reference, because compiler deals with it itself.
 	static std::vector<SDL_Texture*> GetAnimationFrames(SDL_Renderer* renderer, std::string path, int frameCount);
+	void setLoop(bool loop);
+	bool isAnimationFinished();
+	void startAnimation();
 };
