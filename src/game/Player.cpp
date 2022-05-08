@@ -2,6 +2,7 @@
 
 Player::Player(SDL_Renderer* renderer, std::string spritePath, int x, int y, int w, int h) : renderer(renderer),
 																							 GameObject(x, y, w, h),
+																							 weapon(renderer),
 																							 idleAnimation(renderer, "../assets/player/elf_m_idle_anim_f", 4, 10),
 																							 runAnimation(renderer, "../assets/player/elf_m_run_anim_f", 4, 10) {
 	this->sprite = TextureManager::LoadTexture(this->renderer, spritePath.c_str());
@@ -24,6 +25,14 @@ void Player::update() {
 	} else {
 		this->playerState = PlayerState::IDLE;
 	}
+
+	Uint32 currentTicks = SDL_GetTicks();
+	if (currentTicks - this->lastAttackTicks >= this->timeBetweenAttacks) {
+		if (InputManager::IsLeftClickDown()) {
+			this->lastAttackTicks = currentTicks;
+			this->weapon.startAttack();
+		}
+	}
 };
 
 void Player::render() {
@@ -32,4 +41,6 @@ void Player::render() {
 	} else {
 		this->runAnimation.render(this->getTransform(), this->lastFlipState);
 	}
+
+	this->weapon.render(this->transform.x + (this->lastFlipState == SDL_FLIP_NONE ? 25 : -50), this->transform.y - 10, this->lastFlipState);
 };

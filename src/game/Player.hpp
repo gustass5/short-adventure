@@ -3,6 +3,7 @@
 #include "../utils/TextureManager.hpp"
 #include "Animation.hpp"
 #include "GameObject.hpp"
+#include "Weapon.hpp"
 #include <SDL2/SDL_image.h>
 #include <string>
 
@@ -24,6 +25,10 @@ class Player : public GameObject {
 	Animation idleAnimation;
 	Animation runAnimation;
 	SDL_RendererFlip lastFlipState = SDL_FLIP_NONE;
+	Weapon weapon;
+	bool isAttacking = false;
+	Uint32 lastAttackTicks = 0;
+	int timeBetweenAttacks = 250;
 
   public:
 	Player(SDL_Renderer* renderer, std::string spritePath, int x, int y, int w, int h);
