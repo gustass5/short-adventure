@@ -44,3 +44,14 @@ void Player::render() {
 
 	this->weapon.render(this->transform.x + (this->lastFlipState == SDL_FLIP_NONE ? 25 : -50), this->transform.y - 10, this->lastFlipState);
 };
+
+void Player::takeDamage(int damage) {
+	this->health -= damage;
+
+	if (this->health <= 0) {
+		this->die();
+	}
+};
+
+void Player::die() {
+}

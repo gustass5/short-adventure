@@ -29,10 +29,13 @@ class Player : public GameObject {
 	bool isAttacking = false;
 	Uint32 lastAttackTicks = 0;
 	int timeBetweenAttacks = 250;
+	int health = 100;
+	void die();
 
   public:
 	Player(SDL_Renderer* renderer, std::string spritePath, int x, int y, int w, int h);
 	~Player();
 	void update();
 	void render();
+	void takeDamage(int damage);
 };
