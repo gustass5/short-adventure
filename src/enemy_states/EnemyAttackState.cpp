@@ -13,6 +13,13 @@ EnemyState* EnemyAttackState::update(Enemy* enemy, Player* player) {
 		return new EnemyFollowState();
 	}
 
+	Uint32 currentTicks = SDL_GetTicks();
+
+	if (currentTicks - enemy->lastAttackTicks >= enemy->timeBetweenAttacks) {
+		player->takeDamage(enemy->attackDamage);
+		enemy->lastAttackTicks = currentTicks;
+	}
+
 	return nullptr;
 }
 
