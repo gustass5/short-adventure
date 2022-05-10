@@ -11,6 +11,10 @@ Player::Player(SDL_Renderer* renderer, std::string spritePath, int x, int y, int
 Player::~Player(){};
 
 void Player::update() {
+	if (this->playerState == PlayerState::DEAD) {
+		return;
+	}
+
 	int movementX = InputManager::IsRightKeyPressed() - InputManager::IsLeftKeyPressed();
 	int movementY = InputManager::IsDownKeyPressed() - InputManager::IsUpKeyPressed();
 	double normalized = sqrt(movementX * movementX + movementY * movementY);
@@ -36,6 +40,11 @@ void Player::update() {
 };
 
 void Player::render() {
+	if (this->playerState == PlayerState::DEAD) {
+		SDL_RenderCopyEx(this->renderer, this->sprite, NULL, this->getTransform(), 90, NULL, SDL_FLIP_NONE);
+		return;
+	}
+
 	if (this->playerState == PlayerState::IDLE) {
 		this->idleAnimation.render(this->getTransform(), this->lastFlipState);
 	} else {
@@ -54,4 +63,5 @@ void Player::takeDamage(int damage) {
 };
 
 void Player::die() {
+	this->playerState = PlayerState::DEAD;
 }

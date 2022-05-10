@@ -14,7 +14,8 @@ class Player : public GameObject {
   private:
 	enum class PlayerState {
 		IDLE,
-		MOVE
+		MOVE,
+		DEAD
 	};
 
   private:
