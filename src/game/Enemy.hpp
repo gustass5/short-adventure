@@ -15,6 +15,7 @@ class Enemy : public GameObject {
 	int senseRadius = 200;
 	int attackRadius = 50;
 	int movementSpeed = 200;
+	int health = 100;
 
   public:
 	Enemy(SDL_Renderer* renderer,
@@ -34,4 +35,5 @@ class Enemy : public GameObject {
 	Animation idleAnimation;
 	Animation runAnimation;
 	SDL_RendererFlip lastFlipState = SDL_FLIP_NONE;
+	void takeDamage(int damage);
 };

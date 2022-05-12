@@ -41,3 +41,10 @@ int Enemy::getAttackRadius() {
 int Enemy::getMovementSpeed() {
 	return this->movementSpeed;
 }
+
+void Enemy::takeDamage(int damage) {
+	this->health -= damage;
+
+	if (this->health <= 0) {
+	}
+};
