@@ -9,6 +9,9 @@
 
 extern double GLOBAL_DELTA_TIME;
 
+class GameManager;
+class Scene;
+
 class Player : public GameObject {
 
   private:
@@ -32,6 +35,7 @@ class Player : public GameObject {
 	int timeBetweenAttacks = 250;
 	int health = 100;
 	void die();
+	void attack(Uint32 currentTicks);
 
   public:
 	Player(SDL_Renderer* renderer, std::string spritePath, int x, int y, int w, int h);

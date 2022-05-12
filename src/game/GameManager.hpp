@@ -8,7 +8,6 @@ class GameManager {
   private:
 	SDL_Renderer* screen;
 	Player player;
-	static Scene& GetScene();
 
   public:
 	GameManager(SDL_Renderer* screen);
@@ -16,4 +15,5 @@ class GameManager {
 	void update();
 	void render();
 	static void LoadLevel(std::string levelName);
+	static Scene& GetScene();
 };
