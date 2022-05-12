@@ -10,11 +10,14 @@ Weapon::~Weapon() {
 }
 
 void Weapon::render(int x, int y, SDL_RendererFlip flipState) {
-	// [TODO]: Move width/height into variable
-	SDL_Rect transform = {x, y, 48, 48};
+	this->transform = {x, y, 48, 48};
 	this->attackAnimation.render(&transform, flipState);
 };
 
 void Weapon::startAttack() {
 	this->attackAnimation.startAnimation();
+};
+
+SDL_Rect* Weapon::getTransform() {
+	return &this->transform;
 };

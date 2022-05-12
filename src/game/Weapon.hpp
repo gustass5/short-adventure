@@ -9,10 +9,13 @@ class Weapon {
 	SDL_Renderer* renderer;
 	SDL_Texture* sprite;
 	Animation attackAnimation;
+	SDL_Rect transform;
 
   public:
 	Weapon(SDL_Renderer* renderer);
 	~Weapon();
 	void render(int x, int y, SDL_RendererFlip flipState);
 	void startAttack();
+	SDL_Rect* getTransform();
+	int attackDamage = 50;
 };
