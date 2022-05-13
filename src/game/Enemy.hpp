@@ -12,10 +12,12 @@ class Enemy : public GameObject {
 	SDL_Renderer* renderer;
 	Player* player;
 	EnemyState* state;
+	SDL_Texture* sprite;
 	int senseRadius = 200;
 	int attackRadius = 50;
 	int movementSpeed = 200;
 	int health = 100;
+	bool isDead = false;
 
   public:
 	Enemy(SDL_Renderer* renderer,

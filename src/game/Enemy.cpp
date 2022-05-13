@@ -14,10 +14,16 @@ Enemy::Enemy(
 								  runAnimation(renderer, runFrames, 10),
 								  state(new EnemyIdleState()),
 								  GameObject(x, y, w, h) {
+	// [WARNING]: Not sure if this texture has to be freed
+	this->sprite = idleFrames[0];
 }
 Enemy::~Enemy() {}
 
 void Enemy::update() {
+	if (this->isDead) {
+		return;
+	}
+
 	EnemyState* state = this->state->update(this, this->player);
 	// [INFO]: Switch between states, must delete previous one from the heap
 	if (state != nullptr) {
@@ -27,6 +33,11 @@ void Enemy::update() {
 }
 
 void Enemy::render() {
+	if (this->isDead) {
+		SDL_RenderCopyEx(this->renderer, this->sprite, NULL, this->getTransform(), 90, NULL, SDL_FLIP_NONE);
+		return;
+	}
+
 	this->state->render(this);
 }
 
@@ -46,5 +57,6 @@ void Enemy::takeDamage(int damage) {
 	this->health -= damage;
 
 	if (this->health <= 0) {
+		this->isDead = true;
 	}
 };
