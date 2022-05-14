@@ -43,4 +43,5 @@ class Player : public GameObject {
 	void update();
 	void render();
 	void takeDamage(int damage);
+	int getHealth();
 };

@@ -79,3 +79,7 @@ void Player::attack(Uint32 currentTicks) {
 		}
 	}
 }
+
+int Player::getHealth() {
+	return this->health;
+};
