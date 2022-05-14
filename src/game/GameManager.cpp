@@ -20,6 +20,7 @@ void GameManager::update() {
 void GameManager::render() {
 	GetScene().render();
 	this->player.render();
+	UIManager::RenderPlayerHealth(this->screen, this->player.getHealth());
 }
 
 void GameManager::LoadLevel(std::string levelName) {

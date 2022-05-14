@@ -15,6 +15,6 @@ Golem Golem_Idle_ Golem_Walk_
 Ogre Ogre_Idle_anim_f Ogre_Run_anim_f
 Troll Troll_Idle_ Troll_Run_
 
-Golem 144 700 60 42
-Golem 244 700 60 42
+Golem 144 350 60 42
+Golem 244 350 60 42
 
