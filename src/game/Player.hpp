@@ -33,7 +33,7 @@ class Player : public GameObject {
 	bool isAttacking = false;
 	Uint32 lastAttackTicks = 0;
 	int timeBetweenAttacks = 250;
-	int health = 100;
+	int health = 10;
 	void die();
 	void attack(Uint32 currentTicks);
 

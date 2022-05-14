@@ -33,7 +33,7 @@ class Enemy : public GameObject {
 	int getMovementSpeed();
 	Uint32 lastAttackTicks = 0;
 	int timeBetweenAttacks = 500;
-	int attackDamage = 25;
+	int attackDamage = 1;
 	Animation idleAnimation;
 	Animation runAnimation;
 	SDL_RendererFlip lastFlipState = SDL_FLIP_NONE;
