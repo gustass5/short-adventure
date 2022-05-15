@@ -16,7 +16,8 @@ class Enemy : public GameObject {
 	int senseRadius = 200;
 	int attackRadius = 50;
 	int movementSpeed = 200;
-	int health = 100;
+	int health;
+	int maxHealth = 100;
 	bool isDead = false;
 
   public:

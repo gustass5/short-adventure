@@ -16,6 +16,7 @@ Enemy::Enemy(
 								  GameObject(x, y, w, h) {
 	// [WARNING]: Not sure if this texture has to be freed
 	this->sprite = idleFrames[0];
+	this->health = this->maxHealth;
 }
 Enemy::~Enemy() {}
 
