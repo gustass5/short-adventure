@@ -40,6 +40,10 @@ void Enemy::render() {
 	}
 
 	this->state->render(this);
+
+	if (this->health < this->maxHealth) {
+		UIManager::RenderEnemyHealth(this->renderer, this->health, this->maxHealth, this->getTransform());
+	}
 }
 
 int Enemy::getSenseRadius() {

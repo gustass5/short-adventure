@@ -1,5 +1,6 @@
 #pragma once
 
+#include "../ui/UIManager.hpp"
 #include "Animation.hpp"
 #include "GameObject.hpp"
 
