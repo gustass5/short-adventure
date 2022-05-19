@@ -13,6 +13,13 @@ Scene& GameManager::GetScene() {
 }
 
 void GameManager::update() {
+	// [SUMMARY]: I cannot just load new level when `LoadLevel` is called, because the frame is not finished and that causes bugs.
+	// I need to wait for the frame to finish and only then, before any updates in the scene started I can switch scenes.
+	if (GameManager::shouldLoadNewLevel) {
+		GetScene().unload();
+		GetScene().load(GameManager::levelNameToLoad);
+		GameManager::shouldLoadNewLevel = false;
+	}
 	GetScene().update();
 	this->player.update();
 };
@@ -24,6 +31,9 @@ void GameManager::render() {
 }
 
 void GameManager::LoadLevel(std::string levelName) {
-	GetScene().unload();
-	GetScene().load(levelName);
+	GameManager::levelNameToLoad = levelName;
+	GameManager::shouldLoadNewLevel = true;
 }
+
+std::string GameManager::levelNameToLoad;
+bool GameManager::shouldLoadNewLevel;

@@ -9,6 +9,8 @@ class GameManager {
   private:
 	SDL_Renderer* screen;
 	Player player;
+	static std::string levelNameToLoad;
+	static bool shouldLoadNewLevel;
 
   public:
 	GameManager(SDL_Renderer* screen);
