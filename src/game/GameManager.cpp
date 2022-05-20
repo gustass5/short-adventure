@@ -18,6 +18,7 @@ void GameManager::update() {
 	if (GameManager::shouldLoadNewLevel) {
 		GetScene().unload();
 		GetScene().load(GameManager::levelNameToLoad);
+		this->player.setTransform(this->playerX, this->playerY, this->player.getTransform()->w, this->player.getTransform()->h);
 		GameManager::shouldLoadNewLevel = false;
 	}
 	GetScene().update();
@@ -30,10 +31,14 @@ void GameManager::render() {
 	UIManager::RenderPlayerHealth(this->screen, this->player.getHealth());
 }
 
-void GameManager::LoadLevel(std::string levelName) {
+void GameManager::LoadLevel(std::string levelName, int playerX, int playerY) {
 	GameManager::levelNameToLoad = levelName;
 	GameManager::shouldLoadNewLevel = true;
+	GameManager::playerX = playerX;
+	GameManager::playerY = playerY;
 }
 
 std::string GameManager::levelNameToLoad;
 bool GameManager::shouldLoadNewLevel;
+int GameManager::playerX;
+int GameManager::playerY;

@@ -22,8 +22,7 @@ SignInteractable::~SignInteractable() {}
 void SignInteractable::update() {
 	this->interactable.update(this, this->player);
 	if (this->interactable.getIsInteracted()) {
-		this->player->setTransform(this->playerX, this->playerY, this->player->getTransform()->w, this->player->getTransform()->h);
-		GameManager::LoadLevel("../assets/levels/" + this->levelName + "/");
+		GameManager::LoadLevel("../assets/levels/" + this->levelName + "/", this->playerX, this->playerY);
 	}
 }
 
