@@ -1,4 +1,4 @@
-village.png 2 4 2
+village.png 2 7 2
 
 3
 Chest
@@ -9,6 +9,9 @@ Chest 500 250 32 32
 Coin 600 350 16 16
 Coin 700 350 16 16
 Sign 0 320 32 32 level_2 1050 320 Dundy_Forest|Press_to_enter|
+Sign 1038 320 32 32 level_3 0 320 Mountain_Pass|Press_to_enter|
+Sign 468 770 32 32 level_4 440 0 Seashore|Press_to_enter|
+Sign 560 0 32 32 level_5 440 770 Doungeon_Gates|Press_to_enter|
 
 3
 Golem Golem_Idle_ Golem_Walk_
