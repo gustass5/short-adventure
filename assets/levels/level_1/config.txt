@@ -1,4 +1,4 @@
-village.png 2 7 2
+village.png 2 7 7
 
 3
 Chest
@@ -13,11 +13,21 @@ Sign 1038 320 32 32 level_3 0 320 Mountain_Pass|Press_to_enter|
 Sign 468 770 32 32 level_4 440 0 Seashore|Press_to_enter|
 Sign 560 0 32 32 level_5 440 770 Doungeon_Gates|Press_to_enter|
 
-3
+7
 Golem Golem_Idle_ Golem_Walk_
 Ogre Ogre_Idle_anim_f Ogre_Run_anim_f
 Troll Troll_Idle_ Troll_Run_
+Bandit GnollShaman_Idle_ GnollShaman_Walk_
+Berserker big_demon_idle_anim_f big_demon_run_anim_f
+DungeonGuardian ForestGuardian_Idle_ ForestGuardian_walk_
+ForestGuardian Ent_Idle_ Ent_Walk_
 
-Golem 144 350 60 42
-Golem 244 350 60 42
+Golem 144 150 60 42
+Ogre 244 150 60 42
+Troll 344 150 60 42
+Bandit 444 150 60 42
+Berserker 544 150 60 42
+DungeonGuardian 644 150 60 42
+ForestGuardian 744 150 60 42
+
 
