@@ -1,6 +1,5 @@
 #include "Player.hpp"
 #include "GameManager.hpp"
-#include "Scene.hpp"
 
 Player::Player(SDL_Renderer* renderer, std::string spritePath, int x, int y, int w, int h) : renderer(renderer),
 																							 GameObject(x, y, w, h),
@@ -12,7 +11,7 @@ Player::Player(SDL_Renderer* renderer, std::string spritePath, int x, int y, int
 
 Player::~Player(){};
 
-void Player::update() {
+void Player::update(Scene& scene) {
 	if (this->playerState == PlayerState::DEAD) {
 		return;
 	}
@@ -35,7 +34,7 @@ void Player::update() {
 	Uint32 currentTicks = SDL_GetTicks();
 	if (currentTicks - this->lastAttackTicks >= this->timeBetweenAttacks) {
 		if (InputManager::IsLeftClickDown()) {
-			this->attack(currentTicks);
+			this->attack(currentTicks, scene);
 		}
 	}
 };
@@ -67,11 +66,9 @@ void Player::die() {
 	this->playerState = PlayerState::DEAD;
 }
 
-void Player::attack(Uint32 currentTicks) {
+void Player::attack(Uint32 currentTicks, Scene& scene) {
 	this->lastAttackTicks = currentTicks;
 	this->weapon.startAttack();
-
-	Scene& scene = GameManager::GetScene();
 
 	for (int i = 0; i < scene.enemies.size(); i++) {
 		if (GameObject::IsColliding(scene.enemies[i]->getTransform(), this->weapon.getTransform())) {

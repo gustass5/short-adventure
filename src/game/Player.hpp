@@ -3,6 +3,7 @@
 #include "../utils/TextureManager.hpp"
 #include "Animation.hpp"
 #include "GameObject.hpp"
+#include "Scene.hpp"
 #include "Weapon.hpp"
 #include <SDL2/SDL_image.h>
 #include <string>
@@ -35,12 +36,12 @@ class Player : public GameObject {
 	int timeBetweenAttacks = 250;
 	int health = 10;
 	void die();
-	void attack(Uint32 currentTicks);
+	void attack(Uint32 currentTicks, Scene& scene);
 
   public:
 	Player(SDL_Renderer* renderer, std::string spritePath, int x, int y, int w, int h);
 	~Player();
-	void update();
+	void update(Scene& scene);
 	void render();
 	void takeDamage(int damage);
 	int getHealth();

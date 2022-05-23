@@ -13,6 +13,7 @@ class GameManager {
 	static bool shouldLoadNewLevel;
 	static int playerX;
 	static int playerY;
+	Scene scene;
 
   public:
 	GameManager(SDL_Renderer* screen);
@@ -20,5 +21,4 @@ class GameManager {
 	void update();
 	void render();
 	static void LoadLevel(std::string levelName, int playerX, int playerY);
-	static Scene& GetScene();
 };
