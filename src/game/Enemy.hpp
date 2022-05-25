@@ -14,11 +14,11 @@ class Enemy : public GameObject {
 	Player* player;
 	EnemyState* state;
 	SDL_Texture* sprite;
-	int senseRadius = 200;
-	int attackRadius = 50;
-	int movementSpeed = 200;
+	int senseRadius;
+	int attackRadius;
+	int movementSpeed;
 	int health;
-	int maxHealth = 100;
+	int maxHealth;
 	bool isDead = false;
 
   public:
@@ -26,7 +26,8 @@ class Enemy : public GameObject {
 		  Player* player,
 		  std::vector<SDL_Texture*>& idleFrames,
 		  std::vector<SDL_Texture*>& runFrames,
-		  int x, int y, int w, int h);
+		  int x, int y, int w, int h,
+		  int health, int movementSpeed, int senseRadius, int attackRadius, int attackDamage, int timeBetweenAttacks);
 	virtual ~Enemy();
 	virtual void update();
 	virtual void render();
@@ -34,8 +35,8 @@ class Enemy : public GameObject {
 	int getAttackRadius();
 	int getMovementSpeed();
 	Uint32 lastAttackTicks = 0;
-	int timeBetweenAttacks = 500;
-	int attackDamage = 1;
+	int timeBetweenAttacks;
+	int attackDamage;
 	Animation idleAnimation;
 	Animation runAnimation;
 	SDL_RendererFlip lastFlipState = SDL_FLIP_NONE;

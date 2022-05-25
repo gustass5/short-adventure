@@ -17,5 +17,5 @@ class Weapon {
 	void render(int x, int y, SDL_RendererFlip flipState);
 	void startAttack();
 	SDL_Rect* getTransform();
-	int attackDamage = 50;
+	int attackDamage = 10;
 };

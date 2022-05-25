@@ -22,12 +22,12 @@ Berserker big_demon_idle_anim_f big_demon_run_anim_f
 DungeonGuardian ForestGuardian_Idle_ ForestGuardian_walk_
 ForestGuardian Ent_Idle_ Ent_Walk_
 
-Golem 144 150 60 42
-Ogre 244 150 60 42
-Troll 344 150 60 42
-Bandit 444 150 60 42
-Berserker 544 150 60 42
-DungeonGuardian 644 150 60 42
-ForestGuardian 744 150 60 42
+Golem           144 150 100 74  100 120 200 50 5 500
+Ogre            244 150 60  60  30  140 200 50 2 500
+Troll           344 150 84  64  40  140 200 50 3 500
+Bandit          444 150 60  60  20  260 200 50 2 500
+Berserker       544 150 84  60  30  250 200 50 4 500
+DungeonGuardian 644 150 160 120 200 200 200 50 4 500
+ForestGuardian  744 150 100 70  60  200 200 50 2 500
 
 

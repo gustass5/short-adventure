@@ -13,4 +13,4 @@ Sign 980 300 32 32 level_1 0 320 The_Town|Press_to_enter|
 1
 Ogre Ogre_Idle_anim_f Ogre_Run_anim_f
 
-Ogre 44 150 64 64
+Ogre 244 150 60  60  30  140 200 50 2 500
