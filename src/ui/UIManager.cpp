@@ -51,7 +51,7 @@ void UIManager::RenderField(SDL_Renderer* renderer, SDL_Color color, std::string
 
 		textTransforms[i] = transform;
 
-		// [INFO][NOTE]: I have to free surface every time, because it seems that `TTF_RenderText_Solid` creates NEW surface eveytime and I cannot reuse it.
+		// [INFO][NOTE]: I have to free surface every time, because it seems that `TTF_RenderText_Solid` creates NEW surface each call and I cannot reuse it.
 		SDL_FreeSurface(temporarySurface);
 	}
 
