@@ -1,33 +1,18 @@
-village.png 2 7 7
+village.png 2 7 0
 
 3
 Chest
 Coin
 Sign
 
-Chest 500 250 32 32
-Coin 600 350 16 16
-Coin 700 350 16 16
-Sign 0 320 32 32 level_2 1050 320 Dundy_Forest|Press_to_enter|
-Sign 1038 320 32 32 level_3 0 320 Mountain_Pass|Press_to_enter|
-Sign 468 770 32 32 level_4 440 0 Seashore|Press_to_enter|
-Sign 560 0 32 32 level_5 440 770 Doungeon_Gates|Press_to_enter|
+Chest   500  250  32 32
+Coin    600  350  16 16
+Coin    700  350  16 16
+Sign    0    320  32 32 level_2 1050 320 Dundy_Forest|Press_to_enter|
+Sign    1038 320  32 32 level_3 0 320 Mountain_Pass|Press_to_enter|
+Sign    468  770  32 32 level_4 440 0 Seashore|Press_to_enter|
+Sign    560  0    32 32 level_5 440 770 Doungeon_Gates|Press_to_enter|
 
-7
-Golem Golem_Idle_ Golem_Walk_
-Ogre Ogre_Idle_anim_f Ogre_Run_anim_f
-Troll Troll_Idle_ Troll_Run_
-Bandit GnollShaman_Idle_ GnollShaman_Walk_
-Berserker big_demon_idle_anim_f big_demon_run_anim_f
-DungeonGuardian ForestGuardian_Idle_ ForestGuardian_walk_
-ForestGuardian Ent_Idle_ Ent_Walk_
-
-Golem           144 150 100 74  100 120 200 50 5 500
-Ogre            244 150 60  60  30  140 200 50 2 500
-Troll           344 150 84  64  40  140 200 50 3 500
-Bandit          444 150 60  60  20  260 200 50 2 500
-Berserker       544 150 84  60  30  250 200 50 4 500
-DungeonGuardian 644 150 160 120 200 200 200 50 4 500
-ForestGuardian  744 150 100 70  60  200 200 50 2 500
+0
 
 

@@ -1,4 +1,4 @@
-pass.png 2 4 1
+pass.png 2 4 12
 
 3
 Chest
@@ -6,11 +6,24 @@ Coin
 Sign
 
 Chest 500 250 32 32
-Coin 600 350 16 16
-Coin 700 350 16 16
-Sign 0 320 32 32 level_1 1050 320 The_Town|Press_to_enter|
+Coin  600 350 16 16
+Coin  700 350 16 16
+Sign  0 320 32 32 level_1 1050 320 The_Town|Press_to_enter|
 
-1
-Ogre Ogre_Idle_anim_f Ogre_Run_anim_f
+2
+Troll   Troll_Idle_ Troll_Run_
+Bandit  GnollShaman_Idle_ GnollShaman_Walk_
 
-Ogre 244 150 60  60  30  140 200 50 2 500
+
+Troll   150 125 84  64  40  140 200 50 3 500
+Troll   900 600 84  64  40  140 200 50 3 500
+Bandit  805 115 60  60  20  260 200 50 2 500
+Bandit  825 65 60  60  20  260 200 50 2 500
+Bandit  875 65 60  60  20  260 200 50 2 500
+Bandit  895 105 60  60  20  260 200 50 2 500
+Bandit  860 125 60  60  20  260 200 50 2 500
+Bandit  350 610 60  60  20  260 200 50 2 500
+Bandit  370 560 60  60  20  260 200 50 2 500
+Bandit  420 560 60  60  20  260 200 50 2 500
+Bandit  440 600 60  60  20  260 200 50 2 500
+Bandit  405 620 60  60  20  260 200 50 2 500

@@ -1,4 +1,4 @@
-dungeon.png 2 4 1
+dungeon.png 2 4 5
 
 3
 Chest
@@ -10,7 +10,13 @@ Coin 600 350 16 16
 Coin 700 350 16 16
 Sign 468 770 32 32 level_1 468 0 The_Town|Press_to_enter|
 
-1
-Ogre Ogre_Idle_anim_f Ogre_Run_anim_f
+3
+Golem           Golem_Idle_ Golem_Walk_
+Berserker       big_demon_idle_anim_f big_demon_run_anim_f
+DungeonGuardian ForestGuardian_Idle_ ForestGuardian_walk_
 
-Ogre 244 150 60  60  30  140 200 50 2 500
+Golem           150 650 100 74  100 120 200 50 5 500
+Golem           700 650 100 74  100 120 200 50 5 500
+Berserker       250 150 84  60  30  250 200 50 4 500
+Berserker       850 150 84  60  30  250 200 50 4 500
+DungeonGuardian 500 100 160 120 200 200 200 50 4 500

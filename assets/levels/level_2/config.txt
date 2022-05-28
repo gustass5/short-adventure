@@ -1,4 +1,4 @@
-level2.png 2 4 1
+forest.png 2 4 5
 
 3
 Chest
@@ -6,11 +6,16 @@ Coin
 Sign
 
 Chest 500 250 32 32
-Coin 600 350 16 16
-Coin 700 350 16 16
-Sign 980 300 32 32 level_1 0 320 The_Town|Press_to_enter|
+Coin  600 350 16 16
+Coin  700 350 16 16
+Sign  980 300 32 32 level_1 0 320 The_Town|Press_to_enter|
 
-1
+2
 Ogre Ogre_Idle_anim_f Ogre_Run_anim_f
+ForestGuardian Ent_Idle_ Ent_Walk_
 
-Ogre 244 150 60  60  30  140 200 50 2 500
+Ogre            600 350 60  60  30  140 200 50 2 500
+Ogre            400 350 60  60  30  140 200 50 2 500
+Ogre            300 150 60  60  30  140 200 50 2 500
+Ogre            300 550 60  60  30  140 200 50 2 500
+ForestGuardian  100 350 100 70  60  200 200 50 2 500
