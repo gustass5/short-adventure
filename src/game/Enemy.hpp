@@ -27,7 +27,7 @@ class Enemy : public GameObject {
 		  std::vector<SDL_Texture*>& idleFrames,
 		  std::vector<SDL_Texture*>& runFrames,
 		  int x, int y, int w, int h,
-		  int health, int movementSpeed, int senseRadius, int attackRadius, int attackDamage, int timeBetweenAttacks);
+		  int health, int movementSpeed, int senseRadius, int attackRadius, int attackDamage, int timeBetweenAttacks, bool isPatrolling);
 	virtual ~Enemy();
 	virtual void update();
 	virtual void render();
@@ -37,6 +37,7 @@ class Enemy : public GameObject {
 	Uint32 lastAttackTicks = 0;
 	int timeBetweenAttacks;
 	int attackDamage;
+	bool isPatrolling = true;
 	Animation idleAnimation;
 	Animation runAnimation;
 	SDL_RendererFlip lastFlipState = SDL_FLIP_NONE;

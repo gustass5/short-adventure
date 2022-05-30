@@ -4,17 +4,19 @@
 
 class Enemy;
 class Player;
+class EnemyIdleState;
 class EnemyFollowState;
-class EnemyPatrolState;
 
-class EnemyIdleState : public EnemyState {
+extern double GLOBAL_DELTA_TIME;
+
+class EnemyPatrolState : public EnemyState {
   private:
-	int idleTime = 1000;
-	Uint32 lastTimeOfIdle;
+	int patrolDistance = 100;
+	int enemyStartPosition;
 
   public:
-	EnemyIdleState();
-	~EnemyIdleState();
+	EnemyPatrolState(Enemy* enemy);
+	~EnemyPatrolState();
 	EnemyState* update(Enemy* enemy, Player* player) override;
 	void render(Enemy* enemy) override;
 };

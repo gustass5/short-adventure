@@ -10,12 +10,13 @@ Enemy::Enemy(
 	std::vector<SDL_Texture*>& runFrames,
 	int x, int y, int w, int h,
 	int health, int movementSpeed, int senseRadius,
-	int attackRadius, int attackDamage, int timeBetweenAttacks) : renderer(renderer),
-																  player(player),
-																  idleAnimation(renderer, idleFrames, 10),
-																  runAnimation(renderer, runFrames, 10),
-																  state(new EnemyIdleState()),
-																  GameObject(x, y, w, h) {
+	int attackRadius, int attackDamage, int timeBetweenAttacks,
+	bool isPatrolling) : renderer(renderer),
+						 player(player),
+						 idleAnimation(renderer, idleFrames, 10),
+						 runAnimation(renderer, runFrames, 10),
+						 state(new EnemyIdleState()),
+						 GameObject(x, y, w, h) {
 	// [WARNING]: Not sure if this texture has to be freed
 	this->sprite = idleFrames[0];
 	this->health = health;
@@ -25,6 +26,7 @@ Enemy::Enemy(
 	this->attackRadius = attackRadius;
 	this->attackDamage = attackDamage;
 	this->timeBetweenAttacks = timeBetweenAttacks;
+	this->isPatrolling = isPatrolling;
 }
 Enemy::~Enemy() {}
 

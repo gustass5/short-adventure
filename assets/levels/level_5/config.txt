@@ -15,8 +15,8 @@ Golem           Golem_Idle_ Golem_Walk_
 Berserker       big_demon_idle_anim_f big_demon_run_anim_f
 DungeonGuardian ForestGuardian_Idle_ ForestGuardian_walk_
 
-Golem           150 650 100 74  100 120 200 50 5 500
-Golem           700 650 100 74  100 120 200 50 5 500
-Berserker       250 150 84  60  30  250 200 50 4 500
-Berserker       850 150 84  60  30  250 200 50 4 500
-DungeonGuardian 500 100 160 120 200 200 200 50 4 500
+Golem           150 650 100 74  100 120 200 50 5 500 1
+Golem           700 650 100 74  100 120 200 50 5 500 1
+Berserker       250 150 84  60  30  250 200 50 4 500 1
+Berserker       850 150 84  60  30  250 200 50 4 500 1
+DungeonGuardian 500 100 160 120 200 200 200 50 4 500 0

@@ -17,6 +17,7 @@
                 "${workspaceFolder}/src/game/Enemy.cpp",
                 "${workspaceFolder}/src/enemy_states/EnemyState.cpp",
                 "${workspaceFolder}/src/enemy_states/EnemyIdleState.cpp",
+                "${workspaceFolder}/src/enemy_states/EnemyPatrolState.cpp",
                 "${workspaceFolder}/src/enemy_states/EnemyFollowState.cpp",
                 "${workspaceFolder}/src/enemy_states/EnemyAttackState.cpp",
                 "${workspaceFolder}/src/interactables/Interactable.cpp",
