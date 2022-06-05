@@ -2,6 +2,7 @@
 
 #include "../interactables/ChestInteractable.hpp"
 #include "../interactables/CoinInteractable.hpp"
+#include "../interactables/HealthInteractable.hpp"
 #include "../interactables/Interactable.hpp"
 #include "../interactables/SignInteractable.hpp"
 #include "../utils/TextureManager.hpp"

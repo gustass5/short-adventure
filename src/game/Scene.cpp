@@ -164,6 +164,10 @@ std::unique_ptr<Interactable> Scene::createInteractable(std::string type, std::s
 		return std::make_unique<ChestInteractable>(ChestInteractable(this->screen, this->interactableSprites[type], player, x, y, w, h));
 	}
 
+	if (type == "Health") {
+		return std::make_unique<HealthInteractable>(HealthInteractable(this->screen, this->interactableSprites[type], player, x, y, w, h));
+	}
+
 	if (type == "Coin") {
 		return std::make_unique<CoinInteractable>(CoinInteractable(this->screen, this->interactableSprites[type], player, x, y, w, h));
 	}
