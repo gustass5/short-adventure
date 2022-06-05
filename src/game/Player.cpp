@@ -7,6 +7,7 @@ Player::Player(SDL_Renderer* renderer, std::string spritePath, int x, int y, int
 																							 idleAnimation(renderer, "../assets/player/elf_m_idle_anim_f", 4, 10),
 																							 runAnimation(renderer, "../assets/player/elf_m_run_anim_f", 4, 10) {
 	this->sprite = TextureManager::LoadTexture(this->renderer, spritePath.c_str());
+	this->health = this->maxHealth;
 };
 
 Player::~Player(){};
@@ -79,4 +80,11 @@ void Player::attack(Uint32 currentTicks, Scene& scene) {
 
 int Player::getHealth() {
 	return this->health;
+};
+
+void Player::addHealth(int health) {
+	this->health += health;
+	if (this->health > this->maxHealth) {
+		this->health = this->maxHealth;
+	}
 };

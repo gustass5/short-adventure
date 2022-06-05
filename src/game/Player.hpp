@@ -34,7 +34,8 @@ class Player : public GameObject {
 	bool isAttacking = false;
 	Uint32 lastAttackTicks = 0;
 	int timeBetweenAttacks = 250;
-	int health = 10;
+	int maxHealth = 10;
+	int health;
 	void die();
 	void attack(Uint32 currentTicks, Scene& scene);
 
@@ -45,4 +46,5 @@ class Player : public GameObject {
 	void render();
 	void takeDamage(int damage);
 	int getHealth();
+	void addHealth(int health);
 };
