@@ -95,14 +95,14 @@ void UIManager::RenderEnemyHealth(SDL_Renderer* renderer, int health, int maxHea
 }
 
 void UIManager::RenderHUD(SDL_Renderer* renderer, SDL_Texture* currentWeaponSprite) {
-	SDL_Rect transform2 = {110, 736, 180, 56};
-	SDL_Rect transform3 = {0, 700, 105, 96};
-	SDL_Rect transform4 = {-10, 696, 310, 120};
+	SDL_Rect hudBackgroundTransform = {-10, 696, 310, 120};
+	SDL_Rect weaponHudTransform = {0, 700, 105, 96};
+	SDL_Rect itemHudTransform = {110, 736, 180, 56};
 	SDL_Rect weaponTransform = {46, 730, 64, 64};
 
-	SDL_RenderCopy(renderer, UIManager::hudBackground, NULL, &transform4);
-	SDL_RenderCopyEx(renderer, UIManager::weaponHud, NULL, &transform3, 0, NULL, SDL_FLIP_HORIZONTAL);
-	SDL_RenderCopy(renderer, UIManager::hud, NULL, &transform2);
+	SDL_RenderCopy(renderer, UIManager::hudBackground, NULL, &hudBackgroundTransform);
+	SDL_RenderCopyEx(renderer, UIManager::weaponHud, NULL, &weaponHudTransform, 0, NULL, SDL_FLIP_HORIZONTAL);
+	SDL_RenderCopy(renderer, UIManager::hud, NULL, &itemHudTransform);
 	SDL_RenderCopyEx(renderer, currentWeaponSprite, NULL, &weaponTransform, 30, NULL, SDL_FLIP_NONE);
 };
 
