@@ -13,6 +13,9 @@ class UIManager {
 	static SDL_Texture* healthImages[3];
 	static SDL_Texture* enemyHealthBarBackground;
 	static SDL_Texture* enemyHealthBar;
+	static SDL_Texture* hud;
+	static SDL_Texture* weaponHud;
+	static SDL_Texture* hudBackground;
 	static TTF_Font* font;
 
   public:
@@ -23,4 +26,5 @@ class UIManager {
 	static void RenderField(SDL_Renderer* renderer, SDL_Color color, std::string text, int x, int y, int w, int h);
 	static void RenderPlayerHealth(SDL_Renderer* renderer, int health);
 	static void RenderEnemyHealth(SDL_Renderer* renderer, int health, int maxHealth, const SDL_Rect* enemyTransform);
+	static void RenderInventory(SDL_Renderer* renderer);
 };

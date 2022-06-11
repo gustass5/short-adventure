@@ -7,6 +7,9 @@ UIManager::UIManager(SDL_Renderer* renderer) {
 	UIManager::healthImages[2] = TextureManager::LoadTexture(renderer, "../assets/ui/health/health_full.png");
 	UIManager::enemyHealthBarBackground = TextureManager::LoadTexture(renderer, "../assets/ui/health/health_bar_bg.png");
 	UIManager::enemyHealthBar = TextureManager::LoadTexture(renderer, "../assets/ui/health/health_bar.png");
+	UIManager::hud = TextureManager::LoadTexture(renderer, "../assets/ui/inventory/hud2.png");
+	UIManager::weaponHud = TextureManager::LoadTexture(renderer, "../assets/ui/inventory/weapon_hud.png");
+	UIManager::hudBackground = TextureManager::LoadTexture(renderer, "../assets/ui/field_bg3.png");
 	UIManager::font = TTF_OpenFont("../assets/ui/fonts/font.ttf", 48);
 }
 
@@ -67,7 +70,7 @@ void UIManager::RenderField(SDL_Renderer* renderer, SDL_Color color, std::string
 
 void UIManager::RenderPlayerHealth(SDL_Renderer* renderer, int health) {
 	for (int i = 0; i < 5; i++) {
-		SDL_Rect transform = {25 + 25 * i, 750, 24, 24};
+		SDL_Rect transform = {118 + 34 * i, 700, 34, 34};
 
 		int healthIndex;
 		int healthForHearth = health - 2 * i;
@@ -91,10 +94,23 @@ void UIManager::RenderEnemyHealth(SDL_Renderer* renderer, int health, int maxHea
 	SDL_RenderCopy(renderer, UIManager::enemyHealthBar, NULL, &healthBarTransform);
 }
 
+void UIManager::RenderInventory(SDL_Renderer* renderer) {
+	SDL_Rect transform2 = {110, 736, 180, 56};
+	SDL_Rect transform3 = {0, 700, 105, 96};
+	SDL_Rect transform4 = {-10, 696, 310, 120};
+
+	SDL_RenderCopy(renderer, UIManager::hudBackground, NULL, &transform4);
+	SDL_RenderCopyEx(renderer, UIManager::weaponHud, NULL, &transform3, 0, NULL, SDL_FLIP_HORIZONTAL);
+	SDL_RenderCopy(renderer, UIManager::hud, NULL, &transform2);
+};
+
 // [INFO]: Static variables of class needs to be initialized somewhere, it should be done in cpp file instead of hpp,
 // because then it would create multiple variables when file gets included
 SDL_Texture* UIManager::fieldBackground;
 SDL_Texture* UIManager::healthImages[3];
 SDL_Texture* UIManager::enemyHealthBarBackground;
 SDL_Texture* UIManager::enemyHealthBar;
+SDL_Texture* UIManager::hud;
+SDL_Texture* UIManager::weaponHud;
+SDL_Texture* UIManager::hudBackground;
 TTF_Font* UIManager::font;
