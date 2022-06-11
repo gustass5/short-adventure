@@ -4,6 +4,7 @@
 #include "../interactables/CoinInteractable.hpp"
 #include "../interactables/HealthInteractable.hpp"
 #include "../interactables/Interactable.hpp"
+#include "../interactables/PotionInteractable.hpp"
 #include "../interactables/SignInteractable.hpp"
 #include "../utils/TextureManager.hpp"
 #include "Enemy.hpp"
@@ -25,7 +26,7 @@ class Scene {
 	std::map<std::string, std::vector<SDL_Texture*>> enemyIdleFrames;
 	std::map<std::string, std::vector<SDL_Texture*>> enemyRunFrames;
 	std::map<std::string, SDL_Texture*> interactableSprites;
-	std::unique_ptr<Interactable> createInteractable(std::string type, std::string levelName, std::string signText, Player* player, int x, int y, int w, int h, int px, int py);
+	std::unique_ptr<Interactable> createInteractable(std::string type, std::string levelName, PotionInteractable::PotionType potionType, std::string signText, Player* player, int x, int y, int w, int h, int px, int py);
 	Player* player;
 
   public:
