@@ -21,3 +21,7 @@ void Weapon::startAttack() {
 SDL_Rect* Weapon::getTransform() {
 	return &this->transform;
 };
+
+SDL_Texture* Weapon::getSprite() {
+	return this->sprite;
+}

@@ -26,5 +26,5 @@ class UIManager {
 	static void RenderField(SDL_Renderer* renderer, SDL_Color color, std::string text, int x, int y, int w, int h);
 	static void RenderPlayerHealth(SDL_Renderer* renderer, int health);
 	static void RenderEnemyHealth(SDL_Renderer* renderer, int health, int maxHealth, const SDL_Rect* enemyTransform);
-	static void RenderHUD(SDL_Renderer* renderer);
+	static void RenderHUD(SDL_Renderer* renderer, SDL_Texture* currentWeaponSprite);
 };

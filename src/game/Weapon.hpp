@@ -18,4 +18,5 @@ class Weapon {
 	void startAttack();
 	SDL_Rect* getTransform();
 	int attackDamage = 10;
+	SDL_Texture* getSprite();
 };
