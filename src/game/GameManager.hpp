@@ -1,5 +1,4 @@
 #pragma once
-#include "../ui/UIManager.hpp"
 #include "Player.hpp"
 #include "Scene.hpp"
 #include <SDL2/SDL.h>
