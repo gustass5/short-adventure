@@ -17,6 +17,7 @@ class UIManager {
 	static SDL_Texture* weaponHud;
 	static SDL_Texture* hudBackground;
 	static TTF_Font* font;
+	static void RenderHUDControls(SDL_Renderer* renderer);
 
   public:
 	UIManager(SDL_Renderer* renderer);

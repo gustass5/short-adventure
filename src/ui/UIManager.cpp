@@ -104,7 +104,31 @@ void UIManager::RenderHUD(SDL_Renderer* renderer, SDL_Texture* currentWeaponSpri
 	SDL_RenderCopyEx(renderer, UIManager::weaponHud, NULL, &weaponHudTransform, 0, NULL, SDL_FLIP_HORIZONTAL);
 	SDL_RenderCopy(renderer, UIManager::hud, NULL, &itemHudTransform);
 	SDL_RenderCopyEx(renderer, currentWeaponSprite, NULL, &weaponTransform, 30, NULL, SDL_FLIP_NONE);
+	UIManager::RenderHUDControls(renderer);
 };
+
+void UIManager::RenderHUDControls(SDL_Renderer* renderer) {
+
+	SDL_Color color = {250, 250, 250};
+
+	SDL_Surface* temporarySurface = TTF_RenderText_Solid(UIManager::font, "R", color);
+	SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, temporarySurface);
+	SDL_Rect transform = {63, 760, 7, 20};
+
+	SDL_RenderCopy(renderer, texture, NULL, &transform);
+	SDL_FreeSurface(temporarySurface);
+	TextureManager::UnloadTexture(texture);
+
+	for (int i = 1; i <= 3; i++) {
+		SDL_Surface* temporarySurface = TTF_RenderText_Solid(UIManager::font, std::to_string(i).c_str(), color);
+		SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, temporarySurface);
+		SDL_Rect transform = {90 + 60 * i, 765, 5, 20};
+
+		SDL_RenderCopy(renderer, texture, NULL, &transform);
+		SDL_FreeSurface(temporarySurface);
+		TextureManager::UnloadTexture(texture);
+	}
+}
 
 // [INFO]: Static variables of class needs to be initialized somewhere, it should be done in cpp file instead of hpp,
 // because then it would create multiple variables when file gets included
