@@ -54,8 +54,7 @@ void Player::render() {
 
 	this->weapon.render(this->transform.x + (this->lastFlipState == SDL_FLIP_NONE ? 25 : -50), this->transform.y - 10, this->lastFlipState);
 
-	this->inventory.render(this->renderer);
-
+	UIManager::RenderHUD(this->renderer);
 	UIManager::RenderPlayerHealth(this->renderer, this->health);
 };
 

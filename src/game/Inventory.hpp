@@ -1,6 +1,5 @@
 #pragma once
 
-#include "../ui/UIManager.hpp"
 #include <SDL2/SDL.h>
 
 class Inventory {
@@ -10,7 +9,6 @@ class Inventory {
   public:
 	Inventory();
 	~Inventory();
-	void render(SDL_Renderer* renderer);
 	int getGold();
 	void addGold(int goldValue);
 };

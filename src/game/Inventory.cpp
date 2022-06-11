@@ -11,7 +11,3 @@ int Inventory::getGold() {
 void Inventory::addGold(int goldValue) {
 	this->gold += goldValue;
 };
-
-void Inventory::render(SDL_Renderer* renderer) {
-	UIManager::RenderInventory(renderer);
-}

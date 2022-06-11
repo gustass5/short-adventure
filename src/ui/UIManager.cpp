@@ -94,7 +94,7 @@ void UIManager::RenderEnemyHealth(SDL_Renderer* renderer, int health, int maxHea
 	SDL_RenderCopy(renderer, UIManager::enemyHealthBar, NULL, &healthBarTransform);
 }
 
-void UIManager::RenderInventory(SDL_Renderer* renderer) {
+void UIManager::RenderHUD(SDL_Renderer* renderer) {
 	SDL_Rect transform2 = {110, 736, 180, 56};
 	SDL_Rect transform3 = {0, 700, 105, 96};
 	SDL_Rect transform4 = {-10, 696, 310, 120};
