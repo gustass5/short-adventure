@@ -52,9 +52,11 @@ void Player::render() {
 		this->runAnimation.render(this->getTransform(), this->lastFlipState);
 	}
 
-	UIManager::RenderPlayerHealth(this->renderer, this->health);
-
 	this->weapon.render(this->transform.x + (this->lastFlipState == SDL_FLIP_NONE ? 25 : -50), this->transform.y - 10, this->lastFlipState);
+
+	this->inventory.render(this->renderer);
+
+	UIManager::RenderPlayerHealth(this->renderer, this->health);
 };
 
 void Player::takeDamage(int damage) {
@@ -89,4 +91,8 @@ void Player::addHealth(int health) {
 	if (this->health > this->maxHealth) {
 		this->health = this->maxHealth;
 	}
+};
+
+Inventory& Player::getInventory() {
+	return this->inventory;
 };

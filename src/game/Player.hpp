@@ -4,6 +4,7 @@
 #include "../utils/TextureManager.hpp"
 #include "Animation.hpp"
 #include "GameObject.hpp"
+#include "Inventory.hpp"
 #include "Scene.hpp"
 #include "Weapon.hpp"
 #include <SDL2/SDL_image.h>
@@ -39,6 +40,7 @@ class Player : public GameObject {
 	int health;
 	void die();
 	void attack(Uint32 currentTicks, Scene& scene);
+	Inventory inventory;
 
   public:
 	Player(SDL_Renderer* renderer, std::string spritePath, int x, int y, int w, int h);
@@ -48,4 +50,5 @@ class Player : public GameObject {
 	void takeDamage(int damage);
 	int getHealth();
 	void addHealth(int health);
+	Inventory& getInventory();
 };

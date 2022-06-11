@@ -35,6 +35,7 @@
                 "${workspaceFolder}/src/game/Animation.cpp",
                 "${workspaceFolder}/src/ui/UIManager.cpp",
                 "${workspaceFolder}/src/game/Weapon.cpp",
+                "${workspaceFolder}/src/game/Inventory.cpp",
                 "-o",
                 "${workspaceFolder}/build/main",
                 "`",
