@@ -10,6 +10,9 @@ class InputManager {
 	bool isDownKeyPressed = false;
 	bool isLeftKeyPressed = false;
 	bool isRightKeyPressed = false;
+	bool isInventoryItem1Pressed = false;
+	bool isInventoryItem2Pressed = false;
+	bool isInventoryItem3Pressed = false;
 	// [SUMMARY]: Pressed means it is being hold, down means it is pressed for this single frame
 	bool isLeftClickPressed = false;
 	bool isLeftClickDown = false;
@@ -30,4 +33,7 @@ class InputManager {
 	static bool IsRightKeyPressed();
 	static bool IsLeftClickPressed();
 	static bool IsLeftClickDown();
+	static bool IsInventoryItem1Pressed();
+	static bool IsInventoryItem2Pressed();
+	static bool IsInventoryItem3Pressed();
 };

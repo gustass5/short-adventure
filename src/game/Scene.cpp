@@ -64,7 +64,6 @@ void Scene::load(std::string path) {
 		level >> interactableType;
 
 		SDL_Texture* interactableSprite = TextureManager::LoadTexture(this->screen, ("../assets/interactables/" + interactableType + "/" + interactableType + "_anim_0.png").c_str());
-
 		this->interactableSprites.insert({interactableType, interactableSprite});
 	}
 
@@ -72,12 +71,12 @@ void Scene::load(std::string path) {
 		PotionInteractable::PotionType potionType = PotionInteractable::PotionType::HEALTH;
 		std::string type, levelName, signText;
 		// [SUMMARY]: px, ph - coordinates for player, in case when interactable is a sign
-		int x, y, w, h, px = 0, py = 0;
+		int x, y, w, h, px = 0, py = 0, modifier = 0;
 		level >> type >> x >> y >> w >> h;
 
-		if (type == "Potion_Health_1" || type == "Potion_Speed_1") {
+		if (type == "Potion_Health_0" || type == "Potion_Health_1" || type == "Potion_Speed_0" || type == "Potion_Speed_1") {
 			int potionTypeInt;
-			level >> potionTypeInt;
+			level >> potionTypeInt >> modifier;
 			potionType = (PotionInteractable::PotionType)potionTypeInt;
 		}
 
@@ -85,7 +84,7 @@ void Scene::load(std::string path) {
 			level >> levelName >> px >> py >> signText;
 		}
 
-		this->interactables.push_back(createInteractable(type, levelName, potionType, signText, this->player, x, y, w, h, px, py));
+		this->interactables.push_back(createInteractable(type, levelName, potionType, modifier, signText, this->player, x, y, w, h, px, py));
 	}
 
 	level >> enemyTypesCount;
@@ -166,7 +165,7 @@ void Scene::render() {
 	}
 }
 
-std::unique_ptr<Interactable> Scene::createInteractable(std::string type, std::string levelName, PotionInteractable::PotionType potionType, std::string signText, Player* player, int x, int y, int w, int h, int px, int py) {
+std::unique_ptr<Interactable> Scene::createInteractable(std::string type, std::string levelName, PotionInteractable::PotionType potionType, int modifier, std::string signText, Player* player, int x, int y, int w, int h, int px, int py) {
 	if (type == "Chest") {
 		return std::make_unique<ChestInteractable>(ChestInteractable(this->screen, this->interactableSprites[type], player, x, y, w, h));
 	}
@@ -183,8 +182,8 @@ std::unique_ptr<Interactable> Scene::createInteractable(std::string type, std::s
 		return std::make_unique<SignInteractable>(SignInteractable(this->screen, levelName, signText, this->interactableSprites[type], player, x, y, w, h, px, py));
 	}
 
-	if (type == "Potion_Health_1" || type == "Potion_Speed_1") {
-		return std::make_unique<PotionInteractable>(PotionInteractable(this->screen, this->interactableSprites[type], potionType, player, x, y, w, h));
+	if (type == "Potion_Health_0" || type == "Potion_Health_1" || type == "Potion_Speed_0" || type == "Potion_Speed_1") {
+		return std::make_unique<PotionInteractable>(PotionInteractable(this->screen, this->interactableSprites[type], "../assets/interactables/" + type + "/" + type + "_anim_0.png", potionType, modifier, player, x, y, w, h));
 	}
 
 	return std::make_unique<Interactable>(Interactable(this->screen, nullptr, 0, 0, 0, 0));

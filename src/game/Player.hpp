@@ -51,4 +51,5 @@ class Player : public GameObject {
 	int getHealth();
 	void addHealth(int health);
 	Inventory& getInventory();
+	void increaseSpeed(int speed);
 };

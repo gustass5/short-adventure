@@ -122,7 +122,7 @@ void UIManager::RenderHUDControls(SDL_Renderer* renderer) {
 	for (int i = 1; i <= 3; i++) {
 		SDL_Surface* temporarySurface = TTF_RenderText_Solid(UIManager::font, std::to_string(i).c_str(), color);
 		SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, temporarySurface);
-		SDL_Rect transform = {90 + 60 * i, 765, 5, 20};
+		SDL_Rect transform = {92 + 60 * i, 766, 5, 20};
 
 		SDL_RenderCopy(renderer, texture, NULL, &transform);
 		SDL_FreeSurface(temporarySurface);

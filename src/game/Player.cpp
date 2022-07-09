@@ -5,7 +5,8 @@ Player::Player(SDL_Renderer* renderer, std::string spritePath, int x, int y, int
 																							 GameObject(x, y, w, h),
 																							 weapon(renderer),
 																							 idleAnimation(renderer, "../assets/player/elf_m_idle_anim_f", 4, 10),
-																							 runAnimation(renderer, "../assets/player/elf_m_run_anim_f", 4, 10) {
+																							 runAnimation(renderer, "../assets/player/elf_m_run_anim_f", 4, 10),
+																							 inventory(renderer) {
 	this->sprite = TextureManager::LoadTexture(this->renderer, spritePath.c_str());
 	this->health = this->maxHealth;
 };
@@ -38,6 +39,8 @@ void Player::update(Scene& scene) {
 			this->attack(currentTicks, scene);
 		}
 	}
+
+	this->inventory.update(this);
 };
 
 void Player::render() {
@@ -55,6 +58,7 @@ void Player::render() {
 	this->weapon.render(this->transform.x + (this->lastFlipState == SDL_FLIP_NONE ? 25 : -50), this->transform.y - 10, this->lastFlipState);
 
 	UIManager::RenderHUD(this->renderer, this->weapon.getSprite());
+	this->inventory.render();
 	UIManager::RenderPlayerHealth(this->renderer, this->health);
 };
 
@@ -90,6 +94,10 @@ void Player::addHealth(int health) {
 	if (this->health > this->maxHealth) {
 		this->health = this->maxHealth;
 	}
+};
+
+void Player::increaseSpeed(int speed) {
+	this->speed += speed;
 };
 
 Inventory& Player::getInventory() {

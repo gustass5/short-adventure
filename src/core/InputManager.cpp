@@ -59,6 +59,18 @@ void InputManager::handleKeyPress(SDL_KeyboardEvent* event, bool isPressedDown) 
 	if (event->keysym.sym == SDLK_d) {
 		this->isRightKeyPressed = isPressedDown;
 	}
+
+	if (event->keysym.sym == SDLK_1) {
+		this->isInventoryItem1Pressed = isPressedDown;
+	}
+
+	if (event->keysym.sym == SDLK_2) {
+		this->isInventoryItem2Pressed = isPressedDown;
+	}
+
+	if (event->keysym.sym == SDLK_3) {
+		this->isInventoryItem3Pressed = isPressedDown;
+	}
 }
 
 void InputManager::ListenEvents() {
@@ -91,4 +103,16 @@ bool InputManager::IsLeftClickPressed() {
 
 bool InputManager::IsLeftClickDown() {
 	return getInstance().isLeftClickDown;
+};
+
+bool InputManager::IsInventoryItem1Pressed() {
+	return getInstance().isInventoryItem1Pressed;
+};
+
+bool InputManager::IsInventoryItem2Pressed() {
+	return getInstance().isInventoryItem2Pressed;
+};
+
+bool InputManager::IsInventoryItem3Pressed() {
+	return getInstance().isInventoryItem3Pressed;
 };
