@@ -7,6 +7,9 @@ CoinInteractable::~CoinInteractable() {}
 void CoinInteractable::update() {
 	if (!this->pickable.getIsPickedUp()) {
 		this->pickable.update(this, this->player);
+		if (this->pickable.getIsPickedUp()) {
+			this->player->getInventory().addGold(this->coinValue);
+		}
 	}
 }
 

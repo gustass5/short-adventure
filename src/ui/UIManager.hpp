@@ -16,6 +16,7 @@ class UIManager {
 	static SDL_Texture* hud;
 	static SDL_Texture* weaponHud;
 	static SDL_Texture* hudBackground;
+	static SDL_Texture* coinSprite;
 	static TTF_Font* font;
 	static void RenderHUDControls(SDL_Renderer* renderer);
 
@@ -26,6 +27,7 @@ class UIManager {
 	// [SUMMARY]: For spaces in text use `_`, it will get replaced with a space.
 	static void RenderField(SDL_Renderer* renderer, SDL_Color color, std::string text, int x, int y, int w, int h);
 	static void RenderPlayerHealth(SDL_Renderer* renderer, int health);
+	static void RenderPlayerGold(SDL_Renderer* renderer, int gold);
 	static void RenderEnemyHealth(SDL_Renderer* renderer, int health, int maxHealth, const SDL_Rect* enemyTransform);
 	static void RenderHUD(SDL_Renderer* renderer, SDL_Texture* currentWeaponSprite);
 };

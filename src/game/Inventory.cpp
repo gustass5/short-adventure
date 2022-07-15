@@ -14,7 +14,6 @@ int Inventory::getGold() {
 
 void Inventory::addGold(int goldValue) {
 	this->gold += goldValue;
-	printf("Gold added %i \n", this->gold);
 };
 
 bool Inventory::addItem(InventoryItem* item) {

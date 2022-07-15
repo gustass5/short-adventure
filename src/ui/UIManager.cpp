@@ -10,6 +10,7 @@ UIManager::UIManager(SDL_Renderer* renderer) {
 	UIManager::hud = TextureManager::LoadTexture(renderer, "../assets/ui/inventory/hud2.png");
 	UIManager::weaponHud = TextureManager::LoadTexture(renderer, "../assets/ui/inventory/weapon_hud.png");
 	UIManager::hudBackground = TextureManager::LoadTexture(renderer, "../assets/ui/field_bg3.png");
+	UIManager::coinSprite = TextureManager::LoadTexture(renderer, "../assets/ui/coin_sprite.png");
 	UIManager::font = TTF_OpenFont("../assets/ui/fonts/font.ttf", 48);
 }
 
@@ -87,6 +88,21 @@ void UIManager::RenderPlayerHealth(SDL_Renderer* renderer, int health) {
 	}
 }
 
+void UIManager::RenderPlayerGold(SDL_Renderer* renderer, int gold) {
+	SDL_Rect coinTransform = {8, 7, 16, 16};
+	SDL_RenderCopy(renderer, UIManager::coinSprite, NULL, &coinTransform);
+
+	SDL_Color color = {255, 215, 0};
+	SDL_Surface* temporarySurface = TTF_RenderText_Solid(UIManager::font, std::to_string(gold).c_str(), color);
+	SDL_Texture* goldAmountTexture = SDL_CreateTextureFromSurface(renderer, temporarySurface);
+
+	SDL_Rect goldAmountTransform = {40 + 6 * (gold < 10 ? 1 : 0), 2, 12 * (gold < 10 ? 1 : 2), 28};
+	SDL_RenderCopy(renderer, goldAmountTexture, NULL, &goldAmountTransform);
+
+	SDL_FreeSurface(temporarySurface);
+	SDL_DestroyTexture(goldAmountTexture);
+};
+
 void UIManager::RenderEnemyHealth(SDL_Renderer* renderer, int health, int maxHealth, const SDL_Rect* enemyTransform) {
 	SDL_Rect transform = {enemyTransform->x, enemyTransform->y - enemyTransform->h / 2, enemyTransform->w, 5};
 	SDL_Rect healthBarTransform = {transform.x, transform.y, transform.w * health / maxHealth, transform.h};
@@ -96,11 +112,13 @@ void UIManager::RenderEnemyHealth(SDL_Renderer* renderer, int health, int maxHea
 
 void UIManager::RenderHUD(SDL_Renderer* renderer, SDL_Texture* currentWeaponSprite) {
 	SDL_Rect hudBackgroundTransform = {-10, 696, 310, 120};
+	SDL_Rect coinBackgroundTransform = {-10, 0, 80, 30};
 	SDL_Rect weaponHudTransform = {0, 700, 105, 96};
 	SDL_Rect itemHudTransform = {110, 736, 180, 56};
 	SDL_Rect weaponTransform = {46, 730, 64, 64};
 
 	SDL_RenderCopy(renderer, UIManager::hudBackground, NULL, &hudBackgroundTransform);
+	SDL_RenderCopy(renderer, UIManager::hudBackground, NULL, &coinBackgroundTransform);
 	SDL_RenderCopyEx(renderer, UIManager::weaponHud, NULL, &weaponHudTransform, 0, NULL, SDL_FLIP_HORIZONTAL);
 	SDL_RenderCopy(renderer, UIManager::hud, NULL, &itemHudTransform);
 	SDL_RenderCopyEx(renderer, currentWeaponSprite, NULL, &weaponTransform, 30, NULL, SDL_FLIP_NONE);
@@ -139,4 +157,5 @@ SDL_Texture* UIManager::enemyHealthBar;
 SDL_Texture* UIManager::hud;
 SDL_Texture* UIManager::weaponHud;
 SDL_Texture* UIManager::hudBackground;
+SDL_Texture* UIManager::coinSprite;
 TTF_Font* UIManager::font;
