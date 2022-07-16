@@ -28,6 +28,17 @@ void Player::update(Scene& scene) {
 
 	if (normalized > 0) {
 		this->playerState = PlayerState::MOVE;
+
+		const Scene::MapBoundaries mapBoundaries = scene.getMapBoundaries();
+
+		if (transform.x <= mapBoundaries.startX && movementX == -1 || transform.x + transform.w >= mapBoundaries.endX && movementX == 1) {
+			movementX = 0;
+		}
+
+		if (transform.y <= mapBoundaries.startY && movementY == -1 || transform.y + transform.h >= mapBoundaries.endY && movementY == 1) {
+			movementY = 0;
+		}
+
 		this->move(movementX * this->speed / normalized * GLOBAL_DELTA_TIME, movementY * this->speed / normalized * GLOBAL_DELTA_TIME);
 	} else {
 		this->playerState = PlayerState::IDLE;

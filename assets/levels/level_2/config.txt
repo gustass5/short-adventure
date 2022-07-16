@@ -1,4 +1,6 @@
-forest.png 2 6 5
+forest.png 6 5
+
+0 100 1080 680
 
 4
 Chest

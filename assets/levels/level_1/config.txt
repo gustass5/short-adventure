@@ -1,4 +1,6 @@
-village.png 2 12 0
+village.png 12 0
+
+0 0 1080 800
 
 7
 Chest

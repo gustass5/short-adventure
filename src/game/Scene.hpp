@@ -18,6 +18,14 @@
 #include <vector>
 
 class Scene {
+  public:
+	struct MapBoundaries {
+		int startX;
+		int startY;
+		int endX;
+		int endY;
+	};
+
   private:
 	SDL_Renderer* screen;
 	SDL_Texture* backgroundImage;
@@ -28,6 +36,7 @@ class Scene {
 	std::map<std::string, SDL_Texture*> interactableSprites;
 	std::unique_ptr<Interactable> createInteractable(std::string type, std::string levelName, PotionInteractable::PotionType potionType, int modifier, std::string signText, Player* player, int x, int y, int w, int h, int px, int py);
 	Player* player;
+	MapBoundaries mapBoundaries;
 
   public:
 	Scene();
@@ -38,6 +47,7 @@ class Scene {
 	void unload();
 	void update();
 	void render();
+	const MapBoundaries& getMapBoundaries() const;
 	// [INFO]: Unique pointers cannot be copied and they free their memory themselves
 	std::vector<std::unique_ptr<Enemy>> enemies;
 	std::vector<std::unique_ptr<Interactable>> interactables;

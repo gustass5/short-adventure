@@ -1,4 +1,6 @@
-dungeon.png 2 4 5
+dungeon.png 4 5
+
+40 40 1040 800
 
 3
 Chest

@@ -1,4 +1,6 @@
-pass.png 2 5 12
+pass.png 5 12
+
+0 20 1080 750
 
 4
 Chest

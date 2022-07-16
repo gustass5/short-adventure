@@ -40,12 +40,7 @@ void Scene::load(std::string path) {
 		return;
 	}
 
-	int borderPointCount, interactableTypesCount, interactablesCount, enemyTypesCount, enemiesCount;
-
-	if (!(level >> borderPointCount) || borderPointCount > 20) {
-		printf("[ERROR]: BorderPointCount is invalid");
-		return;
-	}
+	int interactableTypesCount, interactablesCount, enemyTypesCount, enemiesCount;
 
 	if (!(level >> interactablesCount) || interactablesCount > 20) {
 		printf("[ERROR]: InteractablesCount is invalid");
@@ -56,6 +51,11 @@ void Scene::load(std::string path) {
 		printf("[ERROR]: EnemiesCount is invalid");
 		return;
 	}
+
+	int startX, startY, endX, endY;
+	level >> startX >> startY >> endX >> endY;
+
+	this->mapBoundaries = {startX, startY, endX, endY};
 
 	level >> interactableTypesCount;
 
@@ -187,4 +187,8 @@ std::unique_ptr<Interactable> Scene::createInteractable(std::string type, std::s
 	}
 
 	return std::make_unique<Interactable>(Interactable(this->screen, nullptr, 0, 0, 0, 0));
+};
+
+const Scene::MapBoundaries& Scene::getMapBoundaries() const {
+	return this->mapBoundaries;
 };

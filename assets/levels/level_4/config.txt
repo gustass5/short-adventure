@@ -1,4 +1,6 @@
-seashore.png 2 4 0
+seashore.png 4 0
+
+0 0 1080 560
 
 3
 Chest
