@@ -1,4 +1,4 @@
-seashore.png 4 0
+seashore.png  
 
 0 0 1080 560
 
@@ -7,6 +7,7 @@ Chest
 Coin
 Sign
 
+4
 Chest 500 250 32 32
 Coin 600 350 16 16
 Coin 700 350 16 16
@@ -14,3 +15,4 @@ Sign 560 100 32 32 level_1 468 770 The_Town|Press_to_enter|
 
 0
 
+0

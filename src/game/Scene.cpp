@@ -20,11 +20,16 @@ void Scene::load(std::string path) {
 	// Load level file, folder name is `level_` + levelNumber
 	// Each level folder contains its information, backgroundImage file and mandatory config.txt file
 	// Config structure:
-	// backgroundImage:string(Image must be a png and have .png extension!) n_of_border_points:int n_of_interactables:int n_of_enemies:int
-	// List border_points
-	// List interactables
-	// List enemies
-
+	// backgroundImage:string(Image must be a png and have .png extension!)
+	// Map boundaries: startX:int startY:int endX:int endY:int
+	// Number of interactible types:int
+	// List down the types in different line, type must match the folder name of the interactible in `interactibles` folder
+	// Number of interactibles:int
+	// List down interactibles, interactible type goes first, then write all data it needs separing it with a space
+	// Number of enemy types:int
+	// List down the types of enemies, separated with spaces write enemy type (must match corresponding folder), then walking animation name without number and extension, then running animation name same way
+	// Number of enemies:int
+	// List down separated with spaces: enemyType, then list all required data
 	std::ifstream level(path + "config.txt");
 
 	if (!level.is_open()) {
@@ -42,16 +47,6 @@ void Scene::load(std::string path) {
 
 	int interactableTypesCount, interactablesCount, enemyTypesCount, enemiesCount;
 
-	if (!(level >> interactablesCount) || interactablesCount > 20) {
-		printf("[ERROR]: InteractablesCount is invalid");
-		return;
-	}
-
-	if (!(level >> enemiesCount) || enemiesCount > 20) {
-		printf("[ERROR]: EnemiesCount is invalid");
-		return;
-	}
-
 	int startX, startY, endX, endY;
 	level >> startX >> startY >> endX >> endY;
 
@@ -65,6 +60,11 @@ void Scene::load(std::string path) {
 
 		SDL_Texture* interactableSprite = TextureManager::LoadTexture(this->screen, ("../assets/interactables/" + interactableType + "/" + interactableType + "_anim_0.png").c_str());
 		this->interactableSprites.insert({interactableType, interactableSprite});
+	}
+
+	if (!(level >> interactablesCount) || interactablesCount > 20) {
+		printf("[ERROR]: InteractablesCount is invalid");
+		return;
 	}
 
 	for (int i = 0; i < interactablesCount; i++) {
@@ -97,6 +97,11 @@ void Scene::load(std::string path) {
 
 		this->enemyIdleFrames.insert({enemyType, Animation::GetAnimationFrames(this->screen, path + idleSpriteName, 4)});
 		this->enemyRunFrames.insert({enemyType, Animation::GetAnimationFrames(this->screen, path + runSpriteName, 4)});
+	}
+
+	if (!(level >> enemiesCount) || enemiesCount > 20) {
+		printf("[ERROR]: EnemiesCount is invalid");
+		return;
 	}
 
 	for (int i = 0; i < enemiesCount; i++) {

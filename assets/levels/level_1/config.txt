@@ -1,4 +1,4 @@
-village.png 12 0
+village.png  
 
 0 0 1080 800
 
@@ -11,6 +11,7 @@ Potion_Health_1
 Potion_Speed_0
 Potion_Speed_1
 
+12
 Chest   500  250  32 32
 Coin    600  350  16 16
 Coin    700  350  16 16
@@ -26,4 +27,5 @@ Sign    560  0    32 32 level_5 440 770 Doungeon_Gates|Press_to_enter|
 
 0
 
+0
 

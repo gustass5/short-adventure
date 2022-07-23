@@ -1,4 +1,4 @@
-dungeon.png 4 5
+dungeon.png
 
 40 40 1040 800
 
@@ -7,6 +7,7 @@ Chest
 Coin
 Sign
 
+4
 Chest 500 250 32 32
 Coin 600 350 16 16
 Coin 700 350 16 16
@@ -17,6 +18,7 @@ Golem           Golem_Idle_ Golem_Walk_
 Berserker       big_demon_idle_anim_f big_demon_run_anim_f
 DungeonGuardian ForestGuardian_Idle_ ForestGuardian_walk_
 
+5
 Golem           150 650 100 74  100 120 200 50 5 500 1
 Golem           700 650 100 74  100 120 200 50 5 500 1
 Berserker       250 150 84  60  30  250 200 50 4 500 1

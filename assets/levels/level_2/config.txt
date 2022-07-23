@@ -1,4 +1,4 @@
-forest.png 6 5
+forest.png  
 
 0 100 1080 680
 
@@ -8,6 +8,7 @@ Coin
 Sign
 Health
 
+6
 Chest 500 250 32 32
 Coin  600 350 16 16
 Coin  700 350 16 16
@@ -19,6 +20,7 @@ Sign  980 300 32 32 level_1 0 320 The_Town|Press_to_enter|
 Ogre Ogre_Idle_anim_f Ogre_Run_anim_f
 ForestGuardian Ent_Idle_ Ent_Walk_
 
+5
 Ogre            600 350 60  60  30  140 200 50 2 500 0
 Ogre            400 350 60  60  30  140 200 50 2 500 0
 Ogre            300 150 60  60  30  140 200 50 2 500 0
