@@ -44,6 +44,14 @@
         "map": "cpp",
         "iomanip": "cpp",
         "functional": "cpp",
-        "iterator": "cpp"
+        "iterator": "cpp",
+        "chrono": "cpp",
+        "codecvt": "cpp",
+        "cstring": "cpp",
+        "forward_list": "cpp",
+        "filesystem": "cpp",
+        "numeric": "cpp",
+        "ratio": "cpp",
+        "valarray": "cpp"
     }
 }

@@ -11,6 +11,7 @@
 #include "Player.hpp"
 #include "SDL2/SDL.h"
 #include <SDL2/SDL_image.h>
+#include <algorithm>
 #include <fstream>
 #include <map>
 #include <memory>
@@ -37,6 +38,7 @@ class Scene {
 	std::unique_ptr<Interactable> createInteractable(std::string type, std::string levelName, PotionInteractable::PotionType potionType, int modifier, std::string signText, Player* player, int x, int y, int w, int h, int px, int py);
 	Player* player;
 	MapBoundaries mapBoundaries;
+	void clearCommentLines(std::ifstream* level);
 
   public:
 	Scene();

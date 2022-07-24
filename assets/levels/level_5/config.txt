@@ -1,26 +1,38 @@
+# Background image name with extention    
 dungeon.png
 
+# Map boundaries
+# startX startY endX endY
 40 40 1040 800
 
+# Number of interactible types
 3
+# List of interactible types
 Chest
 Coin
 Sign
 
+# Number of interactibles
 4
-Chest 500 250 32 32
-Coin 600 350 16 16
-Coin 700 350 16 16
-Sign 468 770 32 32 level_1 468 0 The_Town|Press_to_enter|
+# Type  x    y    w  h
+Chest   500  250  32 32
+Coin    600  350  16 16
+Coin    700  350  16 16
+# Type  x    y    w  h  nextLevel spawnX spawnY value
+Sign    468 770 32 32 level_1 468 0 The_Town|Press_to_enter|
 
+# Number of enemy types
 3
+# Type walk_animation run_animation
 Golem           Golem_Idle_ Golem_Walk_
 Berserker       big_demon_idle_anim_f big_demon_run_anim_f
 DungeonGuardian ForestGuardian_Idle_ ForestGuardian_walk_
 
+# Number of enemies
 5
-Golem           150 650 100 74  100 120 200 50 5 500 1
-Golem           700 650 100 74  100 120 200 50 5 500 1
-Berserker       250 150 84  60  30  250 200 50 4 500 1
-Berserker       850 150 84  60  30  250 200 50 4 500 1
-DungeonGuardian 500 100 160 120 200 200 200 50 4 500 0
+# Type          x   y   w   h   health ms  senseRadius attackRadius attackDamage timeBetweenAttacks isPAtrolling
+Golem           150 650 100 74  100    120 200         50           5            500                1
+Golem           700 650 100 74  100    120 200         50           5            500                1
+Berserker       250 150 84  60  30     250 200         50           4            500                1
+Berserker       850 150 84  60  30     250 200         50           4            500                1
+DungeonGuardian 500 100 160 120 200    200 200         50           4            500                0

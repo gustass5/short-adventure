@@ -1,18 +1,28 @@
+# Background image name with extention  
 seashore.png  
 
-0 0 1080 560
+# Map boundaries
+# startX startY endX endY
+  0      0      1080 560
 
+# Number of interactible types
 3
+# List of interactible types
 Chest
 Coin
 Sign
 
+# Number of interactibles
 4
-Chest 500 250 32 32
-Coin 600 350 16 16
-Coin 700 350 16 16
-Sign 560 100 32 32 level_1 468 770 The_Town|Press_to_enter|
+# Type  x   y   w  h
+Chest   500 250 32 32
+Coin    600 350 16 16
+Coin    700 350 16 16
+#Type x   y   w  h  nextLevel spawnX spawnY value
+Sign  560 100 32 32 level_1   468    770    The_Town|Press_to_enter|
 
+# Number of enemy types
 0
 
+# Number of enemies
 0

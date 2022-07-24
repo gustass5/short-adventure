@@ -1,34 +1,47 @@
+# Background image name with extention    
 pass.png
 
-0 20 1080 750
+# Map boundaries
+# startX startY endX endY
+  0      20     1080 750
 
+# Number of interactible types
 4
+# List of interactible types
 Chest
 Coin
 Sign
 Potion_Health_1
 
+# Number of interactibles
 5
+# Type  x   y   w  h
 Chest 500 250 32 32
 Coin  600 350 16 16
 Coin  700 350 16 16
+#Type x   y   w  h  nextLevel spawnX spawnY value
 Sign  0 320 32 32 level_1 1050 320 The_Town|Press_to_enter|
-Potion_Health_1  300  200  28 28 0 4
+# Type           x    y    w  h  type value
+Potion_Health_1  300  200  28 28 0    4
 
+# Number of enemy types
 2
+# Type walk_animation run_animation
 Troll   Troll_Idle_ Troll_Run_
 Bandit  GnollShaman_Idle_ GnollShaman_Walk_
 
+# Number of enemies
 12
-Troll   150 125 84  64  40  140 200 50 3 500 1
-Troll   900 600 84  64  40  140 200 50 3 500 1
-Bandit  805 115 60  60  20  260 200 50 2 500 0
-Bandit  825 65 60  60  20  260 300 50 2 500 0
-Bandit  875 65 60  60  20  260 300 50 2 500 0
-Bandit  895 105 60  60  20  260 300 50 2 500 0
-Bandit  860 125 60  60  20  260 300 50 2 500 0
-Bandit  350 610 60  60  20  260 300 50 2 500 0
-Bandit  370 560 60  60  20  260 300 50 2 500 0
-Bandit  420 560 60  60  20  260 300 50 2 500 0
-Bandit  440 600 60  60  20  260 300 50 2 500 0
-Bandit  405 620 60  60  20  260 300 50 2 500 0
+# Type  x   y   w   h   health ms  senseRadius attackRadius attackDamage timeBetweenAttacks isPAtrolling
+Troll   150 125 84  64  40     140 200         50           3            500                1
+Troll   900 600 84  64  40     140 200         50           3            500                1
+Bandit  805 115 60  60  20     260 200         50           2            500                0
+Bandit  825 65  60  60  20     260 300         50           2            500                0
+Bandit  875 65  60  60  20     260 300         50           2            500                0
+Bandit  895 105 60  60  20     260 300         50           2            500                0
+Bandit  860 125 60  60  20     260 300         50           2            500                0
+Bandit  350 610 60  60  20     260 300         50           2            500                0
+Bandit  370 560 60  60  20     260 300         50           2            500                0
+Bandit  420 560 60  60  20     260 300         50           2            500                0
+Bandit  440 600 60  60  20     260 300         50           2            500                0
+Bandit  405 620 60  60  20     260 300         50           2            500                0

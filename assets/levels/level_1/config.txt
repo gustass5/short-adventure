@@ -1,8 +1,13 @@
+# Background image name with extention           
 village.png  
 
-0 0 1080 800
+# Map boundaries
+# startX startY endX endY
+  0      0      1080 800
 
+# Number of interactible types
 7
+# List of interactible types
 Chest
 Coin
 Sign
@@ -11,21 +16,29 @@ Potion_Health_1
 Potion_Speed_0
 Potion_Speed_1
 
+# Number of interactibles
 12
+# Type  x    y    w  h
 Chest   500  250  32 32
 Coin    600  350  16 16
 Coin    700  350  16 16
-Potion_Health_0    900  175  28 28 0 2
-Potion_Health_1    900  375  28 28 0 4
-Potion_Speed_0     850  175  28 28 1 100
-Potion_Speed_1     850  375  28 28 1 250
-Potion_Health_1    800  375  28 28 0 4
-Sign    0    320  32 32 level_2 1050 320 Dundy_Forest|Press_to_enter|
-Sign    1038 320  32 32 level_3 0 320 Mountain_Pass|Press_to_enter|
-Sign    468  770  32 32 level_4 440 0 Seashore|Press_to_enter|
-Sign    560  0    32 32 level_5 440 770 Doungeon_Gates|Press_to_enter|
 
+# Type             x    y    w  h  type value
+Potion_Health_0    900  175  28 28 0    2
+Potion_Health_1    900  375  28 28 0    4
+Potion_Speed_0     850  175  28 28 1    100
+Potion_Speed_1     850  375  28 28 1    250
+Potion_Health_1    800  375  28 28 0    4
+
+# Type  x    y    w  h  nextLevel spawnX spawnY value
+Sign    0    320  32 32 level_2   1050   320    Dundy_Forest|Press_to_enter|
+Sign    1038 320  32 32 level_3   0      320    Mountain_Pass|Press_to_enter|
+Sign    468  770  32 32 level_4   440    0      Seashore|Press_to_enter|
+Sign    560  0    32 32 level_5   440    770    Doungeon_Gates|Press_to_enter|
+
+# Number of enemy types
 0
 
+# Number of enemies
 0
 
