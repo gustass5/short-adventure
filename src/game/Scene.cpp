@@ -38,7 +38,7 @@ void Scene::load(std::string path) {
 	}
 
 	std::string backgroundImage;
-	clearCommentLines(&level);
+	clearCommentLines(level);
 	level >> backgroundImage;
 
 	if (backgroundImage.empty() || backgroundImage.substr(backgroundImage.length() - 3, 3) != "png") {
@@ -50,23 +50,23 @@ void Scene::load(std::string path) {
 
 	int startX, startY, endX, endY;
 
-	clearCommentLines(&level);
+	clearCommentLines(level);
 	level >> startX >> startY >> endX >> endY;
 
 	this->mapBoundaries = {startX, startY, endX, endY};
-	clearCommentLines(&level);
+	clearCommentLines(level);
 	level >> interactableTypesCount;
 
 	for (int i = 0; i < interactableTypesCount; i++) {
 		std::string interactableType;
-		clearCommentLines(&level);
+		clearCommentLines(level);
 		level >> interactableType;
 
 		SDL_Texture* interactableSprite = TextureManager::LoadTexture(this->screen, ("../assets/interactables/" + interactableType + "/" + interactableType + "_anim_0.png").c_str());
 		this->interactableSprites.insert({interactableType, interactableSprite});
 	}
 
-	clearCommentLines(&level);
+	clearCommentLines(level);
 	if (!(level >> interactablesCount) || interactablesCount > 20) {
 		printf("[ERROR]: InteractablesCount is invalid");
 		return;
@@ -77,30 +77,30 @@ void Scene::load(std::string path) {
 		std::string type, levelName, signText;
 		// [SUMMARY]: px, ph - coordinates for player, in case when interactable is a sign
 		int x, y, w, h, px = 0, py = 0, modifier = 0;
-		clearCommentLines(&level);
+		clearCommentLines(level);
 		level >> type >> x >> y >> w >> h;
 
 		if (type == "Potion_Health_0" || type == "Potion_Health_1" || type == "Potion_Speed_0" || type == "Potion_Speed_1") {
 			int potionTypeInt;
-			clearCommentLines(&level);
+			clearCommentLines(level);
 			level >> potionTypeInt >> modifier;
 			potionType = (PotionInteractable::PotionType)potionTypeInt;
 		}
 
 		if (type == "Sign") {
-			clearCommentLines(&level);
+			clearCommentLines(level);
 			level >> levelName >> px >> py >> signText;
 		}
 
 		this->interactables.push_back(createInteractable(type, levelName, potionType, modifier, signText, this->player, x, y, w, h, px, py));
 	}
 
-	clearCommentLines(&level);
+	clearCommentLines(level);
 	level >> enemyTypesCount;
 
 	for (int i = 0; i < enemyTypesCount; i++) {
 		std::string enemyType, idleSpriteName, runSpriteName;
-		clearCommentLines(&level);
+		clearCommentLines(level);
 		level >> enemyType >> idleSpriteName >> runSpriteName;
 
 		std::string path = "../assets/enemies/" + enemyType + "/";
@@ -109,7 +109,7 @@ void Scene::load(std::string path) {
 		this->enemyRunFrames.insert({enemyType, Animation::GetAnimationFrames(this->screen, path + runSpriteName, 4)});
 	}
 
-	clearCommentLines(&level);
+	clearCommentLines(level);
 	if (!(level >> enemiesCount) || enemiesCount > 20) {
 		printf("[ERROR]: EnemiesCount is invalid");
 		return;
@@ -119,7 +119,7 @@ void Scene::load(std::string path) {
 		std::string type;
 		int x, y, w, h, health, movementSpeed, senseRadius, attackRadius, attackDamage, timeBetweenAttacks;
 		bool isPatrolling;
-		clearCommentLines(&level);
+		clearCommentLines(level);
 		level >> type >> x >> y >> w >> h >> health >> movementSpeed >> senseRadius >> attackRadius >> attackDamage >> timeBetweenAttacks >> isPatrolling;
 
 		this->enemies.push_back(std::make_unique<Enemy>(Enemy(this->screen, this->player, this->enemyIdleFrames[type], this->enemyRunFrames[type], x, y, w, h, health, movementSpeed, senseRadius, attackRadius, attackDamage, timeBetweenAttacks, isPatrolling)));
@@ -210,15 +210,15 @@ const Scene::MapBoundaries& Scene::getMapBoundaries() const {
 	return this->mapBoundaries;
 };
 
-void Scene::clearCommentLines(std::ifstream* level) {
+void Scene::clearCommentLines(std::ifstream& level) {
 	std::string currentLine;
 	std::streampos currentLinePosition;
 
 	do {
-		currentLinePosition = level->tellg();
-		std::getline(*level, currentLine);
+		currentLinePosition = level.tellg();
+		std::getline(level, currentLine);
 		currentLine.erase(remove(currentLine.begin(), currentLine.end(), ' '), currentLine.end());
 	} while (currentLine[0] == '#' || currentLine.length() == 0);
 
-	level->seekg(currentLinePosition);
+	level.seekg(currentLinePosition);
 }
