@@ -37,97 +37,23 @@ void Scene::load(std::string path) {
 		return;
 	}
 
-	std::string backgroundImage;
-	clearCommentLines(level);
-	level >> backgroundImage;
-
-	if (backgroundImage.empty() || backgroundImage.substr(backgroundImage.length() - 3, 3) != "png") {
-		printf("[ERROR]: Background image is invalid");
+	if (!readBackgroundImage(level, path)) {
 		return;
-	}
+	};
 
-	int interactableTypesCount, interactablesCount, enemyTypesCount, enemiesCount;
-
-	int startX, startY, endX, endY;
-
-	clearCommentLines(level);
-	level >> startX >> startY >> endX >> endY;
-
-	this->mapBoundaries = {startX, startY, endX, endY};
-	clearCommentLines(level);
-	level >> interactableTypesCount;
-
-	for (int i = 0; i < interactableTypesCount; i++) {
-		std::string interactableType;
-		clearCommentLines(level);
-		level >> interactableType;
-
-		SDL_Texture* interactableSprite = TextureManager::LoadTexture(this->screen, ("../assets/interactables/" + interactableType + "/" + interactableType + "_anim_0.png").c_str());
-		this->interactableSprites.insert({interactableType, interactableSprite});
-	}
-
-	clearCommentLines(level);
-	if (!(level >> interactablesCount) || interactablesCount > 20) {
-		printf("[ERROR]: InteractablesCount is invalid");
+	if (!readMapBoundaries(level)) {
 		return;
-	}
+	};
 
-	for (int i = 0; i < interactablesCount; i++) {
-		PotionInteractable::PotionType potionType = PotionInteractable::PotionType::HEALTH;
-		std::string type, levelName, signText;
-		// [SUMMARY]: px, ph - coordinates for player, in case when interactable is a sign
-		int x, y, w, h, px = 0, py = 0, modifier = 0;
-		clearCommentLines(level);
-		level >> type >> x >> y >> w >> h;
-
-		if (type == "Potion_Health_0" || type == "Potion_Health_1" || type == "Potion_Speed_0" || type == "Potion_Speed_1") {
-			int potionTypeInt;
-			clearCommentLines(level);
-			level >> potionTypeInt >> modifier;
-			potionType = (PotionInteractable::PotionType)potionTypeInt;
-		}
-
-		if (type == "Sign") {
-			clearCommentLines(level);
-			level >> levelName >> px >> py >> signText;
-		}
-
-		this->interactables.push_back(createInteractable(type, levelName, potionType, modifier, signText, this->player, x, y, w, h, px, py));
-	}
-
-	clearCommentLines(level);
-	level >> enemyTypesCount;
-
-	for (int i = 0; i < enemyTypesCount; i++) {
-		std::string enemyType, idleSpriteName, runSpriteName;
-		clearCommentLines(level);
-		level >> enemyType >> idleSpriteName >> runSpriteName;
-
-		std::string path = "../assets/enemies/" + enemyType + "/";
-
-		this->enemyIdleFrames.insert({enemyType, Animation::GetAnimationFrames(this->screen, path + idleSpriteName, 4)});
-		this->enemyRunFrames.insert({enemyType, Animation::GetAnimationFrames(this->screen, path + runSpriteName, 4)});
-	}
-
-	clearCommentLines(level);
-	if (!(level >> enemiesCount) || enemiesCount > 20) {
-		printf("[ERROR]: EnemiesCount is invalid");
+	if (!readInteractibles(level)) {
 		return;
-	}
+	};
 
-	for (int i = 0; i < enemiesCount; i++) {
-		std::string type;
-		int x, y, w, h, health, movementSpeed, senseRadius, attackRadius, attackDamage, timeBetweenAttacks;
-		bool isPatrolling;
-		clearCommentLines(level);
-		level >> type >> x >> y >> w >> h >> health >> movementSpeed >> senseRadius >> attackRadius >> attackDamage >> timeBetweenAttacks >> isPatrolling;
-
-		this->enemies.push_back(std::make_unique<Enemy>(Enemy(this->screen, this->player, this->enemyIdleFrames[type], this->enemyRunFrames[type], x, y, w, h, health, movementSpeed, senseRadius, attackRadius, attackDamage, timeBetweenAttacks, isPatrolling)));
-	}
+	if (!readEnemies(level)) {
+		return;
+	};
 
 	level.close();
-
-	this->backgroundImage = TextureManager::LoadTexture(this->screen, (path + backgroundImage).c_str());
 }
 
 void Scene::unload() {
@@ -222,3 +148,124 @@ void Scene::clearCommentLines(std::ifstream& level) {
 
 	level.seekg(currentLinePosition);
 }
+
+bool Scene::readBackgroundImage(std::ifstream& level, std::string path) {
+	std::string backgroundImage;
+	clearCommentLines(level);
+	level >> backgroundImage;
+
+	if (backgroundImage.empty() || backgroundImage.substr(backgroundImage.length() - 3, 3) != "png") {
+		printf("[ERROR]: Background image is invalid");
+		return false;
+	}
+
+	this->backgroundImage = TextureManager::LoadTexture(this->screen, (path + backgroundImage).c_str());
+	if (this->backgroundImage == nullptr) {
+		printf("[ERROR]: Background image is null");
+		return false;
+	}
+
+	return true;
+};
+
+bool Scene::readMapBoundaries(std::ifstream& level) {
+	clearCommentLines(level);
+	int startX, startY, endX, endY;
+
+	level >> startX >> startY >> endX >> endY;
+
+	if (std::isnan(startX) || std::isnan(startY) || std::isnan(endX) || std::isnan(endY)) {
+		printf("[ERROR]: Map boundaries are invalid");
+		return false;
+	}
+
+	this->mapBoundaries = {startX, startY, endX, endY};
+
+	return true;
+};
+
+bool Scene::readInteractibles(std::ifstream& level) {
+	clearCommentLines(level);
+	int interactableTypesCount, interactablesCount;
+	if (!(level >> interactableTypesCount)) {
+		printf("[ERROR]: Interactible type count is invalid");
+		return false;
+	}
+
+	for (int i = 0; i < interactableTypesCount; i++) {
+		std::string interactableType;
+		clearCommentLines(level);
+		level >> interactableType;
+
+		SDL_Texture* interactableSprite = TextureManager::LoadTexture(this->screen, ("../assets/interactables/" + interactableType + "/" + interactableType + "_anim_0.png").c_str());
+		this->interactableSprites.insert({interactableType, interactableSprite});
+	}
+
+	clearCommentLines(level);
+	if (!(level >> interactablesCount)) {
+		printf("[ERROR]: InteractablesCount is invalid");
+		return false;
+	}
+
+	for (int i = 0; i < interactablesCount; i++) {
+		PotionInteractable::PotionType potionType = PotionInteractable::PotionType::HEALTH;
+		std::string type, levelName, signText;
+		// [SUMMARY]: px, ph - coordinates for player, in case when interactable is a sign
+		int x, y, w, h, px = 0, py = 0, modifier = 0;
+		clearCommentLines(level);
+		level >> type >> x >> y >> w >> h;
+
+		if (type == "Potion_Health_0" || type == "Potion_Health_1" || type == "Potion_Speed_0" || type == "Potion_Speed_1") {
+			int potionTypeInt;
+			level >> potionTypeInt >> modifier;
+			potionType = (PotionInteractable::PotionType)potionTypeInt;
+		}
+
+		if (type == "Sign") {
+			level >> levelName >> px >> py >> signText;
+		}
+
+		this->interactables.push_back(createInteractable(type, levelName, potionType, modifier, signText, this->player, x, y, w, h, px, py));
+	}
+
+	return true;
+};
+
+bool Scene::readEnemies(std::ifstream& level) {
+	int enemyTypesCount, enemiesCount;
+
+	clearCommentLines(level);
+	if (!(level >> enemyTypesCount)) {
+		printf("[ERROR]: Enemy type count is invalid");
+		return false;
+	}
+
+	for (int i = 0; i < enemyTypesCount; i++) {
+		std::string enemyType, idleSpriteName, runSpriteName;
+		clearCommentLines(level);
+		level >> enemyType >> idleSpriteName >> runSpriteName;
+
+		std::string path = "../assets/enemies/" + enemyType + "/";
+
+		this->enemyIdleFrames.insert({enemyType, Animation::GetAnimationFrames(this->screen, path + idleSpriteName, 4)});
+		this->enemyRunFrames.insert({enemyType, Animation::GetAnimationFrames(this->screen, path + runSpriteName, 4)});
+	}
+
+	clearCommentLines(level);
+	if (!(level >> enemiesCount)) {
+		printf("[ERROR]: EnemiesCount is invalid");
+		return false;
+	}
+
+	for (int i = 0; i < enemiesCount; i++) {
+		std::string type;
+		int x, y, w, h, health, movementSpeed, senseRadius, attackRadius, attackDamage, timeBetweenAttacks;
+		bool isPatrolling;
+		clearCommentLines(level);
+		level >> type >> x >> y >> w >> h >> health >> movementSpeed >> senseRadius >> attackRadius >> attackDamage >> timeBetweenAttacks >> isPatrolling;
+
+		this->enemies.push_back(std::make_unique<Enemy>(Enemy(this->screen, this->player, this->enemyIdleFrames[type], this->enemyRunFrames[type], x, y, w, h, health, movementSpeed, senseRadius, attackRadius, attackDamage, timeBetweenAttacks, isPatrolling)));
+	}
+
+	return true;
+};

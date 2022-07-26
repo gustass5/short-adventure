@@ -39,6 +39,10 @@ class Scene {
 	Player* player;
 	MapBoundaries mapBoundaries;
 	void clearCommentLines(std::ifstream& level);
+	bool readBackgroundImage(std::ifstream& level, std::string path);
+	bool readMapBoundaries(std::ifstream& level);
+	bool readInteractibles(std::ifstream& level);
+	bool readEnemies(std::ifstream& level);
 
   public:
 	Scene();
