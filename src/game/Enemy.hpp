@@ -3,10 +3,12 @@
 #include "../ui/UIManager.hpp"
 #include "Animation.hpp"
 #include "GameObject.hpp"
+#include <stdlib.h>
 
 class EnemyState;
 class EnemyIdleState;
 class Player;
+class Scene;
 
 class Enemy : public GameObject {
   protected:
@@ -20,6 +22,9 @@ class Enemy : public GameObject {
 	int health;
 	int maxHealth;
 	bool isDead = false;
+	void die(Scene& scene);
+	// [SUMMARY]: Probablity out of 10
+	int coinSpawnProbability = 9;
 
   public:
 	Enemy(SDL_Renderer* renderer,
@@ -41,5 +46,5 @@ class Enemy : public GameObject {
 	Animation idleAnimation;
 	Animation runAnimation;
 	SDL_RendererFlip lastFlipState = SDL_FLIP_NONE;
-	void takeDamage(int damage);
+	void takeDamage(int damage, Scene& scene);
 };

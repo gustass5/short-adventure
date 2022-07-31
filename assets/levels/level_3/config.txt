@@ -6,12 +6,13 @@ pass.png
   0      20     1080 750
 
 # Number of interactible types
-4
+5
 # List of interactible types
 Chest
 Coin
 Sign
 Potion_Health_1
+Health
 
 # Number of interactibles
 5

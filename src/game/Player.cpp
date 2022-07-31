@@ -92,7 +92,7 @@ void Player::attack(Uint32 currentTicks, Scene& scene) {
 
 	for (int i = 0; i < scene.enemies.size(); i++) {
 		if (GameObject::IsColliding(scene.enemies[i]->getTransform(), this->weapon.getTransform())) {
-			scene.enemies[i]->takeDamage(this->weapon.attackDamage);
+			scene.enemies[i]->takeDamage(this->weapon.attackDamage, scene);
 		}
 	}
 }

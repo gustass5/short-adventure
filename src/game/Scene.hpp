@@ -35,7 +35,6 @@ class Scene {
 	std::map<std::string, std::vector<SDL_Texture*>> enemyIdleFrames;
 	std::map<std::string, std::vector<SDL_Texture*>> enemyRunFrames;
 	std::map<std::string, SDL_Texture*> interactableSprites;
-	std::unique_ptr<Interactable> createInteractable(std::string type, std::string levelName, PotionInteractable::PotionType potionType, int modifier, std::string signText, Player* player, int x, int y, int w, int h, int px, int py);
 	Player* player;
 	MapBoundaries mapBoundaries;
 	void clearCommentLines(std::ifstream& level);
@@ -57,4 +56,12 @@ class Scene {
 	// [INFO]: Unique pointers cannot be copied and they free their memory themselves
 	std::vector<std::unique_ptr<Enemy>> enemies;
 	std::vector<std::unique_ptr<Interactable>> interactables;
+	// [NOTE]: By allowing creating and adding interactibles outside the Scene, you need to make sure that sprite of the interactible is provided
+	// in config file. This is just plain bad approach that needs to be reworked.
+	void addInteractible(std::unique_ptr<Interactable> interactible);
+	std::unique_ptr<Interactable> createChestInteractible(std::string type, int x, int y, int w, int h);
+	std::unique_ptr<Interactable> createHealthInteractible(std::string type, int x, int y, int w, int h);
+	std::unique_ptr<Interactable> createCoinInteractible(std::string type, int x, int y, int w, int h);
+	std::unique_ptr<Interactable> createSignInteractible(std::string type, std::string levelName, std::string signText, int px, int py, int x, int y, int w, int h);
+	std::unique_ptr<Interactable> createPotionInteractible(std::string type, PotionInteractable::PotionType potionType, int modifier, int x, int y, int w, int h);
 };

@@ -6,11 +6,12 @@ dungeon.png
 40 40 1040 800
 
 # Number of interactible types
-3
+4
 # List of interactible types
 Chest
 Coin
 Sign
+Health
 
 # Number of interactibles
 4

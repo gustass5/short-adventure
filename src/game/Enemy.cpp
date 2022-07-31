@@ -2,6 +2,7 @@
 #include "../enemy_states/EnemyIdleState.hpp"
 #include "../enemy_states/EnemyState.hpp"
 #include "Player.hpp"
+#include "Scene.hpp"
 
 Enemy::Enemy(
 	SDL_Renderer* renderer,
@@ -68,10 +69,23 @@ int Enemy::getMovementSpeed() {
 	return this->movementSpeed;
 }
 
-void Enemy::takeDamage(int damage) {
+void Enemy::takeDamage(int damage, Scene& scene) {
+	if (this->isDead) {
+		return;
+	}
+
 	this->health -= damage;
 
 	if (this->health <= 0) {
-		this->isDead = true;
+		die(scene);
+	}
+};
+
+void Enemy::die(Scene& scene) {
+	this->isDead = true;
+	if (rand() % 10 < this->coinSpawnProbability) {
+		scene.addInteractible(scene.createCoinInteractible("Coin", this->getTransform()->x, this->getTransform()->y, 16, 16));
+	} else {
+		scene.addInteractible(scene.createHealthInteractible("Health", this->getTransform()->x, this->getTransform()->y, 16, 16));
 	}
 };
