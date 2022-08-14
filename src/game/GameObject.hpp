@@ -1,6 +1,8 @@
 #pragma once
 #include <SDL2/SDL.h>
 
+// [NOTE]: Note for the future, I should try to use class like this as a component and not a base class.
+
 // [INFO]: For a class to be considered abstract it must have at least one pure virtual function,
 // if none are actually needed, destructor can be made into pure virtual
 class GameObject {

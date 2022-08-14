@@ -53,6 +53,10 @@ void Scene::load(std::string path) {
 		return;
 	};
 
+	if (!readNpcs(level)) {
+		return;
+	};
+
 	level.close();
 }
 
@@ -62,6 +66,7 @@ void Scene::unload() {
 	// [INFO]: Enemies and Interactables are unique_pointers so they should free their memeory automatically
 	this->enemies.clear();
 	this->interactables.clear();
+	this->npcs.clear();
 
 	for (auto frames : this->enemyIdleFrames) {
 		for (auto frame : frames.second) {
@@ -77,6 +82,13 @@ void Scene::unload() {
 	}
 
 	this->enemyRunFrames.clear();
+	for (auto frames : this->npcIdleFrames) {
+		for (auto frame : frames.second) {
+			TextureManager::UnloadTexture(frame);
+		}
+	}
+
+	this->npcIdleFrames.clear();
 
 	for (auto sprite : this->interactableSprites) {
 		TextureManager::UnloadTexture(sprite.second);
@@ -101,6 +113,10 @@ void Scene::render() {
 
 	for (int i = 0; i < this->enemies.size(); i++) {
 		this->enemies[i]->render();
+	}
+
+	for (int i = 0; i < this->npcs.size(); i++) {
+		this->npcs[i]->render();
 	}
 
 	for (int i = 0; i < this->interactables.size(); i++) {
@@ -262,6 +278,47 @@ bool Scene::readEnemies(std::ifstream& level) {
 		level >> type >> x >> y >> w >> h >> health >> movementSpeed >> senseRadius >> attackRadius >> attackDamage >> timeBetweenAttacks >> isPatrolling;
 
 		this->enemies.push_back(std::make_unique<Enemy>(Enemy(this->screen, this->player, this->enemyIdleFrames[type], this->enemyRunFrames[type], x, y, w, h, health, movementSpeed, senseRadius, attackRadius, attackDamage, timeBetweenAttacks, isPatrolling)));
+	}
+
+	return true;
+};
+
+bool Scene::readNpcs(std::ifstream& level) {
+	int npcCount;
+	clearCommentLines(level);
+	if (!(level >> npcCount)) {
+		printf("[ERROR]: Npc count is invalid");
+		return false;
+	}
+
+	for (int i = 0; i < npcCount; i++) {
+		std::string type, idleSpriteName;
+		int x, y, w, h;
+
+		clearCommentLines(level);
+		level >> type >> idleSpriteName >> x >> y >> w >> h;
+
+		std::string path = "../assets/npcs/" + type + "/";
+
+		this->npcIdleFrames.insert({type, Animation::GetAnimationFrames(this->screen, path + idleSpriteName, 4)});
+
+		if (type == "Elder") {
+			this->npcs.push_back(std::make_unique<ElderNpc>(ElderNpc(this->screen, this->npcIdleFrames[type], x, y, w, h)));
+			continue;
+		}
+
+		if (type == "Fisherman") {
+			this->npcs.push_back(std::make_unique<FishermanNpc>(FishermanNpc(this->screen, this->npcIdleFrames[type], x, y, w, h)));
+			continue;
+		}
+
+		if (type == "Maiden") {
+			this->npcs.push_back(std::make_unique<MaidenNpc>(MaidenNpc(this->screen, this->npcIdleFrames[type], x, y, w, h)));
+			continue;
+		}
+
+		printf("[ERROR]: Npc type was not found %s \n", type.c_str());
+		return false;
 	}
 
 	return true;

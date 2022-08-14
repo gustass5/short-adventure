@@ -42,3 +42,10 @@ Sign    560  0    32 32 level_5   440    770    Doungeon_Gates|Press_to_enter|
 # Number of enemies
 0
 
+# Number of NPC's
+3
+# Type    spriteIdleName  x   y   w  h
+Elder     Elder_anim_     900 325 28 46
+Maiden    Maiden_anim_    950 325 28 45
+Fisherman Fisherman_anim_ 1000 325 54 54
+

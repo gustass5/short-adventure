@@ -7,6 +7,10 @@
 #include "../interactables/PotionInteractable.hpp"
 #include "../interactables/SignInteractable.hpp"
 #include "../utils/TextureManager.hpp"
+#include "./npc/ElderNpc.hpp"
+#include "./npc/FishermanNpc.hpp"
+#include "./npc/MaidenNpc.hpp"
+#include "./npc/Npc.hpp"
 #include "Enemy.hpp"
 #include "Player.hpp"
 #include "SDL2/SDL.h"
@@ -34,6 +38,7 @@ class Scene {
 	// [SUMMARY]: Each map contains vectors with frames for specific action. Key is the enemy identifier.
 	std::map<std::string, std::vector<SDL_Texture*>> enemyIdleFrames;
 	std::map<std::string, std::vector<SDL_Texture*>> enemyRunFrames;
+	std::map<std::string, std::vector<SDL_Texture*>> npcIdleFrames;
 	std::map<std::string, SDL_Texture*> interactableSprites;
 	Player* player;
 	MapBoundaries mapBoundaries;
@@ -42,6 +47,7 @@ class Scene {
 	bool readMapBoundaries(std::ifstream& level);
 	bool readInteractibles(std::ifstream& level);
 	bool readEnemies(std::ifstream& level);
+	bool readNpcs(std::ifstream& level);
 
   public:
 	Scene();
@@ -56,6 +62,7 @@ class Scene {
 	// [INFO]: Unique pointers cannot be copied and they free their memory themselves
 	std::vector<std::unique_ptr<Enemy>> enemies;
 	std::vector<std::unique_ptr<Interactable>> interactables;
+	std::vector<std::unique_ptr<Npc>> npcs;
 	// [NOTE]: By allowing creating and adding interactibles outside the Scene, you need to make sure that sprite of the interactible is provided
 	// in config file. This is just plain bad approach that needs to be reworked.
 	void addInteractible(std::unique_ptr<Interactable> interactible);

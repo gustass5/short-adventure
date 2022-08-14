@@ -26,3 +26,6 @@ Sign  560 100 32 32 level_1   468    770    The_Town|Press_to_enter|
 
 # Number of enemies
 0
+
+# Number of NPC's
+0
