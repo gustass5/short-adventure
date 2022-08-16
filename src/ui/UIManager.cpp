@@ -1,7 +1,8 @@
 #include "UIManager.hpp"
 
 UIManager::UIManager(SDL_Renderer* renderer) {
-	UIManager::fieldBackground = TextureManager::LoadTexture(renderer, "../assets/ui/field_bg2.png");
+	UIManager::signBackground = TextureManager::LoadTexture(renderer, "../assets/ui/field_bg2.png");
+	UIManager::dialogBackground = TextureManager::LoadTexture(renderer, "../assets/ui/field_bg4.png");
 	UIManager::healthImages[0] = TextureManager::LoadTexture(renderer, "../assets/ui/health/health_empty.png");
 	UIManager::healthImages[1] = TextureManager::LoadTexture(renderer, "../assets/ui/health/health_half.png");
 	UIManager::healthImages[2] = TextureManager::LoadTexture(renderer, "../assets/ui/health/health_full.png");
@@ -12,10 +13,11 @@ UIManager::UIManager(SDL_Renderer* renderer) {
 	UIManager::hudBackground = TextureManager::LoadTexture(renderer, "../assets/ui/field_bg3.png");
 	UIManager::coinSprite = TextureManager::LoadTexture(renderer, "../assets/ui/coin_sprite.png");
 	UIManager::font = TTF_OpenFont("../assets/ui/fonts/font.ttf", 48);
+	UIManager::fontDialog = TTF_OpenFont("../assets/ui/fonts/font3.ttf", 100);
 }
 
 UIManager::~UIManager() {
-	TextureManager::UnloadTexture(UIManager::fieldBackground);
+	TextureManager::UnloadTexture(UIManager::signBackground);
 	TextureManager::UnloadTexture(UIManager::healthImages[0]);
 	TextureManager::UnloadTexture(UIManager::healthImages[1]);
 	TextureManager::UnloadTexture(UIManager::healthImages[2]);
@@ -26,32 +28,46 @@ UIManager::~UIManager() {
 	UIManager::font = NULL;
 }
 
-void UIManager::RenderField(SDL_Renderer* renderer, SDL_Color color, std::string text, int x, int y, int w, int h) {
+void UIManager::RenderField(SDL_Renderer* renderer, SDL_Color color, std::string text, int x, int y, int wField, int hField, int wText, int hText, UIFieldType fieldType, bool wrapText) {
 	// [WARNING][NOTE]: Ideally, texture loading should happen once and not every frame.
 	std::vector<std::string> textLines;
 
-	int lastWordStartIndex = 0;
-
 	std::replace(text.begin(), text.end(), '_', ' ');
 
-	for (int i = 0; i < text.length(); i++) {
-		if (text[i] == '|') {
-			textLines.push_back(text.substr(lastWordStartIndex, i - lastWordStartIndex));
-			lastWordStartIndex = i + 1;
+	int lastWordStartIndex = 0;
+
+	if (wrapText) {
+
+		int letterCountInLine = std::floor(wText / UIManager::CHAR_WIDTH);
+		int amount = std::floor(text.length() / letterCountInLine);
+		for (int i = 1; i <= amount + 1; i++) {
+			std::string slice = text.substr(lastWordStartIndex, letterCountInLine);
+			textLines.push_back(slice);
+			int endOfTheLine = i * letterCountInLine < text.length() ? i * letterCountInLine : text.length();
+			lastWordStartIndex = endOfTheLine;
+		}
+
+	} else {
+
+		for (int i = 0; i < text.length(); i++) {
+			if (text[i] == '|') {
+				textLines.push_back(text.substr(lastWordStartIndex, i - lastWordStartIndex));
+				lastWordStartIndex = i + 1;
+			}
 		}
 	}
 
 	SDL_Surface* temporarySurface;
 	SDL_Texture* textTextures[textLines.size()];
 
-	SDL_Rect fieldTransform = {x, y, w, h};
+	SDL_Rect fieldTransform = {x, y, wField, hField};
 	SDL_Rect textTransforms[textLines.size()];
 
 	for (int i = 0; i < textLines.size(); i++) {
-		temporarySurface = TTF_RenderText_Solid(UIManager::font, textLines[i].c_str(), color);
+		temporarySurface = TTF_RenderText_Blended(fieldType == UIManager::UIFieldType::DIALOG ? UIManager::fontDialog : UIManager::font, textLines[i].c_str(), color);
 		textTextures[i] = SDL_CreateTextureFromSurface(renderer, temporarySurface);
 
-		SDL_Rect transform = {x + 10, y + (int)(h / textLines.size()) * i, w - 20, (int)(h / textLines.size())};
+		SDL_Rect transform = {x + 10, y + (int)(hText / textLines.size()) * i, wrapText ? CHAR_WIDTH * textLines[i].length() : wText - 20, (int)(hText / textLines.size())};
 
 		textTransforms[i] = transform;
 
@@ -59,7 +75,7 @@ void UIManager::RenderField(SDL_Renderer* renderer, SDL_Color color, std::string
 		SDL_FreeSurface(temporarySurface);
 	}
 
-	SDL_RenderCopy(renderer, UIManager::fieldBackground, NULL, &fieldTransform);
+	SDL_RenderCopy(renderer, fieldType == UIManager::UIFieldType::DIALOG ? UIManager::dialogBackground : UIManager::signBackground, NULL, &fieldTransform);
 	for (int i = 0; i < textLines.size(); i++) {
 		SDL_RenderCopy(renderer, textTextures[i], NULL, &textTransforms[i]);
 	}
@@ -150,7 +166,8 @@ void UIManager::RenderHUDControls(SDL_Renderer* renderer) {
 
 // [INFO]: Static variables of class needs to be initialized somewhere, it should be done in cpp file instead of hpp,
 // because then it would create multiple variables when file gets included
-SDL_Texture* UIManager::fieldBackground;
+SDL_Texture* UIManager::signBackground;
+SDL_Texture* UIManager::dialogBackground;
 SDL_Texture* UIManager::healthImages[3];
 SDL_Texture* UIManager::enemyHealthBarBackground;
 SDL_Texture* UIManager::enemyHealthBar;
@@ -159,3 +176,4 @@ SDL_Texture* UIManager::weaponHud;
 SDL_Texture* UIManager::hudBackground;
 SDL_Texture* UIManager::coinSprite;
 TTF_Font* UIManager::font;
+TTF_Font* UIManager::fontDialog;
