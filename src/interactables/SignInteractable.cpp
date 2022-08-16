@@ -30,6 +30,6 @@ void SignInteractable::render() {
 	SDL_RenderCopy(this->renderer, this->sprite, NULL, this->getTransform());
 	if (this->interactable.getIsInRange()) {
 		SDL_Color color = {40, 40, 40};
-		UIManager::RenderField(this->renderer, color, this->text, this->getTransform()->x, this->getTransform()->y - 50, 100, 50);
+		UIManager::RenderField(this->renderer, color, this->text, this->getTransform()->x, this->getTransform()->y - 50, 100, 50, 100, 50, UIManager::UIFieldType::SIGN, false);
 	}
 }

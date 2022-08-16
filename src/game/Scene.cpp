@@ -103,6 +103,10 @@ void Scene::update() {
 		this->enemies[i]->update();
 	}
 
+	for (int i = 0; i < this->npcs.size(); i++) {
+		this->npcs[i]->update();
+	}
+
 	for (int i = 0; i < this->interactables.size(); i++) {
 		this->interactables[i]->update();
 	}
