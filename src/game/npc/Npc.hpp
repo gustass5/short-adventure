@@ -10,8 +10,11 @@ class Npc : public GameObject {
 	SDL_Renderer* renderer;
 	Animation idleAnimation;
 	virtual void interact() = 0;
+	bool showDialog = true;
+	void renderDialog();
 
   public:
 	virtual ~Npc() = 0;
 	void render();
+	virtual void render();
 };
