@@ -1,12 +1,13 @@
 #pragma once
 
 #include "../../core/InputManager.hpp"
-#include "../../game/Player.hpp"
 #include "../../ui/UIManager.hpp"
 #include "../../utils/TextureManager.hpp"
 #include "../Animation.hpp"
 #include "../GameObject.hpp"
 #include <vector>
+
+class Player;
 
 class Npc : public GameObject {
   protected:
