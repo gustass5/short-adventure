@@ -4,7 +4,6 @@
 #include "../../game/GameObject.hpp"
 
 class Player;
-class Interactable;
 
 class InteractableComponent {
   private:
@@ -14,7 +13,7 @@ class InteractableComponent {
   public:
 	InteractableComponent();
 	~InteractableComponent();
-	void update(Interactable* interactable, Player* player);
+	void update(GameObject* interactable, Player* player);
 	bool getIsInRange();
 	bool getIsInteracted();
 };

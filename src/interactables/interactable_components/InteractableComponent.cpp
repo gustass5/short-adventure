@@ -1,12 +1,11 @@
 #include "InteractableComponent.hpp"
 #include "../../game/Player.hpp"
-#include "../Interactable.hpp"
 
 InteractableComponent::InteractableComponent(){};
 
 InteractableComponent::~InteractableComponent(){};
 
-void InteractableComponent::update(Interactable* interactable, Player* player) {
+void InteractableComponent::update(GameObject* interactable, Player* player) {
 	if (GameObject::GetDistance(interactable->getCenter(), player->getCenter()) <= interactable->getTransform()->w / 2 + player->getTransform()->h / 2) {
 		this->isInRange = true;
 		if (InputManager::IsLeftClickDown()) {
