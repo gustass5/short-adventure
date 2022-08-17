@@ -1,6 +1,6 @@
 #include "ElderNpc.hpp"
 
-ElderNpc::ElderNpc(SDL_Renderer* renderer, std::vector<SDL_Texture*>& idleFrames, int x, int y, int w, int h) : Npc(renderer, idleFrames, x, y, w, h) {
+ElderNpc::ElderNpc(SDL_Renderer* renderer, Player* player, std::vector<SDL_Texture*>& idleFrames, int x, int y, int w, int h) : Npc(renderer, player, idleFrames, x, y, w, h) {
 	Npc::NpcStep stepOne = {
 		// [SUMMARY]: Individual lines of the dialog
 		{"Greetings traveler! Thank you for responding to our call.",

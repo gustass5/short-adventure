@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../../core/InputManager.hpp"
+#include "../../game/Player.hpp"
 #include "../../ui/UIManager.hpp"
 #include "../../utils/TextureManager.hpp"
 #include "../Animation.hpp"
@@ -15,8 +16,9 @@ class Npc : public GameObject {
 	};
 
   protected:
-	Npc(SDL_Renderer* renderer, std::vector<SDL_Texture*>& idleFrames, int x, int y, int w, int h);
+	Npc(SDL_Renderer* renderer, Player* player, std::vector<SDL_Texture*>& idleFrames, int x, int y, int w, int h);
 	SDL_Renderer* renderer;
+	Player* player;
 	Animation idleAnimation;
 	std::vector<NpcStep> steps;
 	int currentStep = 0;

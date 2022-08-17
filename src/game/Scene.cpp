@@ -307,17 +307,17 @@ bool Scene::readNpcs(std::ifstream& level) {
 		this->npcIdleFrames.insert({type, Animation::GetAnimationFrames(this->screen, path + idleSpriteName, 4)});
 
 		if (type == "Elder") {
-			this->npcs.push_back(std::make_unique<ElderNpc>(ElderNpc(this->screen, this->npcIdleFrames[type], x, y, w, h)));
+			this->npcs.push_back(std::make_unique<ElderNpc>(ElderNpc(this->screen, this->player, this->npcIdleFrames[type], x, y, w, h)));
 			continue;
 		}
 
 		if (type == "Fisherman") {
-			this->npcs.push_back(std::make_unique<FishermanNpc>(FishermanNpc(this->screen, this->npcIdleFrames[type], x, y, w, h)));
+			this->npcs.push_back(std::make_unique<FishermanNpc>(FishermanNpc(this->screen, this->player, this->npcIdleFrames[type], x, y, w, h)));
 			continue;
 		}
 
 		if (type == "Maiden") {
-			this->npcs.push_back(std::make_unique<MaidenNpc>(MaidenNpc(this->screen, this->npcIdleFrames[type], x, y, w, h)));
+			this->npcs.push_back(std::make_unique<MaidenNpc>(MaidenNpc(this->screen, this->player, this->npcIdleFrames[type], x, y, w, h)));
 			continue;
 		}
 

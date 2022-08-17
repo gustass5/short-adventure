@@ -1,6 +1,6 @@
 #include "Npc.hpp"
 
-Npc::Npc(SDL_Renderer* renderer, std::vector<SDL_Texture*>& idleFrames, int x, int y, int w, int h) : renderer(renderer), GameObject(x, y, w, h), idleAnimation(renderer, idleFrames, 8) {
+Npc::Npc(SDL_Renderer* renderer, Player* player, std::vector<SDL_Texture*>& idleFrames, int x, int y, int w, int h) : renderer(renderer), player(player), GameObject(x, y, w, h), idleAnimation(renderer, idleFrames, 8) {
 }
 
 Npc::~Npc() {
