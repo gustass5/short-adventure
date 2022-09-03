@@ -17,4 +17,5 @@ class InteractableComponent {
 	void render(SDL_Renderer* renderer, GameObject* interactable);
 	bool getIsInRange();
 	bool getIsInteracted();
+	void setIsInteracted(bool isInteracted);
 };

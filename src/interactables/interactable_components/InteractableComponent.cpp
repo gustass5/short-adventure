@@ -31,3 +31,7 @@ bool InteractableComponent::getIsInRange() {
 bool InteractableComponent::getIsInteracted() {
 	return this->isInteracted;
 };
+
+void InteractableComponent::setIsInteracted(bool isInteracted) {
+	this->isInteracted = isInteracted;
+};
