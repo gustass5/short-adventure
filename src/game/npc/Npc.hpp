@@ -29,6 +29,8 @@ class Npc : public GameObject {
 	bool showDialog = false;
 	virtual void interact() = 0;
 	void renderDialog();
+	void lockPlayer();
+	void unlockPlayer();
 
   public:
 	virtual ~Npc() = 0;

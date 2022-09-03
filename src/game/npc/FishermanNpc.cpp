@@ -22,6 +22,7 @@ void FishermanNpc::interact() {
 
 	if (!this->showDialog) {
 		this->showDialog = true;
+		this->lockPlayer();
 		return;
 	}
 
@@ -32,6 +33,7 @@ void FishermanNpc::interact() {
 		} else {
 			this->showDialog = false;
 			this->interactable.setIsInteracted(false);
+			this->unlockPlayer();
 		}
 	};
 };

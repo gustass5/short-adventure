@@ -41,6 +41,7 @@ class Player : public GameObject {
 	void die();
 	void attack(Uint32 currentTicks, Scene& scene);
 	Inventory inventory;
+	bool isLocked = false;
 
   public:
 	Player(SDL_Renderer* renderer, std::string spritePath, int x, int y, int w, int h);
@@ -52,4 +53,5 @@ class Player : public GameObject {
 	void addHealth(int health);
 	Inventory& getInventory();
 	void increaseSpeed(int speed);
+	void setIsPlayerLocked(bool locked);
 };

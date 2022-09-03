@@ -33,3 +33,11 @@ void Npc::renderDialog() {
 
 	UIManager::RenderField(this->renderer, color, this->steps[this->currentStep].dialogLines[this->currentLine], 350, 696, 688, 100, 668, textHeight, UIManager::UIFieldType::DIALOG, true);
 };
+
+void Npc::lockPlayer() {
+	this->player->setIsPlayerLocked(true);
+};
+
+void Npc::unlockPlayer() {
+	this->player->setIsPlayerLocked(false);
+};

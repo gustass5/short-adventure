@@ -18,6 +18,10 @@ void Player::update(Scene& scene) {
 		return;
 	}
 
+	if (this->isLocked) {
+		return;
+	}
+
 	int movementX = InputManager::IsRightKeyPressed() - InputManager::IsLeftKeyPressed();
 	int movementY = InputManager::IsDownKeyPressed() - InputManager::IsUpKeyPressed();
 	double normalized = sqrt(movementX * movementX + movementY * movementY);
@@ -114,4 +118,8 @@ void Player::increaseSpeed(int speed) {
 
 Inventory& Player::getInventory() {
 	return this->inventory;
+};
+
+void Player::setIsPlayerLocked(bool locked) {
+	this->isLocked = locked;
 };

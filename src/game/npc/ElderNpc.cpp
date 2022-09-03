@@ -35,6 +35,7 @@ void ElderNpc::interact() {
 
 	if (!this->showDialog) {
 		this->showDialog = true;
+		this->lockPlayer();
 		return;
 	}
 
@@ -45,6 +46,7 @@ void ElderNpc::interact() {
 		} else {
 			this->showDialog = false;
 			this->interactable.setIsInteracted(false);
+			this->unlockPlayer();
 		}
 	};
 };

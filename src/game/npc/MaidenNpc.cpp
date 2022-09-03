@@ -20,6 +20,7 @@ MaidenNpc::~MaidenNpc(){};
 void MaidenNpc::interact() {
 	if (!this->showDialog) {
 		this->showDialog = true;
+		this->lockPlayer();
 		return;
 	}
 
@@ -31,6 +32,7 @@ void MaidenNpc::interact() {
 		} else {
 			this->showDialog = false;
 			this->interactable.setIsInteracted(false);
+			this->unlockPlayer();
 		}
 	};
 };
