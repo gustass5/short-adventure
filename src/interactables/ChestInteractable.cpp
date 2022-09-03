@@ -12,4 +12,5 @@ void ChestInteractable::update() {
 
 void ChestInteractable::render() {
 	SDL_RenderCopy(this->renderer, this->sprite, NULL, this->getTransform());
+	this->interactable.render(this->renderer, this);
 }

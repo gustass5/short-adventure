@@ -17,6 +17,13 @@ void InteractableComponent::update(GameObject* interactable, Player* player) {
 	}
 }
 
+void InteractableComponent::render(SDL_Renderer* renderer, GameObject* interactable) {
+	if (this->getIsInRange() && !this->getIsInteracted()) {
+		SDL_Color color = {250, 250, 250};
+		UIManager::RenderField(renderer, color, "Interact|", interactable->getCenter().x - 40, interactable->getTransform()->y - 24, 80, 24, 80, 24, UIManager::UIFieldType::DIALOG, false);
+	}
+}
+
 bool InteractableComponent::getIsInRange() {
 	return this->isInRange;
 };
