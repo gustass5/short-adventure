@@ -9,7 +9,7 @@ FishermanNpc::FishermanNpc(SDL_Renderer* renderer, Player* player, std::vector<S
 		  "Anyways, I heard about you, thank you for your service to our lovely village. ",
 		  "You see, currently I am in a dire need of seashells.",
 		  "They might not seem valuable to some people, but I like the way they shine. It  brightens my day a lot.",
-		  "How about you bring me 3 seashells? I always repay to those who help me, you know.",
+		  "How about you bring me 3 seashells? I always repay to  those who help me, you know.",
 		  "Thanks! I hope your new sword will fit you nicely."}}};
 
 	this->steps = steps;
