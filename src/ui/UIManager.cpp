@@ -12,6 +12,7 @@ UIManager::UIManager(SDL_Renderer* renderer) {
 	UIManager::weaponHud = TextureManager::LoadTexture(renderer, "../assets/ui/inventory/weapon_hud.png");
 	UIManager::hudBackground = TextureManager::LoadTexture(renderer, "../assets/ui/field_bg3.png");
 	UIManager::coinSprite = TextureManager::LoadTexture(renderer, "../assets/ui/coin_sprite.png");
+	UIManager::questSprite = TextureManager::LoadTexture(renderer, "../assets/ui/questmark.png");
 	UIManager::font = TTF_OpenFont("../assets/ui/fonts/font.ttf", 48);
 	UIManager::fontDialog = TTF_OpenFont("../assets/ui/fonts/font3.ttf", 100);
 }
@@ -164,6 +165,24 @@ void UIManager::RenderHUDControls(SDL_Renderer* renderer) {
 	}
 }
 
+void UIManager::RenderQuest(SDL_Renderer* renderer, std::string text) {
+	SDL_Rect backgroundTransform = {388, 0, 320, 30};
+	SDL_RenderCopy(renderer, UIManager::dialogBackground, NULL, &backgroundTransform);
+
+	SDL_Rect questTransform = {396, 3, 24, 24};
+	SDL_RenderCopy(renderer, UIManager::questSprite, NULL, &questTransform);
+
+	SDL_Color color = {230, 230, 230};
+	SDL_Surface* temporarySurface = TTF_RenderText_Solid(UIManager::fontDialog, text.c_str(), color);
+	SDL_Texture* textTexture = SDL_CreateTextureFromSurface(renderer, temporarySurface);
+
+	SDL_Rect textTransform = {432, 3, 264, 24};
+	SDL_RenderCopy(renderer, textTexture, NULL, &textTransform);
+
+	SDL_FreeSurface(temporarySurface);
+	SDL_DestroyTexture(textTexture);
+};
+
 // [INFO]: Static variables of class needs to be initialized somewhere, it should be done in cpp file instead of hpp,
 // because then it would create multiple variables when file gets included
 SDL_Texture* UIManager::signBackground;
@@ -175,5 +194,6 @@ SDL_Texture* UIManager::hud;
 SDL_Texture* UIManager::weaponHud;
 SDL_Texture* UIManager::hudBackground;
 SDL_Texture* UIManager::coinSprite;
+SDL_Texture* UIManager::questSprite;
 TTF_Font* UIManager::font;
 TTF_Font* UIManager::fontDialog;
