@@ -1,3 +1,5 @@
+# Level identifier
+village
 # Background image name with extention           
 village.png  
 

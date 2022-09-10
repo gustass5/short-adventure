@@ -1,3 +1,5 @@
+# Level identifier
+pass
 # Background image name with extention    
 pass.png
 

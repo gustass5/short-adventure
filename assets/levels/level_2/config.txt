@@ -1,3 +1,5 @@
+# Level identifier
+forest
 # Background image name with extention     
 forest.png  
 

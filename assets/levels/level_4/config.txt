@@ -1,3 +1,5 @@
+# Level identifier
+shore
 # Background image name with extention  
 seashore.png  
 

@@ -1,3 +1,5 @@
+# Level identifier
+dungeon
 # Background image name with extention    
 dungeon.png
 

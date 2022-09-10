@@ -7,6 +7,7 @@
 #include "../interactables/PotionInteractable.hpp"
 #include "../interactables/SignInteractable.hpp"
 #include "../utils/TextureManager.hpp"
+#include "./QuestManager.hpp"
 #include "./npc/ElderNpc.hpp"
 #include "./npc/FishermanNpc.hpp"
 #include "./npc/MaidenNpc.hpp"
@@ -32,6 +33,7 @@ class Scene {
 	};
 
   private:
+	std::string levelIdentifier;
 	SDL_Renderer* screen;
 	SDL_Texture* backgroundImage;
 	// [NOTE]: I decided to load all the frames in the scene so enemies could reuse the textures.
@@ -43,6 +45,7 @@ class Scene {
 	Player* player;
 	MapBoundaries mapBoundaries;
 	void clearCommentLines(std::ifstream& level);
+	bool readLevelIdentifier(std::ifstream& level);
 	bool readBackgroundImage(std::ifstream& level, std::string path);
 	bool readMapBoundaries(std::ifstream& level);
 	bool readInteractibles(std::ifstream& level);

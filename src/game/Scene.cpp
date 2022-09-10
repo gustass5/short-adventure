@@ -37,6 +37,10 @@ void Scene::load(std::string path) {
 		return;
 	}
 
+	if (!readLevelIdentifier(level)) {
+		return;
+	}
+
 	if (!readBackgroundImage(level, path)) {
 		return;
 	};
@@ -143,6 +147,14 @@ void Scene::clearCommentLines(std::ifstream& level) {
 	} while (currentLine[0] == '#' || currentLine.length() == 0);
 
 	level.seekg(currentLinePosition);
+}
+
+bool Scene::readLevelIdentifier(std::ifstream& level) {
+	clearCommentLines(level);
+
+	level >> this->levelIdentifier;
+
+	return !(this->levelIdentifier.empty());
 }
 
 bool Scene::readBackgroundImage(std::ifstream& level, std::string path) {
