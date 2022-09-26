@@ -19,7 +19,7 @@ void Npc::update() {
 void Npc::render() {
 	this->idleAnimation.render(this->getTransform(), SDL_FLIP_NONE);
 
-	this->interactable.render(this->renderer, this);
+	this->interactable.render(this->renderer, this, "Interact|");
 
 	if (this->showDialog) {
 		this->renderDialog(this->steps[this->currentStep].dialogLines[this->currentLine]);

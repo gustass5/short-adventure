@@ -17,10 +17,10 @@ void InteractableComponent::update(GameObject* interactable, Player* player) {
 	}
 }
 
-void InteractableComponent::render(SDL_Renderer* renderer, GameObject* interactable) {
+void InteractableComponent::render(SDL_Renderer* renderer, GameObject* interactable, std::string interactText) {
 	if (this->getIsInRange() && !this->getIsInteracted()) {
 		SDL_Color color = {250, 250, 250};
-		UIManager::RenderField(renderer, color, "Interact|", interactable->getCenter().x - 40, interactable->getTransform()->y - 24, 80, 24, 80, 24, UIManager::UIFieldType::DIALOG, false);
+		UIManager::RenderField(renderer, color, interactText, interactable->getCenter().x - 40, interactable->getTransform()->y - 24, 80, 24, 80, 24, UIManager::UIFieldType::DIALOG, false);
 	}
 }
 
