@@ -9,4 +9,6 @@ class FishermanNpc : public Npc {
 	FishermanNpc(SDL_Renderer* renderer, Player* player, std::vector<SDL_Texture*>& idleFrames, int x, int y, int w, int h);
 	~FishermanNpc();
 	void interact() override;
+	void update() override;
+	void render() override;
 };
