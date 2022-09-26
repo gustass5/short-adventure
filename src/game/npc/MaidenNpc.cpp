@@ -6,11 +6,18 @@ MaidenNpc::MaidenNpc(SDL_Renderer* renderer, Player* player, std::vector<SDL_Tex
 		{// [SUMMARY]: Individual lines of the dialog
 		 {
 			 "Hello, I am towns healer. I wish I could help you, but I am out of my mixtures at the moment.",
-		 }},
+		 },
+		 "",
+		 "",
+		 NpcReward::NOTHING},
 		{// [SUMMARY]: Individual lines of the dialog
 		 {
-			 "Hi, I just freshly brewed some potions. Would care to buy one? It will cost you 50g.",
-		 }}};
+			 "Hi, I just freshly brewed some potions. Would care to buy one? It will cost you 50g. (Press E to buy)",
+		 },
+		 "",
+		 "",
+		 NpcReward::NOTHING},
+	};
 
 	this->steps = steps;
 };
@@ -18,21 +25,30 @@ MaidenNpc::MaidenNpc(SDL_Renderer* renderer, Player* player, std::vector<SDL_Tex
 MaidenNpc::~MaidenNpc(){};
 
 void MaidenNpc::interact() {
+	this->currentStep = QuestManager::GetHasPassBeenCleared() ? 1 : 0;
+
 	if (!this->showDialog) {
 		this->showDialog = true;
 		this->lockPlayer();
 		return;
 	}
 
-	if (this->showDialog && InputManager::IsLeftClickDown()) {
-		// [TODO]: Implement trigger that would allow maiden to sell potions after certain conditions are met, also implement potion selling
-		if (
-			this->currentLine < this->steps[this->currentStep].dialogLines.size() - 1) {
-			this->currentLine++;
-		} else {
-			this->showDialog = false;
-			this->interactable.setIsInteracted(false);
-			this->unlockPlayer();
+	if (this->showDialog && InputManager::IsBuyKeyDown()) {
+		if (!this->player->getInventory().canItemsBeAdded() || this->player->getInventory().getGold() < 50) {
+			return;
 		}
+
+		// [NOTE]: After looking at it after a while, implementation of potions looks scuffed. I will blame it on being my first c++ project... Because it is very likely that all the other code I have written is equally bad.
+		HealthPotion* potion = new HealthPotion(this->renderer, "../assets/interactables/Potion_Health_1/Potion_Health_1_anim_0.png", 4);
+
+		this->player->getInventory().addItem(potion);
+
+		this->player->getInventory().addGold(-50);
+	};
+
+	if (this->showDialog && InputManager::IsLeftClickDown()) {
+		this->showDialog = false;
+		this->interactable.setIsInteracted(false);
+		this->unlockPlayer();
 	};
 };

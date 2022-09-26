@@ -1,5 +1,6 @@
 #pragma once
 
+#include "../potions/HealthPotion.hpp"
 #include "Npc.hpp"
 
 class Player;
