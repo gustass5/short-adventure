@@ -9,6 +9,7 @@ InputManager& InputManager::getInstance() {
 void InputManager::listenEvents() {
 	SDL_Event event;
 	this->isLeftClickDown = false;
+	this->isBuyKeyDown = false;
 	while (SDL_PollEvent(&event)) {
 		switch (event.type) {
 		case SDL_QUIT:
@@ -71,6 +72,10 @@ void InputManager::handleKeyPress(SDL_KeyboardEvent* event, bool isPressedDown) 
 	if (event->keysym.sym == SDLK_3) {
 		this->isInventoryItem3Pressed = isPressedDown;
 	}
+
+	if (event->keysym.sym == SDLK_e) {
+		this->isBuyKeyDown = isPressedDown;
+	}
 }
 
 void InputManager::ListenEvents() {
@@ -115,4 +120,8 @@ bool InputManager::IsInventoryItem2Pressed() {
 
 bool InputManager::IsInventoryItem3Pressed() {
 	return getInstance().isInventoryItem3Pressed;
+};
+
+bool InputManager::IsBuyKeyDown() {
+	return getInstance().isBuyKeyDown;
 };
