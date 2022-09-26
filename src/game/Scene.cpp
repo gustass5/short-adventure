@@ -61,6 +61,11 @@ void Scene::load(std::string path) {
 		return;
 	};
 
+	// [SUMMARY]: Reset player stats after returning from other levels. Not sure if I should reset health as well.
+	if (this->levelIdentifier == "village") {
+		this->player->resetSpeed();
+	}
+
 	level.close();
 }
 

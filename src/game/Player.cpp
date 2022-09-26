@@ -116,6 +116,10 @@ void Player::increaseSpeed(int speed) {
 	this->speed += speed;
 };
 
+void Player::resetSpeed() {
+	this->speed = this->normalSpeed;
+};
+
 Inventory& Player::getInventory() {
 	return this->inventory;
 };

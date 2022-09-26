@@ -28,6 +28,7 @@ class Player : public GameObject {
 	SDL_Renderer* renderer;
 	SDL_Texture* sprite;
 	int speed = 250;
+	int normalSpeed = 250;
 	PlayerState playerState = PlayerState::IDLE;
 	Animation idleAnimation;
 	Animation runAnimation;
@@ -53,5 +54,6 @@ class Player : public GameObject {
 	void addHealth(int health);
 	Inventory& getInventory();
 	void increaseSpeed(int speed);
+	void resetSpeed();
 	void setIsPlayerLocked(bool locked);
 };
