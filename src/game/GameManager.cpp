@@ -23,6 +23,7 @@ void GameManager::update() {
 void GameManager::render() {
 	this->scene.render();
 	this->player.render();
+	QuestManager::RenderQuest(this->screen);
 }
 
 void GameManager::LoadLevel(std::string levelName, int playerX, int playerY) {

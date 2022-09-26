@@ -103,8 +103,11 @@ void Scene::unload() {
 }
 
 void Scene::update() {
+	int deadEnemiesCount = 0;
+
 	for (int i = 0; i < this->enemies.size(); i++) {
 		this->enemies[i]->update();
+		deadEnemiesCount += (int)this->enemies[i]->getIsDead();
 	}
 
 	for (int i = 0; i < this->npcs.size(); i++) {
@@ -113,6 +116,30 @@ void Scene::update() {
 
 	for (int i = 0; i < this->interactables.size(); i++) {
 		this->interactables[i]->update();
+	}
+
+	if (this->levelIdentifier == "village" || this->levelIdentifier == "shore") {
+		return;
+	}
+
+	if (deadEnemiesCount == this->enemies.size()) {
+		if (this->levelIdentifier == "forest" && !QuestManager::GetHasForestBeenCleared()) {
+			QuestManager::SetHasForestBeenCleared();
+			QuestManager::SetHasQuestBeenCompleted(true);
+			return;
+		}
+
+		if (this->levelIdentifier == "pass" && !QuestManager::GetHasPassBeenCleared()) {
+			QuestManager::SetHasPassBeenCleared();
+			QuestManager::SetHasQuestBeenCompleted(true);
+			return;
+		}
+
+		if (this->levelIdentifier == "dungeon" && !QuestManager::GetHasDungeonBeenCleared()) {
+			QuestManager::SetHasDungeonBeenCleared();
+			QuestManager::SetHasQuestBeenCompleted(true);
+			return;
+		}
 	}
 }
 

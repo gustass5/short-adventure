@@ -1,5 +1,6 @@
 #pragma once
 #include "Player.hpp"
+#include "QuestManager.hpp"
 #include "Scene.hpp"
 #include <SDL2/SDL.h>
 #include <string>
