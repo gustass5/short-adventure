@@ -22,16 +22,16 @@ void Npc::render() {
 	this->interactable.render(this->renderer, this);
 
 	if (this->showDialog) {
-		this->renderDialog();
+		this->renderDialog(this->steps[this->currentStep].dialogLines[this->currentLine]);
 	}
 }
 
-void Npc::renderDialog() {
+void Npc::renderDialog(std::string text) {
 	SDL_Color color = {250, 250, 250};
 	int textWidth = 668;
-	int textHeight = 24 * ((int)(this->steps[this->currentStep].dialogLines[this->currentLine].length() / (int)(textWidth / UIManager::CHAR_WIDTH)) + 1);
+	int textHeight = 24 * ((int)(text.length() / (int)(textWidth / UIManager::CHAR_WIDTH)) + 1);
 
-	UIManager::RenderField(this->renderer, color, this->steps[this->currentStep].dialogLines[this->currentLine], 350, 696, 688, 100, 668, textHeight, UIManager::UIFieldType::DIALOG, true);
+	UIManager::RenderField(this->renderer, color, text, 350, 696, 688, 100, 668, textHeight, UIManager::UIFieldType::DIALOG, true);
 };
 
 void Npc::lockPlayer() {

@@ -14,7 +14,8 @@ class Npc : public GameObject {
   protected:
 	struct NpcStep {
 		std::vector<std::string> dialogLines;
-		// [TODO]: Place for quest
+		std::string questText;
+		std::string questCompletedText;
 	};
 
   protected:
@@ -28,7 +29,7 @@ class Npc : public GameObject {
 	int currentLine = 0;
 	bool showDialog = false;
 	virtual void interact() = 0;
-	void renderDialog();
+	void renderDialog(std::string text);
 	void lockPlayer();
 	void unlockPlayer();
 
