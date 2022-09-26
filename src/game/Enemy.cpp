@@ -89,3 +89,7 @@ void Enemy::die(Scene& scene) {
 		scene.addInteractible(scene.createHealthInteractible("Health", this->getTransform()->x, this->getTransform()->y, 16, 16));
 	}
 };
+
+bool Enemy::getIsDead() {
+	return this->isDead;
+};

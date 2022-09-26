@@ -47,4 +47,5 @@ class Enemy : public GameObject {
 	Animation runAnimation;
 	SDL_RendererFlip lastFlipState = SDL_FLIP_NONE;
 	void takeDamage(int damage, Scene& scene);
+	bool getIsDead();
 };
