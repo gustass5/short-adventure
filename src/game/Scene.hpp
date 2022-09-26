@@ -5,6 +5,7 @@
 #include "../interactables/HealthInteractable.hpp"
 #include "../interactables/Interactable.hpp"
 #include "../interactables/PotionInteractable.hpp"
+#include "../interactables/ShellInteractable.hpp"
 #include "../interactables/SignInteractable.hpp"
 #include "../utils/TextureManager.hpp"
 #include "./QuestManager.hpp"
@@ -70,6 +71,7 @@ class Scene {
 	// in config file. This is just plain bad approach that needs to be reworked.
 	void addInteractible(std::unique_ptr<Interactable> interactible);
 	std::unique_ptr<Interactable> createChestInteractible(std::string type, int x, int y, int w, int h);
+	std::unique_ptr<Interactable> createShellInteractible(std::string type, int x, int y, int w, int h);
 	std::unique_ptr<Interactable> createHealthInteractible(std::string type, int x, int y, int w, int h);
 	std::unique_ptr<Interactable> createCoinInteractible(std::string type, int x, int y, int w, int h);
 	std::unique_ptr<Interactable> createSignInteractible(std::string type, std::string levelName, std::string signText, int px, int py, int x, int y, int w, int h);

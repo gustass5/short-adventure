@@ -258,6 +258,11 @@ bool Scene::readInteractibles(std::ifstream& level) {
 			continue;
 		}
 
+		if (type == "Shell") {
+			addInteractible(createShellInteractible(type, x, y, w, h));
+			continue;
+		}
+
 		if (type == "Health") {
 			addInteractible(createHealthInteractible(type, x, y, w, h));
 			continue;
@@ -379,15 +384,23 @@ void Scene::addInteractible(std::unique_ptr<Interactable> interactible) {
 std::unique_ptr<Interactable> Scene::createChestInteractible(std::string type, int x, int y, int w, int h) {
 	return std::make_unique<ChestInteractable>(ChestInteractable(this->screen, this->interactableSprites[type], this->player, x, y, w, h));
 };
+
+std::unique_ptr<Interactable> Scene::createShellInteractible(std::string type, int x, int y, int w, int h) {
+	return std::make_unique<ShellInteractable>(ShellInteractable(this->screen, this->interactableSprites[type], this->player, x, y, w, h));
+};
+
 std::unique_ptr<Interactable> Scene::createHealthInteractible(std::string type, int x, int y, int w, int h) {
 	return std::make_unique<HealthInteractable>(HealthInteractable(this->screen, this->interactableSprites[type], this->player, x, y, w, h));
 };
+
 std::unique_ptr<Interactable> Scene::createCoinInteractible(std::string type, int x, int y, int w, int h) {
 	return std::make_unique<CoinInteractable>(CoinInteractable(this->screen, this->interactableSprites[type], this->player, x, y, w, h));
 };
+
 std::unique_ptr<Interactable> Scene::createSignInteractible(std::string type, std::string levelName, std::string signText, int px, int py, int x, int y, int w, int h) {
 	return std::make_unique<SignInteractable>(SignInteractable(this->screen, levelName, signText, this->interactableSprites[type], this->player, x, y, w, h, px, py));
 };
+
 std::unique_ptr<Interactable> Scene::createPotionInteractible(std::string type, PotionInteractable::PotionType potionType, int modifier, int x, int y, int w, int h) {
 	return std::make_unique<PotionInteractable>(PotionInteractable(this->screen, this->interactableSprites[type], "../assets/interactables/" + type + "/" + type + "_anim_0.png", potionType, modifier, this->player, x, y, w, h));
 };
