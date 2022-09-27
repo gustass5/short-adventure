@@ -398,7 +398,7 @@ std::unique_ptr<Interactable> Scene::createCoinInteractible(std::string type, in
 };
 
 std::unique_ptr<Interactable> Scene::createSignInteractible(std::string type, std::string levelName, std::string signText, int px, int py, int x, int y, int w, int h) {
-	return std::make_unique<SignInteractable>(SignInteractable(this->screen, levelName, signText, this->interactableSprites[type], this->player, x, y, w, h, px, py));
+	return std::make_unique<SignInteractable>(SignInteractable(this->screen, this->levelIdentifier, levelName, signText, this->interactableSprites[type], this->player, x, y, w, h, px, py));
 };
 
 std::unique_ptr<Interactable> Scene::createPotionInteractible(std::string type, PotionInteractable::PotionType potionType, int modifier, int x, int y, int w, int h) {
