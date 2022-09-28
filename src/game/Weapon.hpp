@@ -7,9 +7,12 @@
 class Weapon {
   private:
 	SDL_Renderer* renderer;
-	SDL_Texture* sprite;
+	SDL_Texture* normalSprite;
+	SDL_Texture* superSprite;
 	Animation attackAnimation;
+	Animation superAttackAnimation;
 	SDL_Rect transform;
+	bool isSuper = false;
 
   public:
 	Weapon(SDL_Renderer* renderer);
@@ -19,4 +22,5 @@ class Weapon {
 	SDL_Rect* getTransform();
 	int attackDamage = 10;
 	SDL_Texture* getSprite();
+	void setSuper();
 };

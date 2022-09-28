@@ -127,3 +127,7 @@ Inventory& Player::getInventory() {
 void Player::setIsPlayerLocked(bool locked) {
 	this->isLocked = locked;
 };
+
+void Player::superizePlayerWeapon() {
+	this->weapon.setSuper();
+};

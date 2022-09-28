@@ -56,4 +56,5 @@ class Player : public GameObject {
 	void increaseSpeed(int speed);
 	void resetSpeed();
 	void setIsPlayerLocked(bool locked);
+	void superizePlayerWeapon();
 };

@@ -30,7 +30,7 @@ void FishermanNpc::interact() {
 		if (QuestManager::GetHasQuestBeenCompleted()) {
 			// [SUMMARY]: If quest has been completed show last line of the dialog
 			this->currentLine = this->steps[this->currentStep].dialogLines.size() - 1;
-			// [TODO]: Give a reward here
+			this->player->superizePlayerWeapon();
 
 			QuestManager::SetHasQuestBeenRewarded(true);
 		}
