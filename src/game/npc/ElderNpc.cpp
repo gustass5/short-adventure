@@ -19,7 +19,7 @@ ElderNpc::ElderNpc(SDL_Renderer* renderer, Player* player, std::vector<SDL_Textu
 		  "I cannot thank you enough! Our little town is starting to recover thanks to your efforts."},
 		 "Clear Mountain Pass",
 		 "Return to Elder",
-		 NpcReward::GOLD},
+		 NpcReward::NOTHING},
 		{// [SUMMARY]: Individual lines of the dialog
 		 {"Now our healer can access herbs again. You can start purchasing health potions from her.",
 		  "I also just heard the news that the fisherman came back from the sea. He always has something nice to offer.",
@@ -52,7 +52,12 @@ void ElderNpc::interact() {
 		if (QuestManager::GetHasQuestBeenCompleted()) {
 			// [SUMMARY]: If quest has been completed show last line of the dialog
 			QuestManager::SetElderLineIndex(this->steps[QuestManager::GetElderStepIndex()].dialogLines.size() - 1);
-			// [TODO] Give a reward here
+
+			if (this->steps[QuestManager::GetElderStepIndex()].reward == NpcReward::POTION) {
+				SpeedPotion* potion = new SpeedPotion(this->renderer, "../assets/interactables/Potion_Speed_1/Potion_Speed_1_anim_0.png", 250);
+
+				this->player->getInventory().addItem(potion);
+			}
 
 			QuestManager::SetHasQuestBeenRewarded(true);
 		}

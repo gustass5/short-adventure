@@ -1,5 +1,6 @@
 #pragma once
 
+#include "../potions/SpeedPotion.hpp"
 #include "Npc.hpp"
 
 class Player;

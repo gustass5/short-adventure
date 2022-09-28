@@ -6,16 +6,25 @@
 #include "../../utils/TextureManager.hpp"
 #include "../Animation.hpp"
 #include "../GameObject.hpp"
+#include "../QuestManager.hpp"
 #include <vector>
 
 class Player;
 
 class Npc : public GameObject {
   protected:
+	enum class NpcReward {
+		GOLD,
+		POTION,
+		WEAPON,
+		NOTHING,
+	};
+
 	struct NpcStep {
 		std::vector<std::string> dialogLines;
 		std::string questText;
 		std::string questCompletedText;
+		NpcReward reward;
 	};
 
   protected:
