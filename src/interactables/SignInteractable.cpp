@@ -10,11 +10,14 @@ SignInteractable::SignInteractable(SDL_Renderer* renderer,
 								   SDL_Texture* sprite,
 								   Player* player,
 								   int x, int y, int w, int h,
+								   int popupx, int popupy,
 								   int px, int py) : currentLevelIdentifier(currentLevelIdentifier),
 													 nextLevelName(nextLevelName),
 													 player(player),
 													 Interactable(renderer, sprite, x, y, w, h) {
 	this->text = text;
+	this->popupX = popupx;
+	this->popupY = popupy;
 	this->playerX = px;
 	this->playerY = py;
 }
@@ -46,7 +49,7 @@ void SignInteractable::render() {
 		std::string displayText = this->text + (this->isCleared ? "Cleared|" : this->isOpen ? "Press_to_enter|"
 																							: "Unavailable|");
 
-		UIManager::RenderField(this->renderer, color, displayText, this->getTransform()->x, this->getTransform()->y - 50, 100, 50, 100, 50, UIManager::UIFieldType::SIGN, false);
+		UIManager::RenderField(this->renderer, color, displayText, this->popupX, this->popupY, 100, 50, 100, 50, UIManager::UIFieldType::SIGN, false);
 	}
 }
 

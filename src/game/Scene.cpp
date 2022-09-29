@@ -275,9 +275,9 @@ bool Scene::readInteractibles(std::ifstream& level) {
 
 		if (type == "Sign") {
 			std::string levelName, signText;
-			int px = 0, py = 0;
-			level >> levelName >> px >> py >> signText;
-			addInteractible(createSignInteractible(type, levelName, signText, px, py, x, y, w, h));
+			int px = 0, py = 0, popupx = 0, popupy = 0;
+			level >> levelName >> px >> py >> popupx >> popupy >> signText;
+			addInteractible(createSignInteractible(type, levelName, signText, px, py, popupx, popupy, x, y, w, h));
 			continue;
 		}
 
@@ -397,8 +397,8 @@ std::unique_ptr<Interactable> Scene::createCoinInteractible(std::string type, in
 	return std::make_unique<CoinInteractable>(CoinInteractable(this->screen, this->interactableSprites[type], this->player, x, y, w, h));
 };
 
-std::unique_ptr<Interactable> Scene::createSignInteractible(std::string type, std::string levelName, std::string signText, int px, int py, int x, int y, int w, int h) {
-	return std::make_unique<SignInteractable>(SignInteractable(this->screen, this->levelIdentifier, levelName, signText, this->interactableSprites[type], this->player, x, y, w, h, px, py));
+std::unique_ptr<Interactable> Scene::createSignInteractible(std::string type, std::string levelName, std::string signText, int px, int py, int popupx, int popupY, int x, int y, int w, int h) {
+	return std::make_unique<SignInteractable>(SignInteractable(this->screen, this->levelIdentifier, levelName, signText, this->interactableSprites[type], this->player, x, y, w, h, popupx, popupY, px, py));
 };
 
 std::unique_ptr<Interactable> Scene::createPotionInteractible(std::string type, PotionInteractable::PotionType potionType, int modifier, int x, int y, int w, int h) {

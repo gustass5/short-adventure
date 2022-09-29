@@ -16,13 +16,14 @@ class SignInteractable : public Interactable {
 	std::string nextLevelName;
 	std::string text;
 	int playerX, playerY;
+	int popupX, popupY;
 	bool isOpen = true;
 	bool isVisible = true;
 	bool isCleared = false;
 	void handleAccess();
 
   public:
-	SignInteractable(SDL_Renderer* renderer, std::string currentLevelIdentifier, std::string nextLevelName, std::string text, SDL_Texture* sprite, Player* player, int x, int y, int w, int h, int px, int py);
+	SignInteractable(SDL_Renderer* renderer, std::string currentLevelIdentifier, std::string nextLevelName, std::string text, SDL_Texture* sprite, Player* player, int x, int y, int w, int h, int popupx, int popupy, int px, int py);
 	~SignInteractable();
 	void update() override;
 	void render() override;
