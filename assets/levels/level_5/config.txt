@@ -21,9 +21,8 @@ Health
 Chest   500  250  32 32
 Coin    600  350  16 16
 Coin    700  350  16 16
-# Type  x    y    w  h  nextLevel spawnX spawnY value
-Sign    468 770 32 32 level_1 468 0 The_Town|Press_to_enter|
-
+# Type  x    y    w  h  nextLevel spawnX spawnY popupx popupy value
+Sign    468  770  32 32 level_1   440    0      420    700    The_Town|
 # Number of enemy types
 3
 # Type walk_animation run_animation
