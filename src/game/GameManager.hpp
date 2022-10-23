@@ -11,6 +11,7 @@ class GameManager {
 	Player player;
 	static std::string levelNameToLoad;
 	static bool shouldLoadNewLevel;
+	static bool shouldResetPlayer;
 	static int playerX;
 	static int playerY;
 	Scene scene;
@@ -20,5 +21,5 @@ class GameManager {
 	~GameManager();
 	void update();
 	void render();
-	static void LoadLevel(std::string levelName, int playerX, int playerY);
+	static void LoadLevel(std::string levelName, int playerX, int playerY, bool shouldResetPlayer);
 };

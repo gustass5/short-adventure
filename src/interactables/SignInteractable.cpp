@@ -33,7 +33,7 @@ void SignInteractable::update() {
 	}
 
 	if (this->interactable.getIsInteracted()) {
-		GameManager::LoadLevel("../assets/levels/" + this->nextLevelName + "/", this->playerX, this->playerY);
+		GameManager::LoadLevel("../assets/levels/" + this->nextLevelName + "/", this->playerX, this->playerY, true);
 	}
 }
 

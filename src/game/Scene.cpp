@@ -15,7 +15,7 @@ void Scene::setPlayer(Player* player) {
 };
 
 // [SUMMARY]: path = "assets/levels/level_#"
-void Scene::load(std::string path) {
+void Scene::load(std::string path, bool shouldResetPlayer) {
 	// [SUMMARY]:
 	// Load level file, folder name is `level_` + levelNumber
 	// Each level folder contains its information, backgroundImage file and mandatory config.txt file
@@ -61,9 +61,15 @@ void Scene::load(std::string path) {
 		return;
 	};
 
-	// [SUMMARY]: Reset player stats after returning from other levels. Not sure if I should reset health as well.
+	// [SUMMARY]: Reset player stats after returning from other levels.
 	if (this->levelIdentifier == "village") {
-		this->player->resetSpeed();
+		// [SUMMARY]: For now only player speed can be optionally resetted.
+		if (shouldResetPlayer) {
+			this->player->resetSpeed();
+		}
+
+		// [SUMMARY]: Always reset player health.
+		this->player->resetHealth();
 	}
 
 	level.close();

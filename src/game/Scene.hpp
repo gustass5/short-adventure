@@ -58,7 +58,7 @@ class Scene {
 	~Scene();
 	void setRenderer(SDL_Renderer* screen);
 	void setPlayer(Player* player);
-	void load(std::string path);
+	void load(std::string path, bool shouldResetPlayer);
 	void unload();
 	void update();
 	void render();

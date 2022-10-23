@@ -88,6 +88,10 @@ void Player::takeDamage(int damage) {
 
 void Player::die() {
 	this->playerState = PlayerState::DEAD;
+	// [TODO]: Show death text screen
+
+	GameManager::LoadLevel("../assets/levels/level_1/", 544, 400, false);
+	this->playerState = PlayerState::IDLE;
 }
 
 void Player::attack(Uint32 currentTicks, Scene& scene) {
