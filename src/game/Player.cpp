@@ -120,6 +120,10 @@ void Player::resetSpeed() {
 	this->speed = this->normalSpeed;
 };
 
+void Player::resetHealth() {
+	this->health = this->maxHealth;
+};
+
 Inventory& Player::getInventory() {
 	return this->inventory;
 };
