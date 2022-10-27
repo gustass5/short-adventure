@@ -88,10 +88,6 @@ void Player::takeDamage(int damage) {
 
 void Player::die() {
 	this->playerState = PlayerState::DEAD;
-	// [TODO]: Show death text screen
-
-	GameManager::LoadLevel("../assets/levels/level_1/", 544, 400, false);
-	this->playerState = PlayerState::IDLE;
 }
 
 void Player::attack(Uint32 currentTicks, Scene& scene) {
@@ -126,6 +122,7 @@ void Player::resetSpeed() {
 
 void Player::resetHealth() {
 	this->health = this->maxHealth;
+	this->playerState = PlayerState::IDLE;
 };
 
 Inventory& Player::getInventory() {
@@ -138,4 +135,8 @@ void Player::setIsPlayerLocked(bool locked) {
 
 void Player::superizePlayerWeapon() {
 	this->weapon.setSuper();
+};
+
+bool Player::isDead() {
+	return this->playerState == PlayerState::DEAD;
 };

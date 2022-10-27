@@ -13,6 +13,9 @@ UIManager::UIManager(SDL_Renderer* renderer) {
 	UIManager::hudBackground = TextureManager::LoadTexture(renderer, "../assets/ui/field_bg3.png");
 	UIManager::coinSprite = TextureManager::LoadTexture(renderer, "../assets/ui/coin_sprite.png");
 	UIManager::questSprite = TextureManager::LoadTexture(renderer, "../assets/ui/questmark.png");
+	UIManager::startScreenBackground = TextureManager::LoadTexture(renderer, "../assets/ui/start_screen.png");
+	UIManager::endScreenBackground = TextureManager::LoadTexture(renderer, "../assets/ui/end_screen.png");
+	UIManager::deathScreenBackground = TextureManager::LoadTexture(renderer, "../assets/ui/death_screen.png");
 	UIManager::font = TTF_OpenFont("../assets/ui/fonts/font.ttf", 48);
 	UIManager::fontDialog = TTF_OpenFont("../assets/ui/fonts/font3.ttf", 100);
 }
@@ -24,6 +27,7 @@ UIManager::~UIManager() {
 	TextureManager::UnloadTexture(UIManager::healthImages[2]);
 	TextureManager::UnloadTexture(UIManager::enemyHealthBarBackground);
 	TextureManager::UnloadTexture(UIManager::enemyHealthBar);
+	TextureManager::UnloadTexture(UIManager::startScreenBackground);
 	// [INFO]: Release memory of the font, also in TTF documentation font was also set to NULL for "just to be safe"
 	TTF_CloseFont(UIManager::font);
 	UIManager::font = NULL;
@@ -183,6 +187,18 @@ void UIManager::RenderQuest(SDL_Renderer* renderer, std::string text) {
 	SDL_DestroyTexture(textTexture);
 };
 
+void UIManager::RenderStartScreen(SDL_Renderer* renderer) {
+	SDL_RenderCopy(renderer, UIManager::startScreenBackground, NULL, NULL);
+}
+
+void UIManager::RenderEndScreen(SDL_Renderer* renderer) {
+	SDL_RenderCopy(renderer, UIManager::endScreenBackground, NULL, NULL);
+}
+
+void UIManager::RenderDeathScreen(SDL_Renderer* renderer) {
+	SDL_RenderCopy(renderer, UIManager::deathScreenBackground, NULL, NULL);
+}
+
 // [INFO]: Static variables of class needs to be initialized somewhere, it should be done in cpp file instead of hpp,
 // because then it would create multiple variables when file gets included
 SDL_Texture* UIManager::signBackground;
@@ -195,5 +211,8 @@ SDL_Texture* UIManager::weaponHud;
 SDL_Texture* UIManager::hudBackground;
 SDL_Texture* UIManager::coinSprite;
 SDL_Texture* UIManager::questSprite;
+SDL_Texture* UIManager::startScreenBackground;
+SDL_Texture* UIManager::endScreenBackground;
+SDL_Texture* UIManager::deathScreenBackground;
 TTF_Font* UIManager::font;
 TTF_Font* UIManager::fontDialog;

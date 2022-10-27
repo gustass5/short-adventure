@@ -26,6 +26,9 @@ class UIManager {
 	static SDL_Texture* hudBackground;
 	static SDL_Texture* coinSprite;
 	static SDL_Texture* questSprite;
+	static SDL_Texture* startScreenBackground;
+	static SDL_Texture* endScreenBackground;
+	static SDL_Texture* deathScreenBackground;
 	static TTF_Font* font;
 	static TTF_Font* fontDialog;
 	static void RenderHUDControls(SDL_Renderer* renderer);
@@ -43,4 +46,7 @@ class UIManager {
 	static void RenderEnemyHealth(SDL_Renderer* renderer, int health, int maxHealth, const SDL_Rect* enemyTransform);
 	static void RenderHUD(SDL_Renderer* renderer, SDL_Texture* currentWeaponSprite);
 	static void RenderQuest(SDL_Renderer* renderer, std::string text);
+	static void RenderStartScreen(SDL_Renderer* renderer);
+	static void RenderEndScreen(SDL_Renderer* renderer);
+	static void RenderDeathScreen(SDL_Renderer* renderer);
 };

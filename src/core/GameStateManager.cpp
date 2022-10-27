@@ -29,10 +29,24 @@ void GameStateManager::run() {
 			this->isGameRunning = false;
 		}
 
-		this->gameManager->update();
-
 		SDL_RenderClear(this->screen);
-		this->gameManager->render();
+
+		if (this->isGameStarted) {
+			if (QuestManager::GetHasDungeonBeenCleared()) {
+				UIManager::RenderEndScreen(this->screen);
+			} else {
+				this->gameManager->update();
+				this->gameManager->render();
+			}
+
+		} else {
+			UIManager::RenderStartScreen(this->screen);
+
+			if (InputManager::IsLeftClickDown()) {
+				this->isGameStarted = true;
+			}
+		}
+
 		SDL_RenderPresent(this->screen);
 	}
 }

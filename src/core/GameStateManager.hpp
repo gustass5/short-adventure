@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../game/GameManager.hpp"
+#include "../game/QuestManager.hpp"
 #include "../ui/UIManager.hpp"
 #include "InputManager.hpp"
 #include <SDL2/SDL.h>
@@ -14,6 +15,7 @@ class GameStateManager {
 	GameManager* gameManager;
 	UIManager* uiManager;
 	bool isGameRunning = true;
+	bool isGameStarted = false;
 
   public:
 	GameStateManager(SDL_Window* window);

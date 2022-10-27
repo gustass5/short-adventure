@@ -8,6 +8,10 @@ GameManager::GameManager(SDL_Renderer* screen) : screen(screen), player(screen, 
 GameManager::~GameManager(){};
 
 void GameManager::update() {
+	if (this->player.isDead() && InputManager::IsLeftClickDown()) {
+		GameManager::LoadLevel("../assets/levels/level_1/", 544, 400, false);
+	}
+
 	// [SUMMARY]: I cannot just load new level when `LoadLevel` is called, because the frame is not finished and that causes bugs.
 	// I need to wait for the frame to finish and only then, before any updates in the scene started I can switch scenes.
 	if (GameManager::shouldLoadNewLevel) {
@@ -21,6 +25,11 @@ void GameManager::update() {
 };
 
 void GameManager::render() {
+	if (this->player.isDead()) {
+		UIManager::RenderDeathScreen(this->screen);
+		return;
+	}
+
 	this->scene.render();
 	this->player.render();
 	QuestManager::RenderQuest(this->screen);

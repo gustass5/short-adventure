@@ -58,4 +58,5 @@ class Player : public GameObject {
 	void resetHealth();
 	void setIsPlayerLocked(bool locked);
 	void superizePlayerWeapon();
+	bool isDead();
 };
