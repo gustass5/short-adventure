@@ -43,6 +43,8 @@ class QuestManager {
 	static bool hasFishermanBeenMet;
 	static bool hasSeashoreBeenCleared;
 	static bool hasDungeonBeenCleared;
+	static bool hasGuardianBeenSummoned;
+	static bool hasGatesBeenClosed;
 
   public:
 	static void SetElderStepIndex(int index);
@@ -53,6 +55,8 @@ class QuestManager {
 	static void SetHasFishermanBeenMet();
 	static void SetHasSeashoreBeenCleared();
 	static void SetHasDungeonBeenCleared();
+	static void SetHasGuardianBeenSummoned(bool summoned);
+	static void SetHasGatesBeenClosed(bool closed);
 
 	static int GetElderStepIndex();
 	static int GetElderLineIndex();
@@ -62,6 +66,8 @@ class QuestManager {
 	static bool GetHasFishermanBeenMet();
 	static bool GetHasSeashoreBeenCleared();
 	static bool GetHasDungeonBeenCleared();
+	static bool GetHasGuardianBeenSummoned();
+	static bool GetHasGatesBeenClosed();
 
   public:
 	static void StartQuest(std::string questText, std::string questCompletedText);

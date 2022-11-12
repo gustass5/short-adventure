@@ -7,6 +7,7 @@
 Enemy::Enemy(
 	SDL_Renderer* renderer,
 	Player* player,
+	std::string type,
 	std::vector<SDL_Texture*>& idleFrames,
 	std::vector<SDL_Texture*>& runFrames,
 	int x, int y, int w, int h,
@@ -14,6 +15,7 @@ Enemy::Enemy(
 	int attackRadius, int attackDamage, int timeBetweenAttacks,
 	bool isPatrolling) : renderer(renderer),
 						 player(player),
+						 type(type),
 						 idleAnimation(renderer, idleFrames, 10),
 						 runAnimation(renderer, runFrames, 10),
 						 state(new EnemyIdleState()),
@@ -93,3 +95,11 @@ void Enemy::die(Scene& scene) {
 bool Enemy::getIsDead() {
 	return this->isDead;
 };
+
+void Enemy::setSenseRadius(int radius) {
+	this->senseRadius = radius;
+};
+
+std::string Enemy::getType() {
+	return this->type;
+}

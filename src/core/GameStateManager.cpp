@@ -32,7 +32,7 @@ void GameStateManager::run() {
 		SDL_RenderClear(this->screen);
 
 		if (this->isGameStarted) {
-			if (QuestManager::GetHasDungeonBeenCleared()) {
+			if (QuestManager::GetHasGatesBeenClosed()) {
 				UIManager::RenderEndScreen(this->screen);
 			} else {
 				this->gameManager->update();

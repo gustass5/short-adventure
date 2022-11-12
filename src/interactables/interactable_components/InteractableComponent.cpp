@@ -35,3 +35,7 @@ bool InteractableComponent::getIsInteracted() {
 void InteractableComponent::setIsInteracted(bool isInteracted) {
 	this->isInteracted = isInteracted;
 };
+
+void InteractableComponent::setIsInRange(bool isInRange) {
+	this->isInRange = isInRange;
+};

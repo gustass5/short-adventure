@@ -19,4 +19,5 @@ class InteractableComponent {
 	bool getIsInRange();
 	bool getIsInteracted();
 	void setIsInteracted(bool isInteracted);
+	void setIsInRange(bool isInRange);
 };

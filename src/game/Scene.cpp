@@ -70,6 +70,8 @@ void Scene::load(std::string path, bool shouldResetPlayer) {
 
 		// [SUMMARY]: Always reset player health.
 		this->player->resetHealth();
+		QuestManager::SetHasGatesBeenClosed(false);
+		QuestManager::SetHasGuardianBeenSummoned(false);
 	}
 
 	level.close();
@@ -117,6 +119,19 @@ void Scene::update() {
 	int deadEnemiesCount = 0;
 
 	for (int i = 0; i < this->enemies.size(); i++) {
+		if (this->enemies[i]->getType() == "DungeonGuardian") {
+			// [SUMMARY]: Basically last boss always going to be in the scene, just outside the screen
+			// Once its summoned set its senseRadius to very high so it start walking towards the player no matter where it is placed.
+			// It should come out eventually
+			// [NOTE]: I understand that if guardian is summoned the sense radius is going to be set continiously every frame, but I don't mind, should not be a big problem
+
+			if (QuestManager::GetHasGuardianBeenSummoned()) {
+				this->enemies[i]->setSenseRadius(10000);
+			} else {
+				this->enemies[i]->setSenseRadius(100);
+			}
+		}
+
 		this->enemies[i]->update();
 		deadEnemiesCount += (int)this->enemies[i]->getIsDead();
 	}
@@ -279,6 +294,11 @@ bool Scene::readInteractibles(std::ifstream& level) {
 			continue;
 		}
 
+		if (type == "Gates") {
+			addInteractible(createGatesInteractible("Coin", x, y, w, h));
+			continue;
+		}
+
 		if (type == "Sign") {
 			std::string levelName, signText;
 			int px = 0, py = 0, popupx = 0, popupy = 0;
@@ -336,7 +356,7 @@ bool Scene::readEnemies(std::ifstream& level) {
 		clearCommentLines(level);
 		level >> type >> x >> y >> w >> h >> health >> movementSpeed >> senseRadius >> attackRadius >> attackDamage >> timeBetweenAttacks >> isPatrolling;
 
-		this->enemies.push_back(std::make_unique<Enemy>(Enemy(this->screen, this->player, this->enemyIdleFrames[type], this->enemyRunFrames[type], x, y, w, h, health, movementSpeed, senseRadius, attackRadius, attackDamage, timeBetweenAttacks, isPatrolling)));
+		this->enemies.push_back(std::make_unique<Enemy>(Enemy(this->screen, this->player, type, this->enemyIdleFrames[type], this->enemyRunFrames[type], x, y, w, h, health, movementSpeed, senseRadius, attackRadius, attackDamage, timeBetweenAttacks, isPatrolling)));
 	}
 
 	return true;
@@ -401,6 +421,10 @@ std::unique_ptr<Interactable> Scene::createHealthInteractible(std::string type, 
 
 std::unique_ptr<Interactable> Scene::createCoinInteractible(std::string type, int x, int y, int w, int h) {
 	return std::make_unique<CoinInteractable>(CoinInteractable(this->screen, this->interactableSprites[type], this->player, x, y, w, h));
+};
+
+std::unique_ptr<Interactable> Scene::createGatesInteractible(std::string type, int x, int y, int w, int h) {
+	return std::make_unique<GatesInteractable>(GatesInteractable(this->screen, this->interactableSprites[type], this->player, x, y, w, h));
 };
 
 std::unique_ptr<Interactable> Scene::createSignInteractible(std::string type, std::string levelName, std::string signText, int px, int py, int popupx, int popupY, int x, int y, int w, int h) {

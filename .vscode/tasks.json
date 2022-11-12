@@ -33,6 +33,7 @@
                 "${workspaceFolder}/src/interactables/WeaponInteractable.cpp",
                 "${workspaceFolder}/src/interactables/SignInteractable.cpp",
                 "${workspaceFolder}/src/interactables/ShellInteractable.cpp",
+                "${workspaceFolder}/src/interactables/GatesInteractable.cpp",
                 "${workspaceFolder}/src/game/Animation.cpp",
                 "${workspaceFolder}/src/ui/UIManager.cpp",
                 "${workspaceFolder}/src/game/Weapon.cpp",

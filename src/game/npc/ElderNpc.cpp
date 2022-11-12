@@ -34,7 +34,7 @@ ElderNpc::ElderNpc(SDL_Renderer* renderer, Player* player, std::vector<SDL_Textu
 		  "The ancient dungeon has been opened and we have been   experiencing monsters attacks from the north ever since. Evil beasts roam there so you must be careful.",
 		  "You are our only hope to close the gates of that damn  dungeon."},
 		 "Clear the dungeon",
-		 "Win",
+		 "Close the gates",
 		 NpcReward::NOTHING}};
 
 	this->steps = steps;

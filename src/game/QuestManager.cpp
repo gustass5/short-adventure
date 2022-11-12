@@ -99,6 +99,14 @@ void QuestManager::SetHasDungeonBeenCleared() {
 	QuestManager::hasDungeonBeenCleared = true;
 };
 
+void QuestManager::SetHasGuardianBeenSummoned(bool summoned) {
+	QuestManager::hasGuardianBeenSummoned = summoned;
+};
+
+void QuestManager::SetHasGatesBeenClosed(bool closed) {
+	QuestManager::hasGatesBeenClosed = closed;
+};
+
 int QuestManager::GetElderStepIndex() {
 	return QuestManager::elderStepIndex;
 };
@@ -125,6 +133,12 @@ bool QuestManager::GetHasSeashoreBeenCleared() {
 bool QuestManager::GetHasDungeonBeenCleared() {
 	return QuestManager::hasDungeonBeenCleared;
 };
+bool QuestManager::GetHasGuardianBeenSummoned() {
+	return QuestManager::hasGuardianBeenSummoned;
+};
+bool QuestManager::GetHasGatesBeenClosed() {
+	return QuestManager::hasGatesBeenClosed;
+};
 
 std::string QuestManager::currentQuestText = "";
 // [Note]: This is a quick hack for beggining of the game when I want to show Find the elder quest, but no actual quest has not been started.
@@ -142,3 +156,5 @@ bool QuestManager::hasPassBeenCleared = false;
 bool QuestManager::hasFishermanBeenMet = false;
 bool QuestManager::hasSeashoreBeenCleared = false;
 bool QuestManager::hasDungeonBeenCleared = false;
+bool QuestManager::hasGuardianBeenSummoned = false;
+bool QuestManager::hasGatesBeenClosed = false;

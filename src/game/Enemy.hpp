@@ -4,6 +4,7 @@
 #include "Animation.hpp"
 #include "GameObject.hpp"
 #include <stdlib.h>
+#include <string>
 
 class EnemyState;
 class EnemyIdleState;
@@ -16,6 +17,7 @@ class Enemy : public GameObject {
 	Player* player;
 	EnemyState* state;
 	SDL_Texture* sprite;
+	std::string type;
 	int senseRadius;
 	int attackRadius;
 	int movementSpeed;
@@ -29,6 +31,7 @@ class Enemy : public GameObject {
   public:
 	Enemy(SDL_Renderer* renderer,
 		  Player* player,
+		  std::string type,
 		  std::vector<SDL_Texture*>& idleFrames,
 		  std::vector<SDL_Texture*>& runFrames,
 		  int x, int y, int w, int h,
@@ -48,4 +51,6 @@ class Enemy : public GameObject {
 	SDL_RendererFlip lastFlipState = SDL_FLIP_NONE;
 	void takeDamage(int damage, Scene& scene);
 	bool getIsDead();
+	void setSenseRadius(int radius);
+	std::string getType();
 };

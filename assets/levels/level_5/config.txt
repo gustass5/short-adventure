@@ -16,13 +16,16 @@ Sign
 Health
 
 # Number of interactibles
-4
+5
 # Type  x    y    w  h
 Chest   500  250  32 32
 Coin    600  350  16 16
 Coin    700  350  16 16
 # Type  x    y    w  h  nextLevel spawnX spawnY popupx popupy value
 Sign    468  770  32 32 level_1   440    0      420    700    The_Town|
+# Gates is an exception and does not need to have a type provided above
+Gates   500  0    96 96
+
 # Number of enemy types
 3
 # Type walk_animation run_animation
@@ -37,7 +40,7 @@ Golem           150 650 100 74  100    120 200         50           5           
 Golem           700 650 100 74  100    120 200         50           5            500                1
 Berserker       250 150 84  60  30     250 200         50           4            500                1
 Berserker       850 150 84  60  30     250 200         50           4            500                1
-DungeonGuardian 500 100 160 120 200    200 200         50           4            500                0
+DungeonGuardian 1500 -200 160 120 200    200 200         50           4            500                0
 
 # Number of NPC's
 0

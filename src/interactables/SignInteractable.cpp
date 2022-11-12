@@ -109,8 +109,8 @@ void SignInteractable::handleAccess() {
 	}
 
 	if (this->currentLevelIdentifier == "dungeon") {
-		this->isOpen = QuestManager::GetHasDungeonBeenCleared();
-		this->isVisible = QuestManager::GetHasDungeonBeenCleared();
+		this->isOpen = QuestManager::GetHasGatesBeenClosed();
+		this->isVisible = QuestManager::GetHasGatesBeenClosed();
 		return;
 	}
 }
