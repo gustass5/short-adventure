@@ -46,6 +46,7 @@
                 "${workspaceFolder}/src/game/npc/FishermanNpc.cpp",
                 "${workspaceFolder}/src/game/npc/MaidenNpc.cpp",
                 "${workspaceFolder}/src/game/QuestManager.cpp",
+                "${workspaceFolder}/src/utils/AudioManager.cpp",
                 "-o",
                 "${workspaceFolder}/build/main",
                 "`",

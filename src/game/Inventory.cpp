@@ -51,6 +51,8 @@ void Inventory::update(Player* player) {
 };
 
 void Inventory::useItem(Player* player, int itemIndex) {
+	AudioManager::playPotion();
+
 	this->inventoryItems[itemIndex]->use(player);
 	delete this->inventoryItems[itemIndex];
 	this->inventoryItems[itemIndex] = nullptr;

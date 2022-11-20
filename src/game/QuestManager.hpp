@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../ui/UIManager.hpp"
+#include "../utils/AudioManager.hpp"
 #include <string>
 
 class QuestManager {

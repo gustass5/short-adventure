@@ -55,7 +55,7 @@ void ElderNpc::interact() {
 
 			if (this->steps[QuestManager::GetElderStepIndex()].reward == NpcReward::POTION) {
 				SpeedPotion* potion = new SpeedPotion(this->renderer, "../assets/interactables/Potion_Speed_1/Potion_Speed_1_anim_0.png", 250);
-
+				AudioManager::playCoinSound();
 				this->player->getInventory().addItem(potion);
 			}
 

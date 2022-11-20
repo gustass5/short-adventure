@@ -79,6 +79,8 @@ void Player::render() {
 };
 
 void Player::takeDamage(int damage) {
+	AudioManager::playDamage2();
+
 	this->health -= damage;
 
 	if (this->health <= 0) {
@@ -91,6 +93,13 @@ void Player::die() {
 }
 
 void Player::attack(Uint32 currentTicks, Scene& scene) {
+	if (this->weapon.getIsSuper()) {
+		AudioManager::playSword2();
+	} else {
+
+		AudioManager::playSword1();
+	}
+
 	this->lastAttackTicks = currentTicks;
 	this->weapon.startAttack();
 

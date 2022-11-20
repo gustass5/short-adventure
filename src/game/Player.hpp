@@ -1,6 +1,7 @@
 #pragma once
 #include "../core/InputManager.hpp"
 #include "../ui/UIManager.hpp"
+#include "../utils/AudioManager.hpp"
 #include "../utils/TextureManager.hpp"
 #include "Animation.hpp"
 #include "GameObject.hpp"

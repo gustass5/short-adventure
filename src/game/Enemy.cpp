@@ -76,6 +76,8 @@ void Enemy::takeDamage(int damage, Scene& scene) {
 		return;
 	}
 
+	AudioManager::playDamage3();
+
 	this->health -= damage;
 
 	if (this->health <= 0) {

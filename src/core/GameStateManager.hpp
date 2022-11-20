@@ -3,6 +3,7 @@
 #include "../game/GameManager.hpp"
 #include "../game/QuestManager.hpp"
 #include "../ui/UIManager.hpp"
+#include "../utils/AudioManager.hpp"
 #include "InputManager.hpp"
 #include <SDL2/SDL.h>
 
@@ -14,6 +15,7 @@ class GameStateManager {
 	SDL_Renderer* screen;
 	GameManager* gameManager;
 	UIManager* uiManager;
+	AudioManager* audioManager;
 	bool isGameRunning = true;
 	bool isGameStarted = false;
 

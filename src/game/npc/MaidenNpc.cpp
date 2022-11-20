@@ -41,6 +41,8 @@ void MaidenNpc::interact() {
 		// [NOTE]: After looking at it after a while, implementation of potions looks scuffed. I will blame it on being my first c++ project... Because it is very likely that all the other code I have written is equally bad.
 		HealthPotion* potion = new HealthPotion(this->renderer, "../assets/interactables/Potion_Health_1/Potion_Health_1_anim_0.png", 4);
 
+		AudioManager::playCoinSound();
+
 		this->player->getInventory().addItem(potion);
 
 		this->player->getInventory().addGold(-50);

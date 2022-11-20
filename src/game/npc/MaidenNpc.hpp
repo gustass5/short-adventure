@@ -1,5 +1,6 @@
 #pragma once
 
+#include "../../utils/AudioManager.hpp"
 #include "../potions/HealthPotion.hpp"
 #include "Npc.hpp"
 

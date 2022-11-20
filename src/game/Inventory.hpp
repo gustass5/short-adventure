@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../interactables/PotionInteractable.hpp"
+#include "../utils/AudioManager.hpp"
 #include "InventoryItem.hpp"
 #include <SDL2/SDL.h>
 #include <string>

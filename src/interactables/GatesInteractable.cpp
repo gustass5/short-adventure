@@ -16,7 +16,7 @@ void GatesInteractable::update() {
 	if (QuestManager::GetHasGuardianBeenSummoned() && !QuestManager::GetHasDungeonBeenCleared()) {
 		return;
 	}
-	// $$ Implement boss entry once conditions are met
+
 	this->interactable.update(this, this->player);
 	if (this->interactable.getIsInteracted()) {
 		if (QuestManager::GetHasDungeonBeenCleared()) {

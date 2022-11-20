@@ -20,6 +20,7 @@ void QuestManager::RenderQuest(SDL_Renderer* renderer) {
 };
 
 void QuestManager::SetCurrentQuestText(std::string text) {
+	AudioManager::playQuest();
 	QuestManager::currentQuestText = text;
 };
 
@@ -100,6 +101,10 @@ void QuestManager::SetHasDungeonBeenCleared() {
 };
 
 void QuestManager::SetHasGuardianBeenSummoned(bool summoned) {
+	if (summoned) {
+		AudioManager::startBossMusic();
+	}
+
 	QuestManager::hasGuardianBeenSummoned = summoned;
 };
 

@@ -9,6 +9,7 @@ PickableComponent::~PickableComponent() {}
 
 void PickableComponent::update(Interactable* interactable, Player* player) {
 	if (GameObject::IsColliding(interactable->getTransform(), player->getTransform())) {
+		AudioManager::playCoinSound();
 		this->isPickedUp = true;
 	}
 }

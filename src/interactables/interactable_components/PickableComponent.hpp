@@ -2,6 +2,7 @@
 
 #include "../../core/InputManager.hpp"
 #include "../../game/GameObject.hpp"
+#include "../../utils/AudioManager.hpp"
 
 class Player;
 class Interactable;
