@@ -8,19 +8,17 @@ seashore.png
   0      0      1080 560
 
 # Number of interactible types
-4
+3
 # List of interactible types
-Chest
 Coin
 Sign
 Shell
 
 # Number of interactibles
-7
+6
 # Type  x   y   w  h
-Chest   500 250 32 32
-Coin    600 350 16 16
-Coin    700 350 16 16
+Coin    75 90 16 16
+Coin    1000 375 16 16
 Shell   50 450 48 48
 Shell   400 530 48 48
 Shell   850 375 48 48

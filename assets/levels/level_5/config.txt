@@ -8,19 +8,25 @@ dungeon.png
 40 40 1040 800
 
 # Number of interactible types
-4
-# List of interactible types
-Chest
+3
+# List of interactible types, [WARNING]: If level contains enemies it has to also include health type
 Coin
 Sign
 Health
 
 # Number of interactibles
-5
+12
 # Type  x    y    w  h
-Chest   500  250  32 32
-Coin    600  350  16 16
-Coin    700  350  16 16
+Coin    104  400  16 16
+Coin    200  400  16 16
+Coin    296  400  16 16
+Coin    392  400  16 16
+Coin    488  400  16 16
+Coin    584  400  16 16
+Coin    680  400  16 16
+Coin    776  400  16 16
+Coin    872  400  16 16
+Coin    968  400  16 16
 # Type  x    y    w  h  nextLevel spawnX spawnY popupx popupy value
 Sign    468  770  32 32 level_1   440    0      420    700    The_Town|
 # Gates is an exception and does not need to have a type provided above
