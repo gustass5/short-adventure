@@ -33,7 +33,7 @@ void MaidenNpc::interact() {
 		return;
 	}
 
-	if (this->showDialog && InputManager::IsBuyKeyDown()) {
+	if (this->showDialog && InputManager::IsEKeyDown()) {
 		if (!this->player->getInventory().canItemsBeAdded() || this->player->getInventory().getGold() < 50) {
 			return;
 		}

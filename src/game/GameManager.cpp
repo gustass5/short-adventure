@@ -8,7 +8,7 @@ GameManager::GameManager(SDL_Renderer* screen) : screen(screen), player(screen, 
 GameManager::~GameManager(){};
 
 void GameManager::update() {
-	if (this->player.isDead() && InputManager::IsLeftClickDown()) {
+	if (this->player.isDead() && InputManager::IsEKeyDown()) {
 		GameManager::LoadLevel("../assets/levels/level_1/", 544, 400, false);
 	}
 

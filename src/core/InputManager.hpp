@@ -14,7 +14,7 @@ class InputManager {
 	bool isInventoryItem1Pressed = false;
 	bool isInventoryItem2Pressed = false;
 	bool isInventoryItem3Pressed = false;
-	bool isBuyKeyDown = false;
+	bool isEKeyDown = false;
 	bool isLeftClickPressed = false;
 	bool isLeftClickDown = false;
 	void handleKeyPress(SDL_KeyboardEvent* event, bool isPressedDown);
@@ -37,5 +37,5 @@ class InputManager {
 	static bool IsInventoryItem1Pressed();
 	static bool IsInventoryItem2Pressed();
 	static bool IsInventoryItem3Pressed();
-	static bool IsBuyKeyDown();
+	static bool IsEKeyDown();
 };
