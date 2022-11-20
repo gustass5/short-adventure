@@ -37,6 +37,10 @@ void GameStateManager::run() {
 		if (this->isGameStarted) {
 			if (QuestManager::GetHasGatesBeenClosed()) {
 				UIManager::RenderEndScreen(this->screen);
+
+				if (InputManager::IsLeftClickDown()) {
+					this->isGameRunning = false;
+				}
 			} else {
 				this->gameManager->update();
 				this->gameManager->render();
