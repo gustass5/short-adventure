@@ -47,3 +47,7 @@ void Weapon::setSuper() {
 	this->isSuper = true;
 	this->attackDamage = 20;
 };
+
+bool Weapon::getIsSuper() {
+	return this->isSuper;
+}

@@ -23,4 +23,5 @@ class Weapon {
 	int attackDamage = 10;
 	SDL_Texture* getSprite();
 	void setSuper();
+	bool getIsSuper();
 };
