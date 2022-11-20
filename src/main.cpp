@@ -32,8 +32,8 @@ int main(int argc, char** arg) {
 	game.run();
 
 	SDL_DestroyWindow(window);
-	Mix_Quit();
 	Mix_CloseAudio();
+	Mix_Quit();
 	TTF_Quit();
 	SDL_Quit();
 	IMG_Quit();
