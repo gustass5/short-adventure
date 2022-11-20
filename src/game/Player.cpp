@@ -79,6 +79,10 @@ void Player::render() {
 };
 
 void Player::takeDamage(int damage) {
+	if (this->playerState == PlayerState::DEAD) {
+		return;
+	}
+
 	AudioManager::playDamage2();
 
 	this->health -= damage;
